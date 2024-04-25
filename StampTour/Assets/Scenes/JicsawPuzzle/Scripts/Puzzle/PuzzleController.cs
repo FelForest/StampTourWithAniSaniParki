@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class PuzzleController : MonoBehaviour
 {
-    public GameObject Puzzle;
+    public GameObject Board;
 
     private void Start() {
-        Puzzle.GetComponent<BoardGen>().Generate(this);
+        Board.GetComponent<BoardGen>().Generate(this);
 
     }
 
