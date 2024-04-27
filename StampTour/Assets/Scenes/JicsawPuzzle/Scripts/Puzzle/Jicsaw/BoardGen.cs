@@ -13,9 +13,9 @@ public class BoardGen : MonoBehaviour
   [SerializeField]
   private Canvas locateCanvas;
   [SerializeField]
-  private string imageFilePath;
+  private Image boardImage;
   [SerializeField]
-  private Image BoardImage;
+  private PieceContainer[] pieceContainers;
 
   Sprite mBaseSpriteOpaque;
   Sprite mBaseSpriteTransparent;
@@ -23,14 +23,16 @@ public class BoardGen : MonoBehaviour
   GameObject mGameObjectOpaque;
 
   [Space(10), Header("Setting")]
-  public float ghostTransparency = 0.7f;
-
-  [HideInInspector]
-  public int numTileX = 0;
-  [HideInInspector]
-  public int numTileY = 0;
-  public int TotalTileCount = 0;
   [SerializeField]
+  private string imageFilePath;
+  [SerializeField]
+  private float ghostTransparency = 0.7f;
+  [Min(1)]
+  public int NumTileX = 1;
+  [Min(1)]
+  public int NumTileY = 1;
+  public int TotalTileCount = 0;
+
   protected int _fitTileCount = 0;
 
   Tile[,] mTiles = null;
@@ -38,16 +40,26 @@ public class BoardGen : MonoBehaviour
 
   public Transform parentForTiles = null;
   
-  [SerializeField]
-  private RectTransform[] pieceContainer;
   private List<Coroutine> activeCoroutines = new List<Coroutine>();
-  [SerializeField]
+
   private Vector2 tileSize;
 
   [Space(10), Header("TileAudio")]
   public AudioClip TilePointerDownSFX;
   public AudioClip TilePointerUpSFX;
 
+
+  Texture2D ResizeTexture(Texture2D source, int width, int height)
+  {
+    RenderTexture renderTexture = new RenderTexture(width, height, 0);
+    Graphics.Blit(source, renderTexture);
+    Texture2D newTexture = new Texture2D(width, height);
+    newTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+    newTexture.Apply();
+    RenderTexture.active = null;
+    renderTexture.Release();
+    return newTexture;
+  }
 
   Sprite LoadBaseTexture(string filePath, float colorAlpha)
   {
@@ -57,17 +69,17 @@ public class BoardGen : MonoBehaviour
       Debug.Log("Error: Texture is not readable");
       return null;
     }
+
+    tex = ResizeTexture(tex, 100 * NumTileX, 100 * NumTileY);
+    // Debug.Log($"[JicsawPuzzle] {filePath} Texture Size: ({tex.width}, {tex.height})");
     
     // Add padding to the image.
     Texture2D newTex = new Texture2D(
-        tex.width ,
-        tex.height ,
+        tex.width + Tile.padding * 2,
+        tex.height + Tile.padding * 2,
         TextureFormat.ARGB32,
         false);
 
-    numTileX = tex.width / Tile.tileSize;
-    numTileY = tex.height / Tile.tileSize;
-    
     // Copy the colours.
     for (int x = 0; x < tex.width; ++x)
     {
@@ -75,7 +87,7 @@ public class BoardGen : MonoBehaviour
       {
         Color color = tex.GetPixel(x, y);
         color.a = colorAlpha;
-        newTex.SetPixel(x , y , color);
+        newTex.SetPixel(x + Tile.padding , y + Tile.padding, color);
       }
     }
     newTex.Apply();
@@ -101,10 +113,10 @@ public class BoardGen : MonoBehaviour
     mBaseSpriteOpaque = LoadBaseTexture(this.imageFilePath, ghostTransparency);
     mBaseSpriteTransparent = LoadBaseTexture(this.imageFilePath, ghostTransparency);
 
-    BoardImage.sprite = mBaseSpriteTransparent;
-    BoardImage.rectTransform.anchorMin = new Vector2(0, 0);
-    BoardImage.rectTransform.anchorMax = new Vector2(1, 1);
-    BoardImage.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+    boardImage.sprite = mBaseSpriteTransparent;
+    boardImage.rectTransform.anchorMin = new Vector2(0, 0);
+    boardImage.rectTransform.anchorMax = new Vector2(1, 1);
+    boardImage.rectTransform.pivot = new Vector2(0.5f, 0.5f);
 
     // Create the Jigsaw tiles.
     StartCoroutine(Coroutine_CreateJigsawTiles());
@@ -129,8 +141,8 @@ public class BoardGen : MonoBehaviour
     image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, tileSize.y);
     image.rectTransform.anchorMin = new Vector2(0, 0);
     image.rectTransform.anchorMax = new Vector2(0, 0);
-    image.rectTransform.localPosition = new Vector3(tile.xIndex * imageSize.x + imageSize.x / 2 - BoardImage.rectTransform.rect.width/2,
-                                                     tile.yIndex * imageSize.y + imageSize.y / 2 - BoardImage.rectTransform.rect.height/2, 0.0f);
+    image.rectTransform.localPosition = new Vector3(tile.xIndex * imageSize.x + imageSize.x / 2 - boardImage.rectTransform.rect.width/2,
+                                                     tile.yIndex * imageSize.y + imageSize.y / 2 - boardImage.rectTransform.rect.height/2, 0.0f);
 
     BoxCollider box = obj.AddComponent<BoxCollider>();
 
@@ -139,6 +151,7 @@ public class BoardGen : MonoBehaviour
     tileMovement.canvas = locateCanvas.GetComponent<Canvas>();
     tileMovement.PointerUpSFX = TilePointerUpSFX;
     tileMovement.PointerDownSFX = TilePointerDownSFX;
+    tileMovement.TileFitParent = parentForTiles;
 
     return obj;
   }
@@ -147,24 +160,23 @@ public class BoardGen : MonoBehaviour
   {
     Texture2D baseTexture = mBaseSpriteOpaque.texture;
     float aspect = Tile.padding / (float)Tile.tileSize;
-    Debug.Log(BoardImage.rectTransform.rect.width);
-    float imageTileSizeX =  (BoardImage.rectTransform.rect.width / numTileX);
+    float imageTileSizeX =  (boardImage.rectTransform.rect.width / NumTileX);
     float imageTilePaddingX = (imageTileSizeX * aspect);
-    float imageTileSizeY =  (BoardImage.rectTransform.rect.height / numTileY);
+    float imageTileSizeY =  (boardImage.rectTransform.rect.height / NumTileY);
     float imageTilePaddingY = (imageTileSizeY * aspect);
     Vector2 imageTileSize = new Vector2(imageTileSizeX, imageTileSizeY);
     Vector2 imageTilePadding = new Vector2(imageTilePaddingY, imageTilePaddingY);
     tileSize = new Vector2(imageTileSizeX + 2*imageTilePaddingX, imageTileSizeY + 2*imageTilePaddingY);
-    Vector2Int textureTileSize = new Vector2Int((int)(baseTexture.width / numTileX), (int)(baseTexture.height / numTileY));
+    Vector2Int textureTileSize = new Vector2Int((int)(baseTexture.width / NumTileX), (int)(baseTexture.height / NumTileY));
 
-    mTiles = new Tile[numTileX, numTileY];
-    mTileGameObjects = new GameObject[numTileX, numTileY];
+    mTiles = new Tile[NumTileX, NumTileY];
+    mTileGameObjects = new GameObject[NumTileX, NumTileY];
 
-    TotalTileCount = numTileX * numTileY;
+    TotalTileCount = NumTileX * NumTileY;
 
-    for (int i = 0; i < numTileX; i++)
+    for (int i = 0; i < NumTileX; i++)
     {
-      for (int j = 0; j < numTileY; j++)
+      for (int j = 0; j < NumTileY; j++)
       {
         mTiles[i, j] = CreateTile(i, j, baseTexture, textureTileSize);
         mTileGameObjects[i, j] = CreateGameObjectFromTile(mTiles[i, j], imageTileSize, imageTilePadding);
@@ -215,7 +227,7 @@ public class BoardGen : MonoBehaviour
     }
 
     // Right side tiles.
-    if (i == numTileX - 1)
+    if (i == NumTileX - 1)
     {
       tile.SetCurveType(Tile.Direction.RIGHT, Tile.PosNegType.NONE);
     }
@@ -233,7 +245,7 @@ public class BoardGen : MonoBehaviour
     }
 
     // Up side tile.
-    if(j == numTileY - 1)
+    if(j == NumTileY - 1)
     {
       tile.SetCurveType(Tile.Direction.UP, Tile.PosNegType.NONE);
     }
@@ -256,62 +268,83 @@ public class BoardGen : MonoBehaviour
 
   #region Shuffling related codes
 
-  private IEnumerator Coroutine_MoveOverSeconds(RectTransform objectToMove, Vector3 end, float seconds)
+  private IEnumerator Coroutine_MoveOverSeconds(PieceContainer pieceContainers, RectTransform objectToMove, Vector3 end, float seconds)
   {
-    float elaspedTime = 0.0f;
-    Vector3 startingPosition = objectToMove.localPosition;
-    while(elaspedTime < seconds)
-    {
-      objectToMove.localPosition = Vector3.Lerp(
-        startingPosition, end, (elaspedTime / seconds));
+      float elaspedTime = 0.0f;
+      Vector3 startingPosition = objectToMove.position;
+      while(elaspedTime < seconds)
+      {
+      objectToMove.position = Vector3.Lerp(
+          startingPosition, end, (elaspedTime / seconds));
       elaspedTime += Time.deltaTime;
 
       yield return new WaitForEndOfFrame();
-    }
-    objectToMove.localPosition = end;
+      }
+      // objectToMove.localPosition = end;
+
+      pieceContainers.Push(objectToMove);
   }
 
   void Shuffle(GameObject obj)
   {
-    if(pieceContainer.Length == 0)
+    if(pieceContainers.Length == 0)
     {
-      Debug.LogError($"{name} : pieceContainer Null");
+      Debug.LogError($"{name} : pieceContainers Null");
     }
 
     obj.TryGetComponent(out RectTransform objRectTransform);
     obj.TryGetComponent(out TileMovement objTileMovement);
-    int regionIndex = UnityEngine.Random.Range(0, pieceContainer.Length);
-    float regionWidth = pieceContainer[regionIndex].rect.width;
-    float regionHeight = pieceContainer[regionIndex].rect.height;
-    Vector2 regionCenter = new Vector2(regionWidth / 2, regionHeight / 2);
-    Vector2 regionLocalPosition = pieceContainer[regionIndex].localPosition;
+    
+    // Select pieceContainers
+    int regionIndex = UnityEngine.Random.Range(0, pieceContainers.Length);
 
-    float aspectWidth = regionWidth / BoardImage.rectTransform.rect.width;
-    float aspectHeight = regionHeight / BoardImage.rectTransform.rect.height;
+    if (!pieceContainers[regionIndex].CanPush())
+    {
+      for(int i = 0; i < pieceContainers.Length; i++)
+      {
+        if (pieceContainers[i].CanPush())
+        {
+          regionIndex = i;
+          break;
+        }
+      }
+    }
+
+    // Occupies a spot in the list.
+    pieceContainers[regionIndex].PushReserve();
+
+    // Get Random Move End Pos
+    float regionWidth = pieceContainers[regionIndex].Size.x;
+    float regionHeight = pieceContainers[regionIndex].Size.y;
+    Vector2 regionCenter = new Vector2(regionWidth / 2, regionHeight / 2);
+    Vector2 regionLocalPosition = transform.localPosition;
+
+    float aspectWidth = pieceContainers[regionIndex].CellSize.x / tileSize.x;
+    float aspectHeight = pieceContainers[regionIndex].CellSize.y / tileSize.y;
     float aspect = MathF.Min(aspectWidth, aspectHeight);
     objTileMovement.SmalScale = aspect;
-
-    Vector2 objTileSize = tileSize * aspect;
-
-    float minRangeX = regionLocalPosition.x - regionCenter.x + objTileSize.x;
-    float maxRangeX = regionLocalPosition.x + regionCenter.x - objTileSize.x;
-    float minRangeY = regionLocalPosition.y - regionCenter.y + objTileSize.y;
-    float maxRangeY = regionLocalPosition.y + regionCenter.y - objTileSize.y;
-    float x = UnityEngine.Random.Range(minRangeX, maxRangeX);
-    float y = UnityEngine.Random.Range(minRangeY, maxRangeY);
     
+    Vector3 pos = new Vector3(pieceContainers[regionIndex].rectTransform.position.x, pieceContainers[regionIndex].rectTransform.position.y, pieceContainers[regionIndex].rectTransform.position.z);
     
-    Vector3 pos = new Vector3(x, y, 0.0f);
-    Coroutine moveCoroutine = StartCoroutine(Coroutine_MoveOverSeconds(objRectTransform, pos, 1.0f));
+    // Push Tile to Container
+    Coroutine moveCoroutine = StartCoroutine(Coroutine_MoveOverSeconds(pieceContainers[regionIndex], objRectTransform, pos, 1.0f));
     activeCoroutines.Add(moveCoroutine);
-    // objRectTransform.localPosition = pos;
   }
 
   IEnumerator Coroutine_Shuffle()
   {
-    for(int i = 0; i < numTileX; ++i)
+    // Set Piece Container
+    int totalTileNum = NumTileX * NumTileY;
+      // Prevent odd divide.
+    int containerMaxCount = Mathf.CeilToInt((float)totalTileNum / pieceContainers.Length );
+    foreach (var container in pieceContainers)
     {
-      for(int j = 0; j < numTileY; ++j)
+      container.MaxCount = containerMaxCount;
+    }
+    // Suffle Tile
+    for(int i = 0; i < NumTileX; ++i)
+    {
+      for(int j = 0; j < NumTileY; ++j)
       {
         Shuffle(mTileGameObjects[i, j]);
         yield return null;
@@ -340,9 +373,9 @@ public class BoardGen : MonoBehaviour
 
     StartTimer();
 
-    for(int i = 0; i < numTileX; ++i)
+    for(int i = 0; i < NumTileX; ++i)
     {
-      for(int j = 0; j < numTileY; ++j)
+      for(int j = 0; j < NumTileY; ++j)
       {
         TileMovement tm = mTileGameObjects[i, j].GetComponent<TileMovement>();
         tm.onTileInPlace += OnTileInPlace;

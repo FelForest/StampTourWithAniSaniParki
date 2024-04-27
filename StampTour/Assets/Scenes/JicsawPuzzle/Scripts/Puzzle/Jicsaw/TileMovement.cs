@@ -9,18 +9,19 @@ public class TileMovement : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
   public Canvas canvas;
   public Tile tile { get; set; }
-  public Vector2 OriginPosition;
+  public Vector3 OriginPosition;
   protected float _smalScale = 0.0f;
   public float SmalScale
   {
     get { return _smalScale; }
     set { _smalScale = value; SetScale(_smalScale); }
   }
+  public Transform TileFitParent;
 
   public delegate void DelegateOnTileInPlace(TileMovement tm);
   public DelegateOnTileInPlace onTileInPlace;
   private RectTransform rectTransform;
-  public float MaxDist = 30.0f;
+  public float MaxDist = 10.0f;
   public float dist;
   [SerializeField]
   private Vector2 currentPos;
@@ -28,6 +29,7 @@ public class TileMovement : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
   private Vector2 fitPos;
 
   private Vector3 startPos;
+  private Transform startParent;
 
   [Header("Audio")]
   public AudioClip PointerDownSFX;
@@ -39,7 +41,7 @@ public class TileMovement : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
   private void Start()
   {
-    OriginPosition = rectTransform.anchoredPosition;
+    OriginPosition = rectTransform.position;
   }
 
   public void SetScale(float scale)
@@ -49,38 +51,43 @@ public class TileMovement : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 
   public void OnPointerDown(PointerEventData eventData)
   {
-    Debug.Log(name);
     SetScale(1.0f);
+    startPos = transform.position;
+    startParent = transform.parent;
+
     RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, canvas.worldCamera, out Vector2 pos);
     transform.position = canvas.transform.TransformPoint(pos);
-    startPos = transform.position;
+    transform.SetParent(TileFitParent);
     rectTransform.SetAsLastSibling();
 
     AudioController.Instance.PlaySFXOneShot(PointerDownSFX);
+
+    // Debug.Log($"[JicsawPuzzl] {gameObject.name} Tile Click");
   }
 
   public void OnPointerUp(PointerEventData eventData)
   {
     fitPos =  OriginPosition;
-    currentPos = rectTransform.anchoredPosition;
+    currentPos = rectTransform.position;
     dist = (currentPos - fitPos).magnitude;
     if(dist < MaxDist)
     {
-      rectTransform.anchoredPosition = OriginPosition;
+      rectTransform.position = OriginPosition;
       onTileInPlace?.Invoke(this);
-      Debug.Log("FIt");
+      // Debug.Log($"[JicsawPuzzl] {gameObject.name} Tile Fit");
       AudioController.Instance.PlaySFXOneShot(PointerUpSFX);
     }
     else
     {
       transform.position = startPos;
+      transform.SetParent(startParent);
       SetScale(SmalScale);
     }
   }
 
   public void OnDrag(PointerEventData eventData)
   {
-    Debug.Log("EEE");
+    // Debug.Log($"[JicsawPuzzl] {gameObject.name} Tile Draging");
 
     RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, canvas.worldCamera, out Vector2 pos);
     transform.position = canvas.transform.TransformPoint(pos);
