@@ -377,9 +377,9 @@ MonoBehaviour:
   - {fileID: 7623100344235694106}
   imageFilePath: JicsawPuzzle/jiban1
   ghostTransparency: 0.5
-  NumTileX: 5
-  NumTileY: 5
-  TotalTileCount: 0
+  NumTileX: 4
+  NumTileY: 4
+  TileFitDistance: 40
   parentForOpaqueTiles: {fileID: 6674735019138842043}
   parentForFitTiles: {fileID: 7309030225299374576}
   TilePointerDownSFX: {fileID: 8300000, guid: ddd16025d5ef32249bf91ac485f99fd8, type: 3}

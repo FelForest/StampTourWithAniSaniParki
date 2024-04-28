@@ -30,8 +30,9 @@ public class BoardGen : MonoBehaviour
   public int NumTileX = 1;
   [Min(1)]
   public int NumTileY = 1;
-  public int TotalTileCount = 0;
+  public float TileFitDistance = 40.0f;
 
+  protected int TotalTileCount = 0;
   protected int _fitTileCount = 0;
 
   Tile[,] mOpaqueTiles = null;
@@ -141,6 +142,7 @@ public class BoardGen : MonoBehaviour
       tileMovement.PointerUpSFX = TilePointerUpSFX;
       tileMovement.PointerDownSFX = TilePointerDownSFX;
       tileMovement.TileFitParent = targetParent;
+      tileMovement.MaxDist = TileFitDistance;
     }
     
     return obj;
