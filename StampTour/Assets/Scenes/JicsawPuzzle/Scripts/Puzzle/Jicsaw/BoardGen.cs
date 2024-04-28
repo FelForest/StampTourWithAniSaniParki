@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class BoardGen : MonoBehaviour
 {
-  public PuzzleController puzzleController;
+  public JicsawPuzzleController puzzleController;
 
   [Header("Reference")]
   [SerializeField]
@@ -18,7 +18,6 @@ public class BoardGen : MonoBehaviour
   private PieceContainer[] pieceContainers;
 
   Sprite mBaseSpriteOpaque;
-  Sprite mBaseSpriteTransparent;
 
   GameObject mGameObjectOpaque;
 
@@ -35,10 +34,13 @@ public class BoardGen : MonoBehaviour
 
   protected int _fitTileCount = 0;
 
+  Tile[,] mOpaqueTiles = null;
+  GameObject[,] mOpaqueTileGameObjects= null;
   Tile[,] mTiles = null;
   GameObject[,] mTileGameObjects= null;
 
-  public Transform parentForTiles = null;
+  public RectTransform parentForOpaqueTiles = null;
+  public RectTransform parentForFitTiles = null;
   
   private List<Coroutine> activeCoroutines = new List<Coroutine>();
 
@@ -48,32 +50,8 @@ public class BoardGen : MonoBehaviour
   public AudioClip TilePointerDownSFX;
   public AudioClip TilePointerUpSFX;
 
-
-  Texture2D ResizeTexture(Texture2D source, int width, int height)
+  Sprite ConvertJicsawPuzzleSprite(Texture2D tex, float colorAlpha)
   {
-    RenderTexture renderTexture = new RenderTexture(width, height, 0);
-    Graphics.Blit(source, renderTexture);
-    Texture2D newTexture = new Texture2D(width, height);
-    newTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-    newTexture.Apply();
-    RenderTexture.active = null;
-    renderTexture.Release();
-    return newTexture;
-  }
-
-  Sprite LoadBaseTexture(string filePath, float colorAlpha)
-  {
-    Texture2D tex = SpriteUtils.LoadTexture(filePath);
-    if (!tex.isReadable)
-    {
-      Debug.Log("Error: Texture is not readable");
-      return null;
-    }
-
-    tex = ResizeTexture(tex, 100 * NumTileX, 100 * NumTileY);
-    // Debug.Log($"[JicsawPuzzle] {filePath} Texture Size: ({tex.width}, {tex.height})");
-    
-    // Add padding to the image.
     Texture2D newTex = new Texture2D(
         tex.width + Tile.padding * 2,
         tex.height + Tile.padding * 2,
@@ -101,7 +79,7 @@ public class BoardGen : MonoBehaviour
     return sprite;
   }
 
-  public void Generate(PuzzleController puzzleController, string imgFilePath = "")
+  public void Generate(JicsawPuzzleController puzzleController, string imgFilePath = "")
   {
     this.puzzleController = puzzleController;
 
@@ -110,26 +88,26 @@ public class BoardGen : MonoBehaviour
       this.imageFilePath = imgFilePath;
     }
 
-    mBaseSpriteOpaque = LoadBaseTexture(this.imageFilePath, ghostTransparency);
-    mBaseSpriteTransparent = LoadBaseTexture(this.imageFilePath, ghostTransparency);
+    boardImage.sprite = SpriteUtils.LoadSprite(this.imageFilePath, Tile.tileSize*NumTileX, Tile.tileSize*NumTileY);
 
-    boardImage.sprite = mBaseSpriteTransparent;
-    boardImage.rectTransform.anchorMin = new Vector2(0, 0);
-    boardImage.rectTransform.anchorMax = new Vector2(1, 1);
-    boardImage.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+    mBaseSpriteOpaque = ConvertJicsawPuzzleSprite(boardImage.sprite.texture, ghostTransparency);
+    parentForFitTiles.anchorMin = new Vector2(0, 0);
+    parentForFitTiles.anchorMax = new Vector2(1, 1);
+    parentForFitTiles.pivot = new Vector2(0.5f, 0.5f);
 
     // Create the Jigsaw tiles.
     StartCoroutine(Coroutine_CreateJigsawTiles());
   }
 
-  public GameObject CreateGameObjectFromTile(Tile tile, Vector2 imageSize, Vector2 imagePadding)
+  public GameObject CreateGameObjectFromTile(Tile tile, Vector2 imageSize, Transform targetParent, bool isOpaque = false)
   {
+    // Object Setting
     GameObject obj = new GameObject();
-    obj.name = "TileGameObe_" + tile.xIndex.ToString() + "_" + tile.yIndex.ToString();
-    obj.transform.parent = parentForTiles;
+    obj.name = "TileGameObj_" + tile.xIndex.ToString() + "_" + tile.yIndex.ToString();
+    obj.transform.parent = targetParent;
     obj.transform.localRotation = Quaternion.identity;
     obj.transform.localScale = Vector3.one;
-
+    // Image Setting
     Image image = obj.AddComponent<Image>();
     image.sprite = SpriteUtils.CreateSpriteFromTexture2D(
       tile.finalCut,
@@ -141,28 +119,41 @@ public class BoardGen : MonoBehaviour
     image.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, tileSize.y);
     image.rectTransform.anchorMin = new Vector2(0, 0);
     image.rectTransform.anchorMax = new Vector2(0, 0);
-    image.rectTransform.localPosition = new Vector3(tile.xIndex * imageSize.x + imageSize.x / 2 - boardImage.rectTransform.rect.width/2,
-                                                     tile.yIndex * imageSize.y + imageSize.y / 2 - boardImage.rectTransform.rect.height/2, 0.0f);
+    image.rectTransform.localPosition = new Vector3(tile.xIndex * imageSize.x + imageSize.x / 2 - parentForFitTiles.rect.width/2,
+                                                     tile.yIndex * imageSize.y + imageSize.y / 2 - parentForFitTiles.rect.height/2, 0.0f);
 
-    BoxCollider box = obj.AddComponent<BoxCollider>();
+    // Opaque Setting
+    if (isOpaque)
+    {
+      Color c = image.color;
+      c.a = ghostTransparency;
+      image.color = c;
+      obj.SetActive(false);
+    }
+    else
+    {
 
-    TileMovement tileMovement = obj.AddComponent<TileMovement>();
-    tileMovement.tile = tile;
-    tileMovement.canvas = locateCanvas.GetComponent<Canvas>();
-    tileMovement.PointerUpSFX = TilePointerUpSFX;
-    tileMovement.PointerDownSFX = TilePointerDownSFX;
-    tileMovement.TileFitParent = parentForTiles;
+      BoxCollider box = obj.AddComponent<BoxCollider>();
 
+      TileMovement tileMovement = obj.AddComponent<TileMovement>();
+      tileMovement.tile = tile;
+      tileMovement.canvas = locateCanvas.GetComponent<Canvas>();
+      tileMovement.PointerUpSFX = TilePointerUpSFX;
+      tileMovement.PointerDownSFX = TilePointerDownSFX;
+      tileMovement.TileFitParent = targetParent;
+    }
+    
     return obj;
   }
 
   IEnumerator Coroutine_CreateJigsawTiles()
   {
+    // Caculate Setting Values
     Texture2D baseTexture = mBaseSpriteOpaque.texture;
     float aspect = Tile.padding / (float)Tile.tileSize;
-    float imageTileSizeX =  (boardImage.rectTransform.rect.width / NumTileX);
+    float imageTileSizeX =  (parentForFitTiles.rect.width / NumTileX);
     float imageTilePaddingX = (imageTileSizeX * aspect);
-    float imageTileSizeY =  (boardImage.rectTransform.rect.height / NumTileY);
+    float imageTileSizeY =  (parentForFitTiles.rect.height / NumTileY);
     float imageTilePaddingY = (imageTileSizeY * aspect);
     Vector2 imageTileSize = new Vector2(imageTileSizeX, imageTileSizeY);
     Vector2 imageTilePadding = new Vector2(imageTilePaddingY, imageTilePaddingY);
@@ -172,18 +163,21 @@ public class BoardGen : MonoBehaviour
     mTiles = new Tile[NumTileX, NumTileY];
     mTileGameObjects = new GameObject[NumTileX, NumTileY];
 
+    mOpaqueTiles = new Tile[NumTileX, NumTileY];
+    mOpaqueTileGameObjects = new GameObject[NumTileX, NumTileY];
+
     TotalTileCount = NumTileX * NumTileY;
+
+    boardImage.enabled = false;
 
     for (int i = 0; i < NumTileX; i++)
     {
       for (int j = 0; j < NumTileY; j++)
       {
+
         mTiles[i, j] = CreateTile(i, j, baseTexture, textureTileSize);
-        mTileGameObjects[i, j] = CreateGameObjectFromTile(mTiles[i, j], imageTileSize, imageTilePadding);
-        if (parentForTiles != null)
-        {
-          // mTileGameObjects[i, j].gameObject.SetActive(false);
-        }
+        mOpaqueTileGameObjects[i, j] = CreateGameObjectFromTile(mTiles[i, j], imageTileSize, parentForOpaqueTiles, true);
+        mTileGameObjects[i, j] = CreateGameObjectFromTile(mTiles[i, j], imageTileSize, parentForFitTiles);
 
         yield return null;
       }
@@ -346,6 +340,7 @@ public class BoardGen : MonoBehaviour
     {
       for(int j = 0; j < NumTileY; ++j)
       {
+        mOpaqueTileGameObjects[i,j].SetActive(true);
         Shuffle(mTileGameObjects[i, j]);
         yield return null;
       }
@@ -440,6 +435,9 @@ public class BoardGen : MonoBehaviour
   public void ClearPuzzle()
   {
     Debug.Log("Clear!");
+    boardImage.enabled = true;
+    parentForFitTiles.gameObject.SetActive(false);
+    parentForOpaqueTiles.gameObject.SetActive(false);
     puzzleController.Pass();
   }
 }

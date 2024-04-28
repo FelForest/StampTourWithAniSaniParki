@@ -71,6 +71,11 @@ public class Tile
     return mCurveTypes[(int)dir];
   }
 
+  /// <summary>
+  /// 
+  /// </summary>
+  /// <param name="texture">Cut base Texture</param>
+  /// <param name="alpha">Tile Color alpha value.</param>
   public Tile(Texture2D texture)
   {
     mOriginalTexture = texture;
@@ -95,6 +100,9 @@ public class Tile
     finalCut.Apply();
   }
 
+  /// <summary>
+  /// Draw&Caculate Puzzl Cut Line
+  /// </summary>
   void FloodFillInit()
   {
     mVisited = new bool[tileSizeWithPadding, tileSizeWithPadding];
@@ -125,6 +133,11 @@ public class Tile
     mStack.Push(start);
   }
 
+  /// <summary>
+  /// Fill Target Pixel
+  /// </summary>
+  /// <param name="x"></param>
+  /// <param name="y"></param>
   void Fill(int x, int y)
   {
     Color c = mOriginalTexture.GetPixel(x + xIndex * tileSize , y + yIndex * tileSize);
@@ -237,6 +250,12 @@ public class Tile
     }
   }
 
+  /// <summary>
+  /// Draw Tile 1 Direction Cut Outline
+  /// </summary>
+  /// <param name="dir">Cut line direction</param>
+  /// <param name="type">Line type</param>
+  /// <returns></returns>
   public List<Vector2> CreateCurve(Direction dir, PosNegType type)
   {
     int padding_x = padding;

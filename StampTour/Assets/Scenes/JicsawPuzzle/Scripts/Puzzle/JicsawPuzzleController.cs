@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PuzzleController : MonoBehaviour
+public class JicsawPuzzleController : MonoBehaviour
 {
     public GameObject Board;
 
