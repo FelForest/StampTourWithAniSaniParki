@@ -63,6 +63,7 @@ public class JicsawPuzzleUIManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         yield return ChoiceUIController.Play();
+        yield return MarkerUIController.Play();
         yield return ResultUIController.Play();
     }
 }

@@ -21,7 +21,9 @@ namespace JicsawPuzzle
 
         public override IEnumerator Play()
         {
-            throw new System.NotImplementedException();
+            SetActive(true);
+            SetActivePreviewPanel(true);
+            yield return new WaitUntil(()=> !PreviewImage.transform.parent.gameObject.activeSelf);
         }
 
         public override void SetActive(bool isActive)
@@ -31,12 +33,14 @@ namespace JicsawPuzzle
 
         public void SetActivePreviewPanel(bool isVisible)
         {
+            PreviewImage.transform.parent.gameObject.SetActive(isVisible);
             PreviewImage.gameObject.SetActive(isVisible);
             PreviewGuidText.gameObject.SetActive(isVisible);
         }
 
         public void SetActiveGoalPanel(bool isActive)
         {
+            GoalImage.transform.parent.gameObject.SetActive(isActive);
             GoalImage.gameObject.SetActive(isActive);
             GoalText.gameObject.SetActive(isActive);
         }
