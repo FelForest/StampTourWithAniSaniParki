@@ -23,6 +23,7 @@ namespace JicsawPuzzle
 
         public IEnumerator Play()
         {
+            Debug.Log("AAFA");
             gameObject.SetActive(true);
             NextButton.enabled = false;
             NextButton.TryGetComponent(out RectTransform nextBtnRectTransfrom);

@@ -4,13 +4,22 @@ using UnityEngine;
 
 namespace JicsawPuzzle
 {
-    public class GuideUIComponent : MonoBehaviour
+    public class GuideUIController : BaseUIController
     {
         public Animator guideAnimator;
         public TMP_Text guideText;
         public float TypeTime = 1.0f;
 
-        public void SetActive(bool isActive)
+        protected override void Start() {
+            IsInitialized = true;
+        }
+
+        public override IEnumerator Play()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }

@@ -5,19 +5,20 @@ using UnityEngine;
 
 namespace JicsawPuzzle
 {
-    public class ResultUIComponent : MonoBehaviour, IPlay
+    public class ResultUIController : BaseUIController
     {
         public ResultInfoComponent ResultInfoComponent;
         public NextMissionButton NextMissionButton;
 
-        public IEnumerator Play()
+        public override IEnumerator Play()
         {
             gameObject.SetActive(true);
+            Debug.Log(gameObject.activeSelf);
             yield return ResultInfoComponent.Play();
             yield return NextMissionButton.Play();
         }
 
-        private void Start() {
+        protected override void Start() {
             if (ResultInfoComponent == null)
             {
                 ResultInfoComponent = GetComponentInChildren<ResultInfoComponent>();
@@ -27,7 +28,12 @@ namespace JicsawPuzzle
                 NextMissionButton = GetComponentInChildren<NextMissionButton>();
             }
 
-            gameObject.SetActive(false);
+            IsInitialized = true;
+        }
+
+        public void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
         }
     }
 }

@@ -5,5 +5,5 @@ using UnityEngine;
 public class JicsawPuzzleManager : MonoBehaviour
 {
     public JicsawPuzzleController PuzzleController;
-    public JicsawPuzzleUIController UIController;
+    public JicsawPuzzleUIManager UIManager;
 }

@@ -1,10 +1,11 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace JicsawPuzzle
 {
-    public class MarkerUIComponent : MonoBehaviour
+    public class MarkerUIController : BaseUIController
     {
         // Preview
         public Image PreviewImage;
@@ -14,7 +15,16 @@ namespace JicsawPuzzle
         public Image GoalImage;
         public TMP_Text GoalText;
 
-        public void SetActive(bool isActive)
+        protected override void Start() {
+            IsInitialized = true;
+        }
+
+        public override IEnumerator Play()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }
