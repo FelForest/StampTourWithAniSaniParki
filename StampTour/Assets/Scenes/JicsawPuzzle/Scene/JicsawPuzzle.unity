@@ -819,6 +819,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2296549738790287454, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Name
+      value: SucceedParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 4175146771245047714, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
       propertyPath: m_Name
       value: JicsawPuzzle_Root
@@ -827,6 +831,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 467952530}
+    - target: {fileID: 8772692277296144895, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Name
+      value: SucceedUI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8767719914360111009, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}

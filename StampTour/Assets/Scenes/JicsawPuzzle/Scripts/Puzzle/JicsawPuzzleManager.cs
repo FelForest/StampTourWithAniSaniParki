@@ -20,7 +20,7 @@ public class JicsawPuzzleManager : BaseInitializeObject
                     GameObject obj = new GameObject("JicsawPuzzleManager");
                     _instance = obj.AddComponent<JicsawPuzzleManager>();
 
-                    DontDestroyOnLoad(obj);
+                    // DontDestroyOnLoad(obj);
                 }
             } 
 
@@ -33,7 +33,7 @@ public class JicsawPuzzleManager : BaseInitializeObject
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
