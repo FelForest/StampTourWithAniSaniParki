@@ -10,7 +10,15 @@ public class AudioController : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<AudioController>();
+                _instance = FindObjectOfType<AudioController>();
+
+                if (_instance == null)
+                {
+                    GameObject obj = new GameObject("AudioController");
+                    _instance = obj.AddComponent<AudioController>();
+
+                    DontDestroyOnLoad(obj);
+                }
             }
 
             return _instance;
