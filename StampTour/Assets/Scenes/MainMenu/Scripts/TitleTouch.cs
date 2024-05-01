@@ -25,7 +25,8 @@ public class TitleTouch : MonoBehaviour
         {
             if(Input.touchCount > 0 || Input.GetMouseButton(0))
             {
-                gameObject.SetActive(false);
+                isTouchEnable = false;
+                SceneLoader.LoadScene("MainScene",UnityEngine.SceneManagement.LoadSceneMode.Single);
             }
         }
     }
