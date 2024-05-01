@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JicsawPuzzle;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BoardGen : MonoBehaviour
 {
-  public JicsawPuzzleController puzzleController;
+  public JicsawPuzzleBoardManager BoardManager;
 
   [Header("Reference")]
   [SerializeField]
@@ -80,9 +81,9 @@ public class BoardGen : MonoBehaviour
     return sprite;
   }
 
-  public void Generate(JicsawPuzzleController puzzleController, string imgFilePath = "")
+  public void Generate(JicsawPuzzleBoardManager BoardManager, string imgFilePath = "")
   {
-    this.puzzleController = puzzleController;
+    this.BoardManager = BoardManager;
 
     if (imgFilePath != string.Empty)
     {
@@ -440,6 +441,6 @@ public class BoardGen : MonoBehaviour
     boardImage.enabled = true;
     parentForFitTiles.gameObject.SetActive(false);
     parentForOpaqueTiles.gameObject.SetActive(false);
-    puzzleController.Pass();
+    BoardManager.PuzzleClear();
   }
 }

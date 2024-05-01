@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace JicsawPuzzle
 {
-    public class MenuUIController : BaseUIController
+    public class MenuUIController : BaseInitializeObject
     {
         public Button BackButton;
 

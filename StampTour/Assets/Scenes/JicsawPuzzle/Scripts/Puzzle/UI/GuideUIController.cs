@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JicsawPuzzle
 {
-    public class GuideUIController : BaseUIController
+    public class GuideUIController : BaseInitializeObject
     {
         public Animator guideAnimator;
         public TMP_Text guideText;
@@ -23,11 +23,23 @@ namespace JicsawPuzzle
         {
             gameObject.SetActive(isActive);
         }
+
         public void Talk(string inputText)
         {
+            // Debug.Log(inputText);
+            SetActive(true);
             guideText.text = inputText;
             guideText.maxVisibleCharacters = 0;
             StartCoroutine(TypeAnimation(guideText));
+        }
+
+        public IEnumerator TalkIE(string inputText)
+        {
+            // Debug.Log(inputText);
+            SetActive(true);
+            guideText.text = inputText;
+            guideText.maxVisibleCharacters = 0;
+            yield return TypeAnimation(guideText);
         }
 
         IEnumerator TypeAnimation(TMP_Text tMP_Text)

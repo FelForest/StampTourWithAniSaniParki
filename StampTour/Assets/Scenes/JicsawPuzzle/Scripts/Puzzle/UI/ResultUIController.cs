@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace JicsawPuzzle
 {
-    public class ResultUIController : BaseUIController
+    public class ResultUIController : BaseInitializeObject
     {
         public ResultInfoComponent ResultInfoComponent;
         public NextMissionButton NextMissionButton;
@@ -31,7 +31,7 @@ namespace JicsawPuzzle
             IsInitialized = true;
         }
 
-        public void SetActive(bool isActive)
+        public override void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
         }

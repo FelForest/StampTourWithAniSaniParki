@@ -5,17 +5,24 @@ using UnityEngine.UI;
 
 namespace JicsawPuzzle
 {
-    public class MarkerUIController : BaseUIController
+    public class MarkerUIController : BaseInitializeObject
     {
-        // Preview
+        [Header("Preview")]
+        public GameObject PreviewObject;
         public Image PreviewImage;
         public TMP_Text PreviewGuidText;
 
-        // Goal
+        [Header("Goal")]
+        public GameObject GoalObject;
         public Image GoalImage;
         public TMP_Text GoalText;
 
+        [Header("Failed")]
+        public GameObject FailedObject;
+        public Image FailedImage;
+
         protected override void Start() {
+            FailedObject.SetActive(false);
             IsInitialized = true;
         }
 
@@ -23,7 +30,7 @@ namespace JicsawPuzzle
         {
             SetActive(true);
             SetActivePreviewPanel(true);
-            yield return new WaitUntil(()=> !PreviewImage.transform.parent.gameObject.activeSelf);
+            yield return new WaitUntil(()=> !PreviewActiveSelf());
         }
 
         public override void SetActive(bool isActive)
@@ -33,16 +40,21 @@ namespace JicsawPuzzle
 
         public void SetActivePreviewPanel(bool isVisible)
         {
-            PreviewImage.transform.parent.gameObject.SetActive(isVisible);
-            PreviewImage.gameObject.SetActive(isVisible);
-            PreviewGuidText.gameObject.SetActive(isVisible);
+            PreviewObject.SetActive(isVisible);
+        }
+        public bool PreviewActiveSelf()
+        {
+            return PreviewObject.activeSelf;
         }
 
         public void SetActiveGoalPanel(bool isActive)
         {
-            GoalImage.transform.parent.gameObject.SetActive(isActive);
-            GoalImage.gameObject.SetActive(isActive);
-            GoalText.gameObject.SetActive(isActive);
+            GoalObject.SetActive(isActive);
+        }
+
+        public void SetActiveFailedPanel(bool isActive)
+        {
+            FailedObject.SetActive(isActive);
         }
 
         public void ChangePreviewSprite(Sprite sprite)
