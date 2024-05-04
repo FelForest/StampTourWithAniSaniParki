@@ -8006,6 +8006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Board: {fileID: 3399680846784135706}
+  PuzzleSuccedUI: {fileID: 8772692277296144895}
 --- !u!1 &8016844187669540145
 GameObject:
   m_ObjectHideFlags: 0
