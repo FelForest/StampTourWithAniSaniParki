@@ -123,6 +123,128 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2967769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8772692277296144895, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+  m_PrefabInstance: {fileID: 5240170805821922880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2967771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2967772
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967769}
+  m_CullTransparentMesh: 1
+--- !u!114 &2967773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2967769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 2967771}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890416203}
+        m_TargetAssemblyTypeName: JicsawPuzzle.JicsawPuzzleBoardManager, Assembly-CSharp
+        m_MethodName: BoardGenerate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2967769}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &465340348 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1454252303947697678, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+  m_PrefabInstance: {fileID: 5240170805821922880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f90834916cf11d5489da9bc636f6a6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467952528
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +481,17 @@ Transform:
   - {fileID: 1046031255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &890416203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1660587509616111703, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+  m_PrefabInstance: {fileID: 5240170805821922880}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5df0b8bbc332e439a2531a3573dc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &955509491
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +907,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209302454452191701, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1660587509616111703, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: Board
+      value: 
+      objectReference: {fileID: 465340348}
+    - target: {fileID: 1660587509616111703, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: puzzleSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f25818d598c35fb43af163c5f4a5ac4f, type: 3}
     - target: {fileID: 1694553478562356871, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -814,14 +959,59 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2445808191860508145, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445808191860508145, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445808191860508145, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627486170762782460, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627486170762782460, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2627486170762782460, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689803253909675018, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_text
+      value: "\uD130\uCE58"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689803253909675018, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_fontSize
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 4175146771245047714, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
       propertyPath: m_Name
       value: JicsawPuzzle_Root
       objectReference: {fileID: 0}
+    - target: {fileID: 6254682959447404556, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 467952530}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8772692277296144895, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2967773}
+    - targetCorrespondingSourceObject: {fileID: 8772692277296144895, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2967772}
+    - targetCorrespondingSourceObject: {fileID: 8772692277296144895, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2967771}
   m_SourcePrefab: {fileID: 100100000, guid: c2d734221750e4a4d9b6612fc054c90f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
