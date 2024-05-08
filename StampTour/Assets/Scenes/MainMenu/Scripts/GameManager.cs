@@ -1,66 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation.VisualScripting;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEditor;
+using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager gameManager;
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
 
+    public enum Scene
+    {
+        MainScene,
+        JicsawPuzzle
+    }
     private void Awake()
     {
-        if (instance == null)
+        if (gameManager == null)
         {
-            instance = this;
+            gameManager = this;
         }
-        else if(instance != this)
+        else if(gameManager != this)
         {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
 
 
-        AddFlag("TestScene1");
-        AddFlag("TestScene2");
-        AddFlag("TestScene3");
-        AddFlag("TestScene4");
+
     }
 
-    private void AddFlag(string key)
+    private void AddScene(string key)
     {
         if (!flags.ContainsKey(key))
         {
-            Flag flag = new Flag();
-            flags.Add(key, flag);
+            flags.Add(key, new Flag());
         }
     }
 
-    public void SetIsLoaded(string key, bool isLoadding)
+    
+
+    public void SetIsSceneLoaded(string key, bool isLoaded)
     {
         if (flags.ContainsKey(key))
         {
-            Flag flag = flags[key];
-            flag.isLoaded = isLoadding;
+            flags[key].isSceneLoaded = isLoaded;
         }
     }
 
-    public void SetIsFinish(string key, bool isFinish)
+    public void SetIsSceneFinished(string key, bool isFinished)
     {
         if (flags.ContainsKey(key))
         {
-            flags[key].isFinish = isFinish;
+            flags[key].isSceneFinished = isFinished;
         }
     }
 
-    public bool GetIsLoaded(string key)
+    public bool GetIsSceneLoaded(string key)
     {
-        return flags[key].isLoaded;
+        return flags[key].isSceneLoaded;
     }
 
-    public bool GetIsFinish(string key)
+    public bool GetIsSceneFinished(string key)
     {
-        return flags[key].isFinish;
+        return flags[key].isSceneFinished;
     }
 
+    public static void LoadScene(string sceneName)
+    {
+        LoadScene(sceneName,LoadSceneMode.Single);
+    }
+    public static void LoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
+    {
+        SceneLoader.nextSceneName = sceneName;
+        gameManager.SetIsSceneLoaded(sceneName, true);
+        Debug.Log(gameManager.GetIsSceneLoaded(sceneName));
+        SceneManager.LoadSceneAsync("LoadingScene", mode);
+    }
 
+    public static void RollbackMainScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        gameManager.SetIsSceneLoaded(currentSceneName, false);
+        LoadScene("MainScene");
+    }
 }

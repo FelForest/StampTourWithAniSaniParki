@@ -2,20 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flag : MonoBehaviour
+public class Flag
 {
-    private bool _isLoaded = false;
-    private bool _isFinish = false;
+    public string sceneName;
+    private bool _isSceneLoaded = false;
+    private bool _isSceneFinished = false;
 
-    public bool isLoaded
+    public bool isSceneLoaded
     {
-        get { return _isLoaded; }
-        set { _isLoaded = value; }
+        get { return _isSceneLoaded; }
+        set { _isSceneLoaded = value; }
     }
 
-    public bool isFinish
+    public bool isSceneFinished
     {
-        get { return _isFinish; }
-        set { _isFinish = value; }
+        get { return _isSceneFinished; }
+        set { _isSceneFinished = value; }
     }
+
+    public void ResetFlag()
+    {
+        isSceneLoaded = false;
+        isSceneFinished = false;
+        
+    }
+
+
 }

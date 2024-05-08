@@ -17,7 +17,7 @@ public class ButtonImageChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.GetIsFinish(gameObject.name))
+        if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
         {
             GetComponent<Button>().image.sprite = changedImage;
         }
