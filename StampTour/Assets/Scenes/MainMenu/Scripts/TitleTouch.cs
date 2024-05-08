@@ -7,7 +7,7 @@ public class TitleTouch : MonoBehaviour
 {
     private bool isTouchEnable = false;
 
-    void OnEnable()
+    void OnTitleSceneLoaded()
     {
         isTouchEnable = true;
     }

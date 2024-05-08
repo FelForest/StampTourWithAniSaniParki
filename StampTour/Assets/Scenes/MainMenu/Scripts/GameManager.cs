@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-
+        AddScene("MainScene");
+        AddScene("TestScene1");
 
     }
 
