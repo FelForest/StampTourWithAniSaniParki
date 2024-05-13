@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         SceneLoader.nextSceneName = sceneName;
         gameManager.SetIsSceneLoaded(sceneName, true);
-        Debug.Log(gameManager.GetIsSceneLoaded(sceneName));
+        Debug.Log($"{sceneName} is Loaded : {gameManager.GetIsSceneLoaded(sceneName)}");
         SceneManager.LoadSceneAsync("LoadingScene", mode);
     }
 

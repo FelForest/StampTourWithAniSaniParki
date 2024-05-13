@@ -23,8 +23,7 @@ public class Flag
     public void ResetFlag()
     {
         isSceneLoaded = false;
-        isSceneFinished = false;
-        
+        isSceneFinished = false;   
     }
 
 

@@ -8,22 +8,27 @@ public class ButtonImageChange : MonoBehaviour
     [SerializeField]
     Sprite changedImage;
     Sprite orgineImage;
+
+    private void Awake()
+    {
+        orgineImage = GetComponent<Image>().sprite;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        orgineImage = GetComponent<Button>().image.sprite;
+        if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
+        {
+            GetComponent<Image>().sprite = changedImage;
+        }
+        else
+        {
+            GetComponent<Image>().sprite = orgineImage;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
-        {
-            GetComponent<Button>().image.sprite = changedImage;
-        }
-        else
-        {
-            GetComponent<Button>().image.sprite = orgineImage;
-        }
+        
     }
 }
