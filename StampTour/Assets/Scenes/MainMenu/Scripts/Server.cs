@@ -23,10 +23,11 @@ public class Server : MonoBehaviour
     {
         try
         {
-            server = new TcpListener(IPAddress.Loopback, port);
+            string ipAddress = "127.0.0.1";
+            server = new TcpListener(IPAddress.Parse(ipAddress), port);
             server.Start();
             Debug.Log("Server started");
-            Debug.Log(IPAddress.Loopback + " : " +port);
+            Debug.Log(IPAddress.Parse(ipAddress) + " : " +port);
             isRunning = true;
             await StartListening();
         }
@@ -43,6 +44,7 @@ public class Server : MonoBehaviour
             try
             {
                 TcpClient client = await server.AcceptTcpClientAsync();
+                Debug.Log("client connect");
                 HandleClient(client);
             }
             catch (Exception e)
@@ -62,8 +64,8 @@ public class Server : MonoBehaviour
             byte[] buffer = new byte[1024];
             int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
 
-            //string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-            int dataReceived = BitConverter.ToInt32(buffer, 0);
+            string dataReceived = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            //int dataReceived = BitConverter.ToInt32(buffer, 0);
             Debug.Log("Received from client: " + dataReceived);
         }
         catch (Exception e)
