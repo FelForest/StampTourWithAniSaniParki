@@ -15,7 +15,7 @@ public class LoadingTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneLoader.LoadScene("TitleScene");
+            GameManager.LoadScene("TitleScene");
         }
     }
 }
