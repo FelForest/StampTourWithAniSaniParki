@@ -52,6 +52,11 @@ public class BoardGen : MonoBehaviour
   public AudioClip TilePointerDownSFX;
   public AudioClip TilePointerUpSFX;
 
+  public void SetImageFilePath(string path)
+  {
+    imageFilePath = path;
+  }
+
   Sprite ConvertJicsawPuzzleSprite(Texture2D tex, float colorAlpha)
   {
     Texture2D newTex = new Texture2D(
