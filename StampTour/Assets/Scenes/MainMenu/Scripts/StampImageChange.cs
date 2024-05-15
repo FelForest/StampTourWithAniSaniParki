@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonImageChange : MonoBehaviour
+public class StampImageChange : MonoBehaviour
 {
     [SerializeField]
     Sprite changedImage;
@@ -16,19 +16,21 @@ public class ButtonImageChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
+        try
         {
-            GetComponent<Image>().sprite = changedImage;
+            if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
+            {
+                GetComponent<Image>().sprite = changedImage;
+            }
+            else
+            {
+                GetComponent<Image>().sprite = orgineImage;
+            }
         }
-        else
-        {
-            GetComponent<Image>().sprite = orgineImage;
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        catch
+        {
+            Debug.Log("not Flag");
+        }
     }
 }

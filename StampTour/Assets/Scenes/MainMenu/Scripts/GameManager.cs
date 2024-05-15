@@ -12,6 +12,12 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
 
+    private bool _selectedTab;
+    public bool SelectedTab
+    {
+        get { return _selectedTab; }
+        set { _selectedTab = value;}
+    }
     public enum Scene
     {
         MainScene,
