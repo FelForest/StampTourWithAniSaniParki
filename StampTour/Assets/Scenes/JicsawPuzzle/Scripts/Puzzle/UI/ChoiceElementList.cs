@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -55,7 +53,11 @@ namespace JicsawPuzzle
 
             return Elements[Count - 1];
         }
-
+        
+        /// <summary>
+        /// Active false all element.
+        /// </summary>
+        /// <param name="isDeep">If true, Apply List.Clear</param>
         public void CrearElements(bool isDeep = false)
         {
             if (isDeep)

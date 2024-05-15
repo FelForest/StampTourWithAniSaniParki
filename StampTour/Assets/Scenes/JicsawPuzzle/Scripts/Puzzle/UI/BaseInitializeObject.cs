@@ -1,7 +1,5 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace JicsawPuzzle
 {
@@ -24,6 +22,11 @@ namespace JicsawPuzzle
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// Wait Target Object Initialize Complete.
+        /// </summary>
+        /// <param name="targetObj"></param>
+        /// <returns></returns>
         protected virtual IEnumerator ActiveObject(BaseInitializeObject targetObj)
         {
             targetObj.gameObject.SetActive(true);

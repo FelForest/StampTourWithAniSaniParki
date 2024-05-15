@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +21,6 @@ namespace JicsawPuzzle
 
         public IEnumerator Play()
         {
-            Debug.Log("AAFA");
             gameObject.SetActive(true);
             NextButton.enabled = false;
             NextButton.TryGetComponent(out RectTransform nextBtnRectTransfrom);
