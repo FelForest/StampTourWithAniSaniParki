@@ -6,13 +6,8 @@ using UnityEngine;
 public class TitleTouch : MonoBehaviour
 {
     private bool isTouchEnable = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    void OnEnable()
+    void OnTitleSceneLoaded()
     {
         isTouchEnable = true;
     }
@@ -26,7 +21,7 @@ public class TitleTouch : MonoBehaviour
             if(Input.touchCount > 0 || Input.GetMouseButton(0))
             {
                 isTouchEnable = false;
-                SceneLoader.LoadScene("MainScene",UnityEngine.SceneManagement.LoadSceneMode.Single);
+                GameManager.LoadScene("MainScene");
             }
         }
     }
