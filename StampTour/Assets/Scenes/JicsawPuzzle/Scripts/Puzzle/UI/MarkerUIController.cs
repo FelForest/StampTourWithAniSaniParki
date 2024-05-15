@@ -22,7 +22,7 @@ namespace JicsawPuzzle
         public Image FailedImage;
 
         protected override void Start() {
-            FailedObject.SetActive(false);
+            FailedObject.SetActive(false);  // 실패 오브젝트 비활성화
             IsInitialized = true;
         }
 

@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace JicsawPuzzle
@@ -7,13 +6,15 @@ namespace JicsawPuzzle
     {
         public Button BackButton;
 
-        protected override void Start() {
+        protected override void Start() 
+        {
             if (BackButton != null)
             {
                 BackButton.onClick.RemoveListener(ClickBackButton);
                 BackButton.onClick.AddListener(ClickBackButton);
             }
         }
+
         public void ClickBackButton()
         {
         }
