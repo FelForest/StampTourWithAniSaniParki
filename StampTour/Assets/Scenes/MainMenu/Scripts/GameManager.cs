@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManager;
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
 
+    
     private bool _selectedTab;
     public bool SelectedTab
     {
@@ -25,21 +26,25 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+        GameManagerAwake();
+
+        AddScene("MainScene");
+        AddScene("Tutorial");
+        AddScene("TestScene1");
+    }
+
+    private void GameManagerAwake()
+    {
         if (gameManager == null)
         {
             gameManager = this;
         }
-        else if(gameManager != this)
+        else if (gameManager != this)
         {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-
-        AddScene("MainScene");
-        AddScene("TestScene1");
-
     }
-
     private void AddScene(string key)
     {
         if (!flags.ContainsKey(key))
@@ -76,10 +81,11 @@ public class GameManager : MonoBehaviour
         return flags[key].isSceneFinished;
     }
 
-    public static void LoadScene(string sceneName)
+    public void LoadScene(string sceneName)
     {
         LoadScene(sceneName,LoadSceneMode.Single);
     }
+
     public static void LoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
     {
         SceneLoader.nextSceneName = sceneName;
