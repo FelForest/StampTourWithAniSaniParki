@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static Unity.Collections.AllocatorManager;
 
 public class ColoringScenario : MonoBehaviour
 {
@@ -12,20 +11,34 @@ public class ColoringScenario : MonoBehaviour
     public GameObject coloring;
     public GameObject[] character = new GameObject[3];
     public TextMeshProUGUI talk_Bubble;
+    public Canvas CaptureCanvas;
 
     public void OnPalette()
     {
+        PhotoCapture photoCapture = CaptureCanvas.GetComponent<PhotoCapture>();
         string click = EventSystem.current.currentSelectedGameObject.name;
         Debug.Log(click);
         CharacterSelectUI.gameObject.SetActive(false);
         if (click == "Ani")
+        {
             character[0].SetActive(true);
+            photoCapture.copyCharacter = character[0];
+        }
         else if (click == "Sani")
+        {
             character[1].SetActive(true);
+            photoCapture.copyCharacter = character[1];
+        }
         else if (click == "Bani")
+        {
             character[2].SetActive(true);
+            photoCapture.copyCharacter = character[2];
+        }
         coloring.SetActive(true);
         talk_Bubble.text = "원하는 색상으로\n칠해보자!";
+
+        photoCapture.characterName = click;
+
     }
     public void ReturnButton()
     {
@@ -35,8 +48,5 @@ public class ColoringScenario : MonoBehaviour
         character[2].SetActive(false);
         talk_Bubble.text = "색칠놀이를 하고 싶은 캐릭터를 골라줘!";
         CharacterSelectUI.gameObject.SetActive(true);
-
-
-
     }
 }
