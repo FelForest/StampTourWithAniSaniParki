@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
 
 namespace JicsawPuzzle
 {
@@ -13,7 +10,7 @@ namespace JicsawPuzzle
         public override IEnumerator Play()
         {
             gameObject.SetActive(true);
-            Debug.Log(gameObject.activeSelf);
+            // Debug.Log(gameObject.activeSelf);
             yield return ResultInfoComponent.Play();
             yield return NextMissionButton.Play();
         }

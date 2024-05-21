@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -14,6 +13,12 @@ namespace JicsawPuzzle
         [HideInInspector]
         public RectTransform RectTransform;
 
+        private Coroutine delayCoroutin;
+
+        /// <summary>
+        /// Initialize Element.
+        /// (ResetButton)
+        /// </summary>
         public void Init() {
             if (ChoiceButton == null)
             {
@@ -65,7 +70,8 @@ namespace JicsawPuzzle
 
         protected void InputDelay()
         {
-            StartCoroutine(InputDelayInternal());
+            if (delayCoroutin == null)
+                delayCoroutin = StartCoroutine(InputDelayInternal());
         }
 
         protected IEnumerator InputDelayInternal()
@@ -73,6 +79,7 @@ namespace JicsawPuzzle
             ChoiceButton.interactable = false;
             yield return new WaitForSeconds(0.5f);
             ChoiceButton.interactable = true;
+            delayCoroutin = null;
         }
     }
 }

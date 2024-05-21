@@ -16,11 +16,11 @@ public class TestFlagSet : MonoBehaviour
     {
         if (isOn)
         {
-            GameManager.instance.SetIsFinish(gameObject.name,true);
+            GameManager.gameManager.SetIsSceneFinished(gameObject.name,true);
         }
         else
         {
-            GameManager.instance.SetIsFinish(gameObject.name, false);
+            GameManager.gameManager.SetIsSceneFinished(gameObject.name, false);
         }
     }
 
