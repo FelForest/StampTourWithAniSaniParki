@@ -7,6 +7,8 @@ public class TutorialZoom : TutorialBase
     [SerializeField]
     private GameObject zoomObject;
 
+    [SerializeField]
+    private float scaleThreshold;
     private Vector3 perScale;
     public override void Enter()
     {
@@ -18,7 +20,7 @@ public class TutorialZoom : TutorialBase
     public override void Execute(TutorialsManager manager)
     {
         Vector3 currentScale = zoomObject.transform.localScale;
-        if (currentScale != perScale)
+        if (Vector3.Distance(currentScale, perScale) > scaleThreshold)
         {
             isCompleted = true;
         }
