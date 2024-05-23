@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Flag
 {
-    public string sceneName;
     private bool _isSceneLoaded = false;
     private bool _isSceneFinished = false;
 
