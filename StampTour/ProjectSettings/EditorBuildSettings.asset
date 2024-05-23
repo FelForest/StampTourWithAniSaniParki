@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu/Scene/TestScene1.unity
     guid: c69f72f6f99aea64db0d772f9d94c792
+  - enabled: 1
+    path: Assets/Scenes/Coloring.unity
+    guid: 7a615b5358b032a42bc12eb8cf395c6f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d198a92f703ec294fb8ef660bfb0ecc2, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 30389ecba76643c4a84c9ecf79c79dac, type: 2}
