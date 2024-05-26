@@ -8,6 +8,9 @@ public class CameraManager : MonoBehaviour
 {
     WebCamTexture camTexture;
     public RawImage cameraViewImage;
+
+    [HideInInspector]
+    public bool isCamera = false;
     private void Start()
     {
         CameraOn();
@@ -44,6 +47,7 @@ public class CameraManager : MonoBehaviour
             camTexture.requestedFPS = 30;
             cameraViewImage.texture = camTexture;
             camTexture.Play();
+            isCamera = true;
         }
     }
 
@@ -57,5 +61,17 @@ public class CameraManager : MonoBehaviour
             camTexture = null;
           
         }
+    }
+
+    public byte[] GetCameraFrame()
+    {
+        if (camTexture != null && camTexture.isPlaying)
+        {
+            Texture2D snap = new Texture2D(camTexture.width, camTexture.height);
+            snap.SetPixels(camTexture.GetPixels());
+            snap.Apply();
+            return snap.EncodeToJPG(); // JPG로 인코딩하여 바이트 배열로 반환
+        }
+        return null;
     }
 }
