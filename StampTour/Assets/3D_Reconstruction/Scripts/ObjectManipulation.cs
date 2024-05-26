@@ -145,8 +145,8 @@
             var oldRotation = m_RotationRoot.rotation;
 
             RotateYaw(m_RotationRoot, m_RotationPivot, rotationValue.x);
-            RotatePitch(m_RotationRoot, m_RotationPivot, rotationValue.y);
-
+            //RotatePitch(m_RotationRoot, m_RotationPivot, rotationValue.y); // pitch(x)축 고정 24.05.24 => object 밑면 보이지 않기 위해서
+            //RotateRoll(m_RotationRoot, m_RotationPivot, rotationValue.y); // roll(z)축 고정 24.05.24 => object 밑면 보이지 않기 위해서
             if (!CheckRotationInLockAngle(m_RotationPivot.up, m_RotationRoot.up, m_LockAngle))
             {
                 var angle = Vector3.Angle(m_RotationPivot.up, m_RotationRoot.up);
