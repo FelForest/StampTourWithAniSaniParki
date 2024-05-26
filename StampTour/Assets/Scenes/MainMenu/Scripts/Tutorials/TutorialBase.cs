@@ -13,4 +13,9 @@ public abstract class TutorialBase : MonoBehaviour
     public abstract void Execute(TutorialsManager manager);
 
     public abstract void Exit();
+
+    protected void SafePanelActive(bool active)
+    {
+        panel?.SetActive(active);
+    }
 }

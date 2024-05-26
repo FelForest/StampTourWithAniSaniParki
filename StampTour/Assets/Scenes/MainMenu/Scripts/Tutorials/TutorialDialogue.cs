@@ -9,7 +9,7 @@ public class TutorialDialogue : TutorialBase
     public override void Enter()
     {
         isCompleted = false;
-        panel.SetActive(true);
+        SafePanelActive(true);
 
         dialogueSystem = GetComponent<DialogueSystem>();
         dialogueSystem.Setup();
@@ -27,6 +27,6 @@ public class TutorialDialogue : TutorialBase
 
     public override void Exit()
     {
-        panel.SetActive(false);
+        SafePanelActive(false);
     }
 }

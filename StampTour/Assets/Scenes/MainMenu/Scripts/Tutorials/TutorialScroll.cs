@@ -13,7 +13,7 @@ public class TutorialScroll : TutorialBase
     public override void Enter()
     {
         isCompleted = false;
-        panel.SetActive(true);
+        SafePanelActive(true);
 
         percent = percent == 0.0f ? 0.5f : percent;
 
@@ -31,7 +31,7 @@ public class TutorialScroll : TutorialBase
     public override void Exit()
     {
         scroll.onValueChanged.AddListener(OnScrollChanged);
-        panel.SetActive(false);
+        SafePanelActive(false);
     }
 
     private void OnScrollChanged(Vector2 position)

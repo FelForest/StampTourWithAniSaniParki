@@ -14,7 +14,7 @@ public class TutorialZoom : TutorialBase
     {
         perScale = zoomObject.transform.localScale;
         isCompleted = false;
-        panel.SetActive(true);
+        SafePanelActive(true);
     }
 
     public override void Execute(TutorialsManager manager)
@@ -32,6 +32,6 @@ public class TutorialZoom : TutorialBase
 
     public override void Exit()
     {
-        panel.SetActive(false);
+        SafePanelActive(false);
     }
 }
