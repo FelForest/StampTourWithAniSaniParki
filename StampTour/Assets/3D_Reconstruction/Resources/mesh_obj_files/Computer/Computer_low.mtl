@@ -1,0 +1,12 @@
+# Blender 4.0.2 MTL File: '0516_ScanData_06.blend'
+# www.blender.org
+
+newmtl M_Computer_01
+Ns 10.000005
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd D:/Work/2024/2 Quarter/2. Scan Data/Textures/T_Computer_Basecolor.png
