@@ -11,7 +11,7 @@ public class TutorialTouch : TutorialBase
     public override void Enter()
     {
         isCompleted = false;
-        panel.SetActive(true);
+        SafePanelActive(true);
         button.onClick.AddListener(TouchedButton);
     }
 
@@ -25,7 +25,7 @@ public class TutorialTouch : TutorialBase
 
     public override void Exit()
     {
-        panel.SetActive(false);
+        SafePanelActive(false);
     }
 
     private void TouchedButton()
