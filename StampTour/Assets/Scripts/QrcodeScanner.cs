@@ -4,7 +4,7 @@ using UnityEngine;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.Android;
 
 public class QRcodeScanner : MonoBehaviour
 {
@@ -40,7 +40,7 @@ public class QRcodeScanner : MonoBehaviour
 
     private void UpdateCameraRender()
     {
-        if(_isCamAvaible == false)
+        if(_isCamAvaible == false || _cameraTexture == null)
         {
             return;
         }
@@ -52,8 +52,13 @@ public class QRcodeScanner : MonoBehaviour
     }
 
     
-    private void SetUpCamera()
+    public void SetUpCamera()
     {
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+
         WebCamDevice [] devices = WebCamTexture.devices;
 
         if(devices.Length == 0)
