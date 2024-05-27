@@ -10,7 +10,7 @@ public class SceneLoader : MonoBehaviour
     public static string nextSceneName;
 
     [SerializeField]
-    private Slider progressBar;
+    Slider progressBar;
 
     
 
@@ -25,7 +25,7 @@ public class SceneLoader : MonoBehaviour
             progressBar.value = asyncLoad.progress;
             
         }
-        //Debug.Log("Loading complete");
+        Debug.Log("Loading complete");
     }
 
     private void Start()

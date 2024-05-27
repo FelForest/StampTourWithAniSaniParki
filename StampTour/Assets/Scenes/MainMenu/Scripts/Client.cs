@@ -1,121 +1,70 @@
 using System.Collections;
-using System.Net.Sockets;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Text;
 using System;
-using System.IO;
+using System.Net.Sockets;
+using System.Text;
 
 public class Client : MonoBehaviour
 {
-    TcpClient client;
-    string serverIP = "127.0.0.1";
-    int port = 8000;
-    byte[] receivedBuffer;
-    StreamReader reader;
-    StreamWriter writer;
-    bool socketReady = false;
-    NetworkStream stream;
+    public string serverIP = "127.0.0.1"; // 서버의 IP 주소
+    public int serverPort = 12000;        // 서버의 포트 번호
 
-    bool canSend = true;
-    public CameraManager cameraManager; // CameraManager 스크립트 참조
+    private TcpClient client;
 
-    public float sendTime = 2.0f;
     void Start()
     {
-        CheckReceive();
+
     }
 
-    void Update()
+    async void ConnectToServer()
     {
-        if (socketReady)
-        {
-            if (stream.DataAvailable)
-            {
-                receivedBuffer = new byte[100];
-                stream.Read(receivedBuffer, 0, receivedBuffer.Length); // stream에 있던 바이트배열 내려서 새로 선언한 바이트배열에 넣기
-                string msg = Encoding.UTF8.GetString(receivedBuffer, 0, receivedBuffer.Length); // byte[] to string
-                Debug.Log(msg);
-            }
-
-            if (cameraManager.isCamera)
-            {
-                if(canSend)
-                {
-                    canSend = false;
-                    StartCoroutine(SendCameraFrameToServer());
-                }
-            }
-        }
-    }
-
-    void SetisCamera()
-    {
-        canSend = true;
-    }
-    void CheckReceive()
-    {
-        if (socketReady) return;
         try
         {
-            client = new TcpClient(serverIP, port);
+            // 서버에 연결
+            client = new TcpClient();
+            await client.ConnectAsync(serverIP, serverPort);
+            Debug.Log("Connected to server.");
 
-            if (client.Connected)
-            {
-                stream = client.GetStream();
-                reader = new StreamReader(stream);
-                writer = new StreamWriter(stream);
-                writer.AutoFlush = true;
-                Debug.Log("Connect Success");
-                socketReady = true;
-            }
+            // 서버로 메시지 보내기
+            string message = "Hello, server!";
+            SendMessageToServer(message);
         }
         catch (Exception e)
         {
-            Debug.Log("On client connect exception " + e);
+            Debug.LogError("Error connecting to server: " + e.Message);
         }
     }
 
-    void OnApplicationQuit()
+    async void SendMessageToServer(string message)
     {
-        CloseSocket();
-    }
-
-    void CloseSocket()
-    {
-        if (!socketReady) return;
-
-        reader.Close();
-        writer.Close();
-        client.Close();
-        socketReady = false;
-    }
-
-
-    public void SendMessageToServer(string message)
-    {
-        if (socketReady)
+        try
         {
-            byte[] msgBuffer = Encoding.UTF8.GetBytes(message);
-            stream.Write(msgBuffer, 0, msgBuffer.Length);
-            Debug.Log("Message Sent: " + message);
+            // 메시지를 바이트 배열로 변환
+            byte[] data = Encoding.ASCII.GetBytes(message);
+
+            // 서버로 메시지 보내기
+            NetworkStream stream = client.GetStream();
+            await stream.WriteAsync(data, 0, data.Length);
+            Debug.Log("Message sent to server: " + message);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error sending message to server: " + e.Message);
         }
     }
 
-    IEnumerator SendCameraFrameToServer()
+    void OnDestroy()
     {
-        byte[] frame = cameraManager.GetCameraFrame();
-        if (frame != null && socketReady && stream != null)
+        if (client != null)
         {
-            // 이미지 크기를 전송
-            byte[] frameLength = BitConverter.GetBytes(frame.Length);
-            Debug.Log(frame.Length);
-            stream.Write(frameLength, 0, frameLength.Length);
-
-            // 이미지 데이터를 전송
-            stream.Write(frame, 0, frame.Length);
-            Debug.Log("Camera Frame Sent");
+            client.Close();
+            Debug.Log("Connection closed.");
         }
-        yield return new WaitForSeconds(sendTime);
-        canSend = true;
+    }
+
+    public void StartClient()
+    {
+        ConnectToServer();
     }
 }
