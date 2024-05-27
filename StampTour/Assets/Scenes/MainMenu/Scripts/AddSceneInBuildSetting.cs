@@ -18,10 +18,12 @@ public class AddSceneInBuildSetting : MonoBehaviour
 
     private void AddAllScenesInBuildSetting()
     {
+#if UNITY_EDITOR
         EditorBuildSettingsScene[] scenes = EditorBuildSettings.scenes;
         foreach (EditorBuildSettingsScene scene in scenes) 
         {
             string sceneName = System.IO.Path.GetFileNameWithoutExtension(scene.path);
         }
+#endif
     }
 }
