@@ -7,6 +7,8 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
 {
     [SerializeField, Tooltip("Using Top Img.")]
     protected Image UIBackground;
+    [SerializeField]
+    protected GameObject LoadingForeground;
 
     [Header("Controller")]
     public GuideUIController GuideUIController;
@@ -21,6 +23,8 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
 
     public void Init()
     {
+        LoadingForeground.SetActive(true);
+
         if (GuideUIController == null)
         {
             GuideUIController = GetComponentInChildren<GuideUIController>(true);
@@ -55,6 +59,7 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
         yield return ActiveObject(MarkerUIController);
         yield return ActiveObject(ResultUIController);
 
+        LoadingForeground.SetActive(false);
         IsInitialized = true;
     }
 
@@ -120,6 +125,10 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
         yield return GuideUIController.TalkIE("이미지를 다시 확인할려면, \"목표\"아래의 이미지를 눌러!");
         SetActiveUIBackground(false);
         JicsawPuzzleManager.Instance.CheckMarker();
+        yield return new WaitForSeconds(1.0f);
+        // 대사 변동 없으면 버블끄기
+        if (GuideUIController.CheckCurrentStringSame("이미지를 다시 확인할려면, \"목표\"아래의 이미지를 눌러!"))
+            GuideUIController.BubbleSetActive(false);
     }
 
     /// <summary>
@@ -138,9 +147,11 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
     /// <returns></returns>
     public IEnumerator Sequence4()
     {
+        MarkerUIController.SetActive(true);
         MarkerUIController.SetActiveFailedPanel(true);
         yield return GuideUIController.TalkIE("이게 아닌거 같아\n다시 한 번 찾아보자");
         yield return new WaitForSeconds(2.0f);
+        MarkerUIController.SetActiveFailedPanel(false);
     }
 
     /// <summary>
@@ -151,9 +162,9 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
     {
         MarkerUIController.SetActive(false);
         yield return GuideUIController.TalkIE("좋아 지도를 발견했어~");
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         yield return GuideUIController.TalkIE("지도를 눌러서 미션을 완료하자구");
-        yield return new WaitForSeconds(2.0f);
+        // yield return new WaitForSeconds(0.5f);
     }
 
     /// <summary>
@@ -176,6 +187,7 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
         yield return GuideUIController.TalkIE("좋아!\n완벽해");
         yield return new WaitForSeconds(2.0f);
         JicsawPuzzleManager.Instance.SetActiveARCamera(false);
+        MenuUIController.SetActive(false);
         yield return ResultUIController.Play();
     }
 
