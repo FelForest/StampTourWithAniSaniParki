@@ -4,6 +4,7 @@ namespace JicsawPuzzle
 {
     public class MenuUIController : BaseInitializeObject
     {
+        public string MainSceneName = "MainScene";
         public Button BackButton;
 
         protected override void Start() 
@@ -17,6 +18,7 @@ namespace JicsawPuzzle
 
         public void ClickBackButton()
         {
+            GameManager.LoadScene(MainSceneName);
         }
     }
 }
