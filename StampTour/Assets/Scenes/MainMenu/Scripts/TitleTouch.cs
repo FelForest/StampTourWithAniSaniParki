@@ -15,13 +15,21 @@ public class TitleTouch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 화면터치시/ PC에서는 확인용을 마우스 클릭
+        // Screan touched / Check mouse button for PC
         if(isTouchEnable)
         {
             if(Input.touchCount > 0 || Input.GetMouseButton(0))
             {
                 isTouchEnable = false;
-                GameManager.LoadScene("MainScene");
+                if (GameManager.gameManager.GetIsSceneFinished("Tutorial"))
+                {
+                    GameManager.LoadScene("MainScene");
+                }
+                else
+                {
+                    GameManager.LoadScene("Tutorial");
+                }
+                
             }
         }
     }
