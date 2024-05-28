@@ -9,6 +9,14 @@ namespace JicsawPuzzle
 
         public override IEnumerator Play()
         {
+            if (ResultInfoComponent == null)
+            {
+                ResultInfoComponent = GetComponentInChildren<ResultInfoComponent>();
+            }
+            if (NextMissionButton == null)
+            {
+                NextMissionButton = GetComponentInChildren<NextMissionButton>();
+            }
             gameObject.SetActive(true);
             // Debug.Log(gameObject.activeSelf);
             yield return ResultInfoComponent.Play();

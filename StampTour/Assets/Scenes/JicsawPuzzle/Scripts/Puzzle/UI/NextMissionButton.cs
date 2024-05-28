@@ -49,7 +49,7 @@ namespace JicsawPuzzle
 
         public void NextMission()
         {
-            Debug.Log("Next Mission");
+            GameManager.RollbackMainScene();
         }
     }
 }

@@ -22,6 +22,12 @@ namespace JicsawPuzzle
         public override void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
+            BubbleSetActive(isActive);
+        }
+
+        public void BubbleSetActive (bool isActive)
+        {
+            guideText.transform.parent.gameObject.SetActive(isActive);
         }
 
         public void Talk(string inputText)
@@ -59,6 +65,11 @@ namespace JicsawPuzzle
             }
             
             tMP_Text.maxVisibleCharacters = maxVisible;
+        }
+
+        public bool CheckCurrentStringSame(string inputString)
+        {
+            return inputString.Equals(guideText.text);
         }
     }
 }
