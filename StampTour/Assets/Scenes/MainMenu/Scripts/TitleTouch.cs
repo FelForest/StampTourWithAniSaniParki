@@ -21,7 +21,7 @@ public class TitleTouch : MonoBehaviour
             if(Input.touchCount > 0 || Input.GetMouseButton(0))
             {
                 isTouchEnable = false;
-                GameManager.LoadScene("Tutorial");
+                GameManager.LoadScene("MainScene");
             }
         }
     }

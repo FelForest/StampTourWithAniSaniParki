@@ -4,7 +4,7 @@ using UnityEngine;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Android;
+
 
 public class QRcodeScanner : MonoBehaviour
 {
@@ -23,13 +23,12 @@ public class QRcodeScanner : MonoBehaviour
     private bool _isCamAvaible;
     private WebCamTexture _cameraTexture;
 
-    private bool _isCamPlaying;
-    private int selectedCameraIndex;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SetUpCamera());
+        SetUpCamera();
     }
 
     // Update is called once per frame
@@ -38,27 +37,10 @@ public class QRcodeScanner : MonoBehaviour
         UpdateCameraRender();
     }
  
-    public void SwitchCamera()
-    {
-        if (!_isCamAvaible)
-        {
-            Debug.Log("카메라 없음");
-            return;
-        }
 
-        _isCamPlaying = _cameraTexture.isPlaying;
-        if (!_isCamPlaying)
-        {
-            CameraOn();
-        }
-        else
-        {
-            CameraOff();
-        }
-    }
     private void UpdateCameraRender()
     {
-        if(_isCamAvaible == false || _cameraTexture == null)
+        if(_isCamAvaible == false)
         {
             return;
         }
@@ -70,59 +52,29 @@ public class QRcodeScanner : MonoBehaviour
     }
 
     
-    private IEnumerator SetUpCamera()
+    private void SetUpCamera()
     {
-        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
-        {
-            Permission.RequestUserPermission(Permission.Camera);
-            yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.Camera));
-        }
-
         WebCamDevice [] devices = WebCamTexture.devices;
 
         if(devices.Length == 0)
         {
             _isCamAvaible = false;
-            yield break;
+            return;
         }
-
-        selectedCameraIndex = -1;
-
-        for (int i =0; i<devices.Length; i++)
+        for(int i =0; i<devices.Length; i++)
         {
-            Debug.Log(devices[i].name);
-            if(devices[i].isFrontFacing == false)
+            if(devices[i].isFrontFacing==false)
             {
-                selectedCameraIndex = i;
-                break;
+                _cameraTexture = new WebCamTexture(devices[i].name, (int)_scanZone.rect.width,(int)_scanZone.rect.height);
+
             }
         }
 
-        if (selectedCameraIndex >= 0)
-        {
-            Debug.Log("카메라 준비 완료");
-            _cameraTexture = new WebCamTexture(devices[selectedCameraIndex].name, (int)_scanZone.rect.width, (int)_scanZone.rect.height);
-            _isCamAvaible = true;
-        }
-        else
-        {
-            Debug.Log("카메라 못 받아옴");
-            _isCamAvaible = false;
-            yield break;
-        }
-    }
-    
-    private void CameraOn()
-    {
         _cameraTexture.Play();
         _rawImageBackground.texture = _cameraTexture;
-    }
-    private void CameraOff()
-    {
-        _cameraTexture.Stop();
-        _rawImageBackground.texture = null;
-    }
-    
+        _isCamAvaible = true;
+
+    }   
 
     public void OnclickScan()
     {

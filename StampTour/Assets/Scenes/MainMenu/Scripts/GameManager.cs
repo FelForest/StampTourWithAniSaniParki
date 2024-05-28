@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
         AddScene("MainScene");
         AddScene("TestScene1");
-        AddScene("Tutorial");
 
     }
 
