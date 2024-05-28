@@ -134,7 +134,6 @@ public class QRcodeScanner : MonoBehaviour
     private void CameraOff()
     {
         _cameraTexture.Stop();
-        _rawImageBackground.texture = null;
     }
     
 
@@ -152,6 +151,8 @@ public class QRcodeScanner : MonoBehaviour
             if(result != null)
             {
                 _textOut.text=result.Text;
+                int sceneNum = int.Parse(result.Text);
+                GameManager.LoadScene(sceneNum);
             }
             else
             {
@@ -165,9 +166,10 @@ public class QRcodeScanner : MonoBehaviour
         }
     }
 
-    public void ResetTexture()
+    public void Reset()
     {
-        _textOut.text = "";
+        _rawImageBackground.texture = null;
+        _textOut.text = " ";
     }
 }
 

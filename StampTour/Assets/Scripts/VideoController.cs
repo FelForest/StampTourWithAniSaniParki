@@ -23,6 +23,11 @@ public class VideoController : MonoBehaviour
             videoPlayer.clip = videoClips[currentChannel];
             videoPlayer.Play();
         }
+
+        if (!GameManager.gameManager.GetIsSceneFinished("TV"))
+        {
+            GameManager.gameManager.SetIsSceneFinished("TV", true);
+        }
     }
 
     void NextChannel()

@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
             path = SceneUtility.GetScenePathByBuildIndex(i);
             AddScene(System.IO.Path.GetFileNameWithoutExtension(path));
         }
+        AddScene("TV");
     }
     private void AddScene(string key)
     {
@@ -83,6 +84,12 @@ public class GameManager : MonoBehaviour
     public static void LoadScene(string sceneName)
     {
         LoadScene(sceneName,LoadSceneMode.Single);
+    }
+
+    public static void LoadScene(int sceneNum)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(sceneNum);
+        LoadScene(System.IO.Path.GetFileNameWithoutExtension(path));
     }
     public static void LoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
     {
