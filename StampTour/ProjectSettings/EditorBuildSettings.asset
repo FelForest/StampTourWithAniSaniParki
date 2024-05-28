@@ -25,11 +25,17 @@ EditorBuildSettings:
     guid: 7a615b5358b032a42bc12eb8cf395c6f
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - enabled: 1
     path: Assets/Scenes/JicsawPuzzle/Scene/JicsawPuzzle.unity
     guid: f454fe2c5ecad614388b98d0d009f317
 >>>>>>> origin/merge-0527
+=======
+  - enabled: 1
+    path: Assets/Scenes/JicsawPuzzle/Scene/JicsawPuzzle.unity
+    guid: f454fe2c5ecad614388b98d0d009f317
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
   - enabled: 1
     path: Assets/Scenes/JicsawPuzzle/Scene/JicsawPuzzle.unity

@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Pooony_textured_mesh_obj/mesh.mtl.meta
 guid: 65ee4f3a49cadea409fca1809a37837a
 ========
 guid: 382e0fe872164774ca03734bba3da6d0
 >>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Computer/Computer_low.mtl.meta
+=======
+guid: 65ee4f3a49cadea409fca1809a37837a
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 DefaultImporter:
   externalObjects: {}
   userData: 
