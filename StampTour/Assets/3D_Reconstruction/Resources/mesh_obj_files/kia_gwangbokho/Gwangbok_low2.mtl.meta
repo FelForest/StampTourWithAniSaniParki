@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/kia_gwangbokho/Gwangbok_low2.mtl.meta
 guid: 7aedea9ec39cd2041bc986e652ad704e
+========
+guid: 382e0fe872164774ca03734bba3da6d0
+>>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Computer/Computer_low.mtl.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Scutcher12_textured_mesh_obj/mesh.mtl.meta
 guid: 81facad695966d34dabdd1553229fd8c
 ========
 guid: 382e0fe872164774ca03734bba3da6d0
 >>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Computer/Computer_low.mtl.meta
+=======
+guid: 81facad695966d34dabdd1553229fd8c
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 DefaultImporter:
   externalObjects: {}
   userData: 

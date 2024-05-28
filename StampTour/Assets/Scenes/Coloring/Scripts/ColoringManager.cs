@@ -16,10 +16,13 @@ public class ColoringManager : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public GameObject test1;
     public GameObject test2;
 =======
 >>>>>>> origin/merge-0527
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
 >>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
