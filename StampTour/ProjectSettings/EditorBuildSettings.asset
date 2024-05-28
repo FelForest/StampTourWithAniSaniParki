@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JicsawPuzzle/Scene/JicsawPuzzle.unity
     guid: f454fe2c5ecad614388b98d0d009f317
+  - enabled: 1
+    path: Assets/3D_Reconstruction/Scenes/ContentScene/3D_Reconstruction.unity
+    guid: 454ce129f45b3ed488c4a2d6bf641e78
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d198a92f703ec294fb8ef660bfb0ecc2, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 30389ecba76643c4a84c9ecf79c79dac, type: 2}

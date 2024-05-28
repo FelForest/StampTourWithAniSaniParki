@@ -35,12 +35,15 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
 
-        AddScene("MainScene");
-        AddScene("TestScene1");
-        AddScene("Tutorial");
 
+        string path = "";
+
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            path = SceneUtility.GetScenePathByBuildIndex(i);
+            AddScene(System.IO.Path.GetFileNameWithoutExtension(path));
+        }
     }
-
     private void AddScene(string key)
     {
         if (!flags.ContainsKey(key))

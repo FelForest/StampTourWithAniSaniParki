@@ -26,6 +26,8 @@ public class QRcodeScanner : MonoBehaviour
     private bool _isCamPlaying;
     private int selectedCameraIndex;
 
+    static Result result;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,8 @@ public class QRcodeScanner : MonoBehaviour
         }
 
         _isCamPlaying = _cameraTexture.isPlaying;
+        Debug.Log(_isCamPlaying);
+
         if (!_isCamPlaying)
         {
             CameraOn();
@@ -78,7 +82,17 @@ public class QRcodeScanner : MonoBehaviour
             yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.Camera));
         }
 
-        WebCamDevice [] devices = WebCamTexture.devices;
+        WebCamDevice[] devices;
+
+        do
+        {
+            devices = WebCamTexture.devices;
+            yield return null;
+        }
+        while (devices.Length != WebCamTexture.devices.Length);
+
+
+
 
         if(devices.Length == 0)
         {
@@ -134,7 +148,7 @@ public class QRcodeScanner : MonoBehaviour
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
-            Result result = barcodeReader.Decode(_cameraTexture.GetPixels32(),_cameraTexture.width,_cameraTexture.height);
+            result = barcodeReader.Decode(_cameraTexture.GetPixels32(),_cameraTexture.width,_cameraTexture.height);
             if(result != null)
             {
                 _textOut.text=result.Text;
@@ -149,6 +163,11 @@ public class QRcodeScanner : MonoBehaviour
         {
             _textOut.text = "FAILED IN TRY";
         }
+    }
+
+    public void ResetTexture()
+    {
+        _textOut.text = "";
     }
 }
 
