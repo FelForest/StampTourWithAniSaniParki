@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:StampTour/Assets/Resources/Ani eyes.mat.meta
 guid: c133c602bb9ab0247ac2f1e3ff87d60d
+========
+guid: 2fd985def8aa69d40892fe2278395806
+>>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction/Resources/ARFoundation/ARF_ReferenceImageLibrary.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 11400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

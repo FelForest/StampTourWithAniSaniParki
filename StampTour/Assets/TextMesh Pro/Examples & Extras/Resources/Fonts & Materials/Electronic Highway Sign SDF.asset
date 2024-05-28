@@ -272,7 +272,10 @@ Texture2D:
   m_Height: 0
   m_CompleteImageSize: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
   m_MipsStripped: 0
 >>>>>>> origin/merge-0527
   m_TextureFormat: 1
@@ -296,7 +299,10 @@ Texture2D:
 <<<<<<< HEAD
 =======
   m_PlatformBlob: 
+<<<<<<< HEAD
 >>>>>>> origin/merge-0527
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
   image data: 0
   _typelessdata: 
   m_StreamData:

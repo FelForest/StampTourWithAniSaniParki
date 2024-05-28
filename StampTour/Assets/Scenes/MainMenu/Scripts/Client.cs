@@ -82,6 +82,9 @@ namespace MainMenu
         {
             CloseSocket();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
         }
 
         void CloseSocket()

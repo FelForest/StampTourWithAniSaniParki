@@ -13,10 +13,13 @@ public class ColoringManager : MonoBehaviour
     public AudioClip coloringAudio;
     public AudioClip pickAudio;
 <<<<<<< HEAD
+<<<<<<< HEAD
     public GameObject test1;
     public GameObject test2;
 =======
 >>>>>>> origin/merge-0527
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
     AudioSource audioSource;
 
    
