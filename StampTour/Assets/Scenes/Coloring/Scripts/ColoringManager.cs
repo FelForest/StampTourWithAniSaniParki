@@ -12,6 +12,8 @@ public class ColoringManager : MonoBehaviour
     public Image currentColor;
     public AudioClip coloringAudio;
     public AudioClip pickAudio;
+    public GameObject test1;
+    public GameObject test2;
     AudioSource audioSource;
 
    
@@ -34,6 +36,8 @@ public class ColoringManager : MonoBehaviour
     public void ChangeColor()
     {
         GameObject thisBtn = EventSystem.current.currentSelectedGameObject;
+        Material material = Resources.Load<Material>(thisBtn.name);
+        material.color = selectedColor;
         thisBtn.GetComponent<Image>().color = selectedColor;
         audioSource.clip = coloringAudio;
         audioSource.Play();
