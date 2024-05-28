@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 75d0dbdbad713314c9bd0d8aebc0aac9
+=======
+<<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction.meta
+guid: 8a57cbcfccf4e834e861210bdf7b29a9
+========
+guid: 5a82f36bde6586446a901917212a1411
+>>>>>>>> origin/merge-0527:StampTour/Assets/3D_Reconstruction/Resources.meta
+>>>>>>> origin/merge-0527
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

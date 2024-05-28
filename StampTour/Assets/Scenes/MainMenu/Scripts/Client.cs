@@ -1,8 +1,9 @@
 using System.Collections;
-using System.Net.Sockets;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Text;
 using System;
+using System.Net.Sockets;
+using System.Text;
 using System.IO;
 
 namespace MainMenu
@@ -80,6 +81,7 @@ namespace MainMenu
         void OnApplicationQuit()
         {
             CloseSocket();
+<<<<<<< HEAD
         }
 
         void CloseSocket()
@@ -122,3 +124,47 @@ namespace MainMenu
         }
     }
 }
+=======
+        }
+
+        void CloseSocket()
+        {
+            if (!socketReady) return;
+
+            reader.Close();
+            writer.Close();
+            client.Close();
+            socketReady = false;
+        }
+
+
+        public void SendMessageToServer(string message)
+        {
+            if (socketReady)
+            {
+                byte[] msgBuffer = Encoding.UTF8.GetBytes(message);
+                stream.Write(msgBuffer, 0, msgBuffer.Length);
+                Debug.Log("Message Sent: " + message);
+            }
+        }
+
+        IEnumerator SendCameraFrameToServer()
+        {
+            byte[] frame = cameraManager.GetCameraFrame();
+            if (frame != null && socketReady && stream != null)
+            {
+                // 이미지 크기를 전송
+                byte[] frameLength = BitConverter.GetBytes(frame.Length);
+                Debug.Log(frame.Length);
+                stream.Write(frameLength, 0, frameLength.Length);
+
+                // 이미지 데이터를 전송
+                stream.Write(frame, 0, frame.Length);
+                Debug.Log("Camera Frame Sent");
+            }
+            yield return new WaitForSeconds(sendTime);
+            canSend = true;
+        }
+    }
+}
+>>>>>>> origin/merge-0527

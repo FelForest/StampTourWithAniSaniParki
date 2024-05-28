@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 7393c8d23c69f1c47826c44f6463c2a0
+=======
+guid: ca45ed19f938f8c489057ba19da4e64e
+>>>>>>> origin/merge-0527
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

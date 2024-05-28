@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: c200667a9035cc64b9af83085ea41f42
+=======
+guid: 11e50c070f74e554cb082935c8f9affb
+>>>>>>> origin/merge-0527
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

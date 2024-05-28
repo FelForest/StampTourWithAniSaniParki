@@ -10750,10 +10750,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 6247206265560281070, guid: 8314af589a5b0a9478dd6ee71fce091e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.6000061
       objectReference: {fileID: 0}
+=======
+>>>>>>> origin/merge-0527
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11584,8 +11587,11 @@ MonoBehaviour:
   currentColor: {fileID: 1902154381}
   coloringAudio: {fileID: 8300000, guid: 932bd0e61c623d746ba29b79b41d2025, type: 3}
   pickAudio: {fileID: 8300000, guid: 932bd0e61c623d746ba29b79b41d2025, type: 3}
+<<<<<<< HEAD
   test1: {fileID: 0}
   test2: {fileID: 0}
+=======
+>>>>>>> origin/merge-0527
 --- !u!4 &2110549049
 Transform:
   m_ObjectHideFlags: 0

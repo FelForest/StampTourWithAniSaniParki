@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:StampTour/Assets/Materials.meta
 guid: 66e5ccb88ca541b45aa0462b42ba7f40
+========
+guid: 702270deb8f124d42bebbe85600523b2
+>>>>>>>> origin/merge-0527:StampTour/Assets/3D_Reconstruction.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

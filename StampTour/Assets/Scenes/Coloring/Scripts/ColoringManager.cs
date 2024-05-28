@@ -12,8 +12,11 @@ public class ColoringManager : MonoBehaviour
     public Image currentColor;
     public AudioClip coloringAudio;
     public AudioClip pickAudio;
+<<<<<<< HEAD
     public GameObject test1;
     public GameObject test2;
+=======
+>>>>>>> origin/merge-0527
     AudioSource audioSource;
 
    
