@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files/Computer_textured_mesh_obj.meta
 guid: ecae1477a65cfe54fa8b29301cfbb2ea
+========
+guid: 702270deb8f124d42bebbe85600523b2
+>>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

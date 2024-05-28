@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:StampTour/Assets/3D_Reconstruction/Resources/mesh_obj_files.meta
 guid: 7150450b7303838459121e82cf88c2f0
 ========
 guid: 702270deb8f124d42bebbe85600523b2
 >>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560:StampTour/Assets/3D_Reconstruction.meta
+=======
+guid: 7150450b7303838459121e82cf88c2f0
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

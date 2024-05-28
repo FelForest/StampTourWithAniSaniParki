@@ -10753,12 +10753,15 @@ PrefabInstance:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 6247206265560281070, guid: 8314af589a5b0a9478dd6ee71fce091e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.6000061
       objectReference: {fileID: 0}
 =======
 >>>>>>> origin/merge-0527
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
 >>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
@@ -11596,10 +11599,13 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   test1: {fileID: 0}
   test2: {fileID: 0}
 =======
 >>>>>>> origin/merge-0527
+=======
+>>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
 >>>>>>> cebaecd0fb267ea6f5cc39380a628f27f200b560
 =======
