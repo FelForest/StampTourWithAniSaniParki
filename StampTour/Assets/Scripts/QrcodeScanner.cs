@@ -5,6 +5,7 @@ using ZXing;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Android;
+using System;
 
 public class QRcodeScanner : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class QRcodeScanner : MonoBehaviour
     {
         if (!_isCamAvaible)
         {
-            Debug.Log("Ä«¸Þ¶ó ¾øÀ½");
+            Debug.Log("Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½");
             return;
         }
 
@@ -114,13 +115,13 @@ public class QRcodeScanner : MonoBehaviour
 
         if (selectedCameraIndex >= 0)
         {
-            Debug.Log("Ä«¸Þ¶ó ÁØºñ ¿Ï·á");
+            Debug.Log("Ä«ï¿½Þ¶ï¿½ ï¿½Øºï¿½ ï¿½Ï·ï¿½");
             _cameraTexture = new WebCamTexture(devices[selectedCameraIndex].name, (int)_scanZone.rect.width, (int)_scanZone.rect.height);
             _isCamAvaible = true;
         }
         else
         {
-            Debug.Log("Ä«¸Þ¶ó ¸ø ¹Þ¾Æ¿È");
+            Debug.Log("Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½");
             _isCamAvaible = false;
             yield break;
         }
@@ -144,6 +145,7 @@ public class QRcodeScanner : MonoBehaviour
 
     private void Scan()
     {
+        int sceneNum = -1;
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
@@ -151,19 +153,23 @@ public class QRcodeScanner : MonoBehaviour
             if(result != null)
             {
                 _textOut.text=result.Text;
-                int sceneNum = int.Parse(result.Text);
-                GameManager.LoadScene(sceneNum);
+                sceneNum = int.Parse(result.Text);
             }
             else
             {
                 _textOut.text = "FAILED TO READ QR CODE";
             }
         }
-
-        catch
+        catch (Exception e)
         {
             _textOut.text = "FAILED IN TRY";
+            Debug.LogWarning(e);
         }
+
+        if (sceneNum >= 0)
+            GameManager.LoadScene(sceneNum);
+        
+
     }
 
     public void Reset()
