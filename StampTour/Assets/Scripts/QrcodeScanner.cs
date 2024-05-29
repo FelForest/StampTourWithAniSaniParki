@@ -166,10 +166,8 @@ public class QRcodeScanner : MonoBehaviour
             Debug.LogWarning(e);
         }
 
-        if (sceneNum >= 0)
+        if ( 0 <= sceneNum && sceneNum < GameManager.Instance.SceneCount)
             GameManager.LoadScene(sceneNum);
-        
-
     }
 
     public void Reset()

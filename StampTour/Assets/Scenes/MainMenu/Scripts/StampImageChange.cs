@@ -18,7 +18,7 @@ public class StampImageChange : MonoBehaviour
     {
         try
         {
-            if (GameManager.gameManager.GetIsSceneFinished(gameObject.name))
+            if (GameManager.Instance.GetIsSceneFinished(gameObject.name))
             {
                 GetComponent<Image>().sprite = changedImage;
             }

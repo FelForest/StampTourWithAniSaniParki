@@ -1,50 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation.VisualScripting;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-using UnityEditor;
-using System.Threading.Tasks;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager gameManager;
+    private static GameManager _instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<GameManager>();
+                if (_instance == null)
+                {
+                    _instance = new GameObject("GameManager").AddComponent<GameManager>();
+                }
+            }
+            return _instance;
+        }
+    }
+
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
+    public int SceneCount
+    {
+        get { return SceneManager.sceneCountInBuildSettings; }
+    }
 
     private bool _selectedTab;
     public bool SelectedTab
     {
         get { return _selectedTab; }
-        set { _selectedTab = value;}
+        set { _selectedTab = value; }
     }
-    public enum Scene
-    {
-        MainScene,
-        JicsawPuzzle
-    }
+
     private void Awake()
     {
-        if (gameManager == null)
+        if (_instance == null)
         {
-            gameManager = this;
+            _instance = this;
         }
-        else if(gameManager != this)
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
 
+        SetFlags();
+        Debug.Log(SceneCount);
+    }
 
-        string path = "";
+    private void SetFlags()
+    {
+        string path;
 
-        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        for (int i = 0; i < SceneCount; i++)
         {
             path = SceneUtility.GetScenePathByBuildIndex(i);
             AddScene(System.IO.Path.GetFileNameWithoutExtension(path));
         }
         AddScene("TV");
     }
+
     private void AddScene(string key)
     {
         if (!flags.ContainsKey(key))
@@ -53,11 +73,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
+    private bool IsContainKey(string key)
+    {
+        if (flags.ContainsKey(key))
+        {
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning($"Key '{key}' not found in flags");
+            return false;
+        }
+    }
 
     public void SetIsSceneLoaded(string key, bool isLoaded)
     {
-        if (flags.ContainsKey(key))
+        if (IsContainKey(key))
         {
             flags[key].isSceneLoaded = isLoaded;
         }
@@ -65,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void SetIsSceneFinished(string key, bool isFinished)
     {
-        if (flags.ContainsKey(key))
+        if (IsContainKey(key))
         {
             flags[key].isSceneFinished = isFinished;
         }
@@ -73,17 +104,25 @@ public class GameManager : MonoBehaviour
 
     public bool GetIsSceneLoaded(string key)
     {
-        return flags[key].isSceneLoaded;
+        if (IsContainKey(key))
+        {
+            return flags[key].isSceneLoaded;
+        }
+        return false;
     }
 
     public bool GetIsSceneFinished(string key)
     {
-        return flags[key].isSceneFinished;
+        if (IsContainKey(key))
+        {
+            return flags[key].isSceneFinished;
+        }
+        return false;
     }
 
     public static void LoadScene(string sceneName)
     {
-        LoadScene(sceneName,LoadSceneMode.Single);
+        LoadScene(sceneName, LoadSceneMode.Single);
     }
 
     public static void LoadScene(int sceneNum)
@@ -91,18 +130,19 @@ public class GameManager : MonoBehaviour
         string path = SceneUtility.GetScenePathByBuildIndex(sceneNum);
         LoadScene(System.IO.Path.GetFileNameWithoutExtension(path));
     }
+
     public static void LoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
     {
         SceneLoader.nextSceneName = sceneName;
-        gameManager.SetIsSceneLoaded(sceneName, true);
-        Debug.Log($"{sceneName} is Loaded : {gameManager.GetIsSceneLoaded(sceneName)}");
+        Instance.SetIsSceneLoaded(sceneName, true);
+        Debug.Log($"{sceneName} is Loaded: {Instance.GetIsSceneLoaded(sceneName)}");
         SceneManager.LoadSceneAsync("LoadingScene", mode);
     }
 
     public static void RollbackMainScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        gameManager.SetIsSceneLoaded(currentSceneName, false);
+        Instance.SetIsSceneLoaded(currentSceneName, false);
         LoadScene("MainScene");
     }
 }

@@ -24,9 +24,9 @@ public class VideoController : MonoBehaviour
             videoPlayer.Play();
         }
 
-        if (!GameManager.gameManager.GetIsSceneFinished("TV"))
+        if (!GameManager.Instance.GetIsSceneFinished("TV"))
         {
-            GameManager.gameManager.SetIsSceneFinished("TV", true);
+            GameManager.Instance.SetIsSceneFinished("TV", true);
         }
     }
 
