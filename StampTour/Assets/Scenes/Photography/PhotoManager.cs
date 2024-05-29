@@ -13,7 +13,7 @@ public class PhotoManager : MonoBehaviour
     Texture2D texture;
     private void Start()
     {
-        LoadPNG();
+       // LoadPNG();
     }
     public void LoadPNG()
     {
@@ -38,7 +38,7 @@ public class PhotoManager : MonoBehaviour
                 NativeGallery.OpenSettings();
             }
         }
-        NativeGallery.SaveImageToGallery(texture, default, "아니사니바기와 함께 사진찍기");
+        NativeGallery.SaveImageToGallery(texture, "default", "아니사니바기와 함께 사진찍기");
     }
     
 }

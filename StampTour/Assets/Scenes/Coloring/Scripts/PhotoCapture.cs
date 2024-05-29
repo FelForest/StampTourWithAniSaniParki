@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
 
 public class PhotoCapture : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PhotoCapture : MonoBehaviour
     public string characterName;
     public Camera camera;
     public Rect captureArea;
+
+    Texture2D screenImage;
     public void CharacterTakeScreenShot()
     {
         //captureCanvas의 자식 오브젝트를 지움
@@ -51,7 +54,7 @@ public class PhotoCapture : MonoBehaviour
         RenderTexture.active = renderTexture;
 
         // Texture2D에 RenderTexture 내용을 복사
-        Texture2D screenImage = new Texture2D(width, height, TextureFormat.RGB24, false);
+        screenImage = new Texture2D(width, height, TextureFormat.RGB24, false);
         // captureArea 영역 캡쳐
         screenImage.ReadPixels(new Rect(0, 0, width, height), (int)captureArea.x, (int)captureArea.y);
         screenImage.Apply();
@@ -63,7 +66,8 @@ public class PhotoCapture : MonoBehaviour
 
         // PNG로 인코딩 및 저장
         byte[] imageBytes = screenImage.EncodeToPNG();
-        SavePNG(imageBytes);
+        // SavePNG(imageBytes);
+        SaveToGallery(imageBytes);
     }
     void SavePNG(byte[] pngArray)
     {
@@ -72,7 +76,20 @@ public class PhotoCapture : MonoBehaviour
         File.WriteAllBytes(path, pngArray);
         Debug.Log(path);
     }
-    
+    public void SaveToGallery(byte[] texture)
+    {
+        // do something with texture
+        NativeGallery.Permission permission = NativeGallery.CheckPermission(NativeGallery.PermissionType.Write, NativeGallery.MediaType.Image);
+        if (permission == NativeGallery.Permission.Denied)
+        {
+            if (NativeGallery.CanOpenSettings())
+            {
+                NativeGallery.OpenSettings();
+            }
+        }
+        NativeGallery.SaveImageToGallery(texture, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
+        Debug.Log("사진찍기 끝");
+    }
 
 
 }

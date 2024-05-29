@@ -21,6 +21,9 @@ public class ColoringManager : MonoBehaviour
         currentColor.color = Color.white;
         audioSource = GetComponent<AudioSource>();
 
+        Material[] materials = Resources.LoadAll<Material>("");
+        foreach (Material mat in materials)
+            mat.color = Color.white;
     }
     public void SelectColor()
     {

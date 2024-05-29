@@ -2884,7 +2884,7 @@ GameObject:
   - component: {fileID: 525350578}
   - component: {fileID: 525350580}
   m_Layer: 5
-  m_Name: Bani face
+  m_Name: Bani body
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3769,13 +3769,13 @@ RectTransform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 26345126}
   - {fileID: 799639338}
   - {fileID: 2035517330}
   - {fileID: 2146773810}
   - {fileID: 1760569776}
   - {fileID: 1980458089}
   - {fileID: 277309824}
+  - {fileID: 26345126}
   - {fileID: 1023570580}
   m_Father: {fileID: 1455358093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
