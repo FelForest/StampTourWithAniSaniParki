@@ -4,7 +4,8 @@ using UnityEngine;
 using ZXing;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.Android;
+using System;
 
 public class QRcodeScanner : MonoBehaviour
 {
@@ -23,12 +24,15 @@ public class QRcodeScanner : MonoBehaviour
     private bool _isCamAvaible;
     private WebCamTexture _cameraTexture;
 
+    private bool _isCamPlaying;
+    private int selectedCameraIndex;
 
+    static Result result;
 
     // Start is called before the first frame update
     void Start()
     {
-        SetUpCamera();
+        StartCoroutine(SetUpCamera());
     }
 
     // Update is called once per frame
@@ -37,10 +41,29 @@ public class QRcodeScanner : MonoBehaviour
         UpdateCameraRender();
     }
  
+    public void SwitchCamera()
+    {
+        if (!_isCamAvaible)
+        {
+            Debug.Log("ī�޶� ����");
+            return;
+        }
 
+        _isCamPlaying = _cameraTexture.isPlaying;
+        Debug.Log(_isCamPlaying);
+
+        if (!_isCamPlaying)
+        {
+            CameraOn();
+        }
+        else
+        {
+            CameraOff();
+        }
+    }
     private void UpdateCameraRender()
     {
-        if(_isCamAvaible == false)
+        if(_isCamAvaible == false || _cameraTexture == null)
         {
             return;
         }
@@ -52,29 +75,68 @@ public class QRcodeScanner : MonoBehaviour
     }
 
     
-    private void SetUpCamera()
+    private IEnumerator SetUpCamera()
     {
-        WebCamDevice [] devices = WebCamTexture.devices;
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+            yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.Camera));
+        }
+
+        WebCamDevice[] devices;
+
+        do
+        {
+            devices = WebCamTexture.devices;
+            yield return null;
+        }
+        while (devices.Length != WebCamTexture.devices.Length);
+
+
+
 
         if(devices.Length == 0)
         {
             _isCamAvaible = false;
-            return;
+            yield break;
         }
-        for(int i =0; i<devices.Length; i++)
-        {
-            if(devices[i].isFrontFacing==false)
-            {
-                _cameraTexture = new WebCamTexture(devices[i].name, (int)_scanZone.rect.width,(int)_scanZone.rect.height);
 
+        selectedCameraIndex = -1;
+
+        for (int i =0; i<devices.Length; i++)
+        {
+            Debug.Log(devices[i].name);
+            if(devices[i].isFrontFacing == false)
+            {
+                selectedCameraIndex = i;
+                break;
             }
         }
 
+        if (selectedCameraIndex >= 0)
+        {
+            Debug.Log("ī�޶� �غ� �Ϸ�");
+            _cameraTexture = new WebCamTexture(devices[selectedCameraIndex].name, (int)_scanZone.rect.width, (int)_scanZone.rect.height);
+            _isCamAvaible = true;
+        }
+        else
+        {
+            Debug.Log("ī�޶� �� �޾ƿ�");
+            _isCamAvaible = false;
+            yield break;
+        }
+    }
+    
+    private void CameraOn()
+    {
         _cameraTexture.Play();
         _rawImageBackground.texture = _cameraTexture;
-        _isCamAvaible = true;
-
-    }   
+    }
+    private void CameraOff()
+    {
+        _cameraTexture.Stop();
+    }
+    
 
     public void OnclickScan()
     {
@@ -83,24 +145,35 @@ public class QRcodeScanner : MonoBehaviour
 
     private void Scan()
     {
+        int sceneNum = -1;
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
-            Result result = barcodeReader.Decode(_cameraTexture.GetPixels32(),_cameraTexture.width,_cameraTexture.height);
+            result = barcodeReader.Decode(_cameraTexture.GetPixels32(),_cameraTexture.width,_cameraTexture.height);
             if(result != null)
             {
                 _textOut.text=result.Text;
+                sceneNum = int.Parse(result.Text);
             }
             else
             {
                 _textOut.text = "FAILED TO READ QR CODE";
             }
         }
-
-        catch
+        catch (Exception e)
         {
             _textOut.text = "FAILED IN TRY";
+            Debug.LogWarning(e);
         }
+
+        if ( 0 <= sceneNum && sceneNum < GameManager.Instance.SceneCount)
+            GameManager.LoadScene(sceneNum);
+    }
+
+    public void Reset()
+    {
+        _rawImageBackground.texture = null;
+        _textOut.text = " ";
     }
 }
 
