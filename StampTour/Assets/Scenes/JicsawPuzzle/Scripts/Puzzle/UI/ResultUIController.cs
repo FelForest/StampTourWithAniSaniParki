@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 
 namespace JicsawPuzzle
 {
@@ -34,6 +35,10 @@ namespace JicsawPuzzle
             }
 
             IsInitialized = true;
+        }
+
+        private void OnEnable() {
+            transform.DOScale(1.0f, 2.0f);
         }
 
         public override void SetActive(bool isActive)

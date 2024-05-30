@@ -21,9 +21,6 @@ public class ColoringManager : MonoBehaviour
         currentColor.color = Color.white;
         audioSource = GetComponent<AudioSource>();
 
-        Material[] materials = Resources.LoadAll<Material>("");
-        foreach (Material mat in materials)
-            mat.color = Color.white;
     }
     public void SelectColor()
     {
@@ -37,8 +34,6 @@ public class ColoringManager : MonoBehaviour
     public void ChangeColor()
     {
         GameObject thisBtn = EventSystem.current.currentSelectedGameObject;
-        Material material = Resources.Load<Material>(thisBtn.name);
-        material.color = selectedColor;
         thisBtn.GetComponent<Image>().color = selectedColor;
         audioSource.clip = coloringAudio;
         audioSource.Play();

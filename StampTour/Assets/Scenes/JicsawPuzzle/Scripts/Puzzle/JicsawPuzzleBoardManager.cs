@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace JicsawPuzzle
 {
@@ -25,6 +26,10 @@ namespace JicsawPuzzle
             Blocker.SetActive(false);
 
             IsInitialized = true;
+        }
+
+        private void OnEnable() {
+            gameObject.transform.DOScale(1.0f, 2.0f);
         }
 
         public override IEnumerator Play()
