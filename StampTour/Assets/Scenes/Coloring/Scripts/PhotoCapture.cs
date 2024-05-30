@@ -58,7 +58,7 @@ public class PhotoCapture : MonoBehaviour
         // captureArea 영역 캡쳐
         screenImage.ReadPixels(new Rect(0, 0, width, height), (int)captureArea.x, (int)captureArea.y);
         screenImage.Apply();
-
+        
         // RenderTexture 비활성화 및 카메라 타겟 초기화
         camera.targetTexture = null;
         RenderTexture.active = previous;
@@ -66,8 +66,9 @@ public class PhotoCapture : MonoBehaviour
 
         // PNG로 인코딩 및 저장
         byte[] imageBytes = screenImage.EncodeToPNG();
+        screenImage.LoadImage(imageBytes);
         // SavePNG(imageBytes);
-        SaveToGallery(imageBytes);
+        SaveToGallery();
     }
     void SavePNG(byte[] pngArray)
     {
@@ -76,7 +77,7 @@ public class PhotoCapture : MonoBehaviour
         File.WriteAllBytes(path, pngArray);
         Debug.Log(path);
     }
-    public void SaveToGallery(byte[] texture)
+    public void SaveToGallery()
     {
         // do something with texture
         NativeGallery.Permission permission = NativeGallery.CheckPermission(NativeGallery.PermissionType.Write, NativeGallery.MediaType.Image);
@@ -87,7 +88,7 @@ public class PhotoCapture : MonoBehaviour
                 NativeGallery.OpenSettings();
             }
         }
-        NativeGallery.SaveImageToGallery(texture, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
+        NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
         Debug.Log("사진찍기 끝");
     }
 
