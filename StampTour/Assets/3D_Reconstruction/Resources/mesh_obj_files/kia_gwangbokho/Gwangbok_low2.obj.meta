@@ -3,7 +3,12 @@ guid: 969f3fcaaa573be41a62b1a6cb8c1c8b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Gwangbok_01
+    second: {fileID: 2100000, guid: fa294f3f6d44bd94fbc959d5700286d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

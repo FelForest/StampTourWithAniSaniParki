@@ -3,7 +3,12 @@ guid: 0517fe3f4cce6a2479721ece79c622bf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Pony_01
+    second: {fileID: 2100000, guid: 87c4bad84adddee458c0fac78ef1b8ae, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
