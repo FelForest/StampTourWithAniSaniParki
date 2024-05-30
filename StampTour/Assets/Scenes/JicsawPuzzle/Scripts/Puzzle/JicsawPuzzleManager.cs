@@ -96,7 +96,8 @@ public class JicsawPuzzleManager : BaseInitializeObject
     public IEnumerator StartInternal()
     {
         yield return new WaitUntil(()=>IsInitialized);
-        yield return UIManager.Play();
+        // yield return UIManager.Play();
+        yield return PassMarkerIntenal();
     }
 
     public void SetActiveARCamera(bool isActive)
