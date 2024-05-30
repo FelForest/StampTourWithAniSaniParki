@@ -43,14 +43,14 @@ public class GameManager : MonoBehaviour
         {
             _instance = this;
         }
-        else if (Instance != this)
+        else if (_instance != this)
         {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
 
         SetFlags();
-        Debug.Log(SceneCount);
+        Debug.Log($"Total scenes in build settings: {SceneCount}");
     }
 
     private void SetFlags()
@@ -133,9 +133,13 @@ public class GameManager : MonoBehaviour
 
     public static void LoadScene(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
     {
+        if(!Instance.IsContainKey(sceneName)) return;
+
         SceneLoader.nextSceneName = sceneName;
         Instance.SetIsSceneLoaded(sceneName, true);
+
         Debug.Log($"{sceneName} is Loaded: {Instance.GetIsSceneLoaded(sceneName)}");
+        
         SceneManager.LoadSceneAsync("LoadingScene", mode);
     }
 
@@ -143,6 +147,7 @@ public class GameManager : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         Instance.SetIsSceneLoaded(currentSceneName, false);
+        
         LoadScene("MainScene");
     }
 }
