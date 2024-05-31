@@ -12,7 +12,7 @@ public class OutCamController : MonoBehaviour
         RawImage.texture.height = Screen.height;
     }
 
-    private void Update() {
-        Debug.Log(RawImage.texture.width);
-    }
+    // private void Update() {
+    //     Debug.Log(RawImage.texture.width);
+    // }
 }

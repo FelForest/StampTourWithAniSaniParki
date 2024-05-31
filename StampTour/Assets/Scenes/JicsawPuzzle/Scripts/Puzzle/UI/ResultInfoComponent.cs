@@ -11,6 +11,11 @@ namespace JicsawPuzzle
         public TMP_Text BodyText;
         public float TypeTime = 2.0f;
 
+        [Header("SFX")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioClip stampSFX;
+
+
         private void Start() {
             if (StampAnimator == null)
             {
@@ -40,6 +45,7 @@ namespace JicsawPuzzle
         IEnumerator OnAnimating(Animator animator, int animationHash)
         {
             animator.Play(animationHash);
+            audioSource.PlayOneShot(stampSFX);
             yield return new WaitForEndOfFrame();
  
             while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)

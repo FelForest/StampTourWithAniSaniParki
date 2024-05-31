@@ -47,6 +47,8 @@ namespace JicsawPuzzle
     private List<Coroutine> activeCoroutines = new List<Coroutine>();
 
     private Vector2 tileSize;
+    [Header("SFX")]
+    public AudioClip PieceSparderSFX;
 
     [Space(10), Header("TileAudio")]
     public AudioClip TilePointerDownSFX;
@@ -367,6 +369,7 @@ namespace JicsawPuzzle
 
     public void ShuffleTiles()
     {
+      AudioController.Instance.PlaySFXOneShot(PieceSparderSFX);
       StartCoroutine(Coroutine_Shuffle());
     }
 
