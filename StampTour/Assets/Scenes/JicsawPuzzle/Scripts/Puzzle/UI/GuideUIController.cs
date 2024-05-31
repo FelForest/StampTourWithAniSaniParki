@@ -10,6 +10,10 @@ namespace JicsawPuzzle
         public TMP_Text guideText;
         public float TypeTime = 1.0f;
 
+        [Header("SFX")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioClip talkSFX;
+
         protected override void Start() {
             IsInitialized = true;
         }
@@ -54,6 +58,8 @@ namespace JicsawPuzzle
             int curVisible = 0;
             float curTime = 0.0f;
 
+            audioSource.PlayOneShot(talkSFX);
+
             while (curTime < 1.0f)
             {
                 curTime += Time.deltaTime / TypeTime;
@@ -65,6 +71,7 @@ namespace JicsawPuzzle
             }
             
             tMP_Text.maxVisibleCharacters = maxVisible;
+            audioSource.Stop();
         }
 
         public bool CheckCurrentStringSame(string inputString)

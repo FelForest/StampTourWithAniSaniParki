@@ -12,8 +12,10 @@ namespace JicsawPuzzle
         public float TypeTime = 2.0f;
 
         [Header("SFX")]
-        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioSource audioSourceStamp;
+        [SerializeField] AudioSource audioSourceType;
         [SerializeField] AudioClip stampSFX;
+        [SerializeField] AudioClip typeSFX;
 
 
         private void Start() {
@@ -45,7 +47,7 @@ namespace JicsawPuzzle
         IEnumerator OnAnimating(Animator animator, int animationHash)
         {
             animator.Play(animationHash);
-            audioSource.PlayOneShot(stampSFX);
+            audioSourceStamp.PlayOneShot(stampSFX);
             yield return new WaitForEndOfFrame();
  
             while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
@@ -58,6 +60,8 @@ namespace JicsawPuzzle
             int curVisible = 0;
             float curTime = 0.0f;
 
+            audioSourceType.PlayOneShot(typeSFX);
+
             while (curTime < 1.0f)
             {
                 curTime += Time.deltaTime / TypeTime;
@@ -69,6 +73,7 @@ namespace JicsawPuzzle
             }
             
             tMP_Text.maxVisibleCharacters = maxVisible;
+            audioSourceType.Stop();
         }
     }
 }
