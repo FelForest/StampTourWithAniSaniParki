@@ -40,6 +40,8 @@ public class SpriteUtils
   /// <returns>new Texture2D </returns>
   public static Texture2D LoadTexture(string resourcePath)
   {
+    Debug.Log(resourcePath);
+
     Texture2D tex = Resources.Load<Texture2D>(resourcePath);
     return tex;
   }
