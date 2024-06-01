@@ -78,6 +78,17 @@ namespace JicsawPuzzle
         {
             return inputString.Equals(guideText.text);
         }
+
+        public void SwingAnimation(bool isActive)
+        {
+            guideAnimator.SetBool("handswing", isActive);
+            Debug.Log(guideAnimator.GetBool("handswing"));
+        }
+
+        public void OAnimation()
+        {
+            guideAnimator.SetTrigger("O");
+        }
     }
 }
 
