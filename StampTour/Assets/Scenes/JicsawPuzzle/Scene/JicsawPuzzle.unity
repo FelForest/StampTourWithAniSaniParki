@@ -909,7 +909,6 @@ GameObject:
   m_Component:
   - component: {fileID: 886643814}
   - component: {fileID: 886643813}
-  - component: {fileID: 886643815}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -948,18 +947,6 @@ Transform:
   - {fileID: 1046031255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &886643815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886643812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b39dcfe005b13241947b4dd774eb0f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1046031253
 GameObject:
   m_ObjectHideFlags: 0
@@ -9862,6 +9849,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 33754654993309971}
     m_Modifications:
+    - target: {fileID: 18534312423330463, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 714566066364988839, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2379679058625160488, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
       propertyPath: m_Name
       value: GuideUI
@@ -9946,8 +9941,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7390669004722221184, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905542218309830915, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015158960064077752, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.199997
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 714566066364988839, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
+    - {fileID: 7390669004722221184, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fa1ff5f7f6cfc542a638f81a8d0486e, type: 3}
