@@ -13,9 +13,11 @@ public class PhotoCapture : MonoBehaviour
     public string characterName;
     public Camera camera;
     public Rect captureArea;
+    public GameObject photoFrame;
     public Image photo;
     public AudioClip captureAudio;
     public AudioClip showAudio;
+    public GameObject CameraImage;
 
     AudioSource audioSource;
     Texture2D screenImage;
@@ -103,8 +105,19 @@ public class PhotoCapture : MonoBehaviour
         photo.sprite = sprite;
         audioSource.clip = captureAudio;
         audioSource.Play();
-        photo.enabled = true;
-        Debug.Log("ªÁ¡¯¬Ô±‚ ≥°");
+        Invoke("TakePhoto", 1f);
+    }
+    void TakePhoto()
+    {
+        CameraImage.SetActive(false);
+        photoFrame.SetActive(true);
+    }
+    public void RetakePhoto()
+    {
+        CameraImage.SetActive(true);
+        photoFrame.SetActive(false);
+        audioSource.clip = showAudio;
+        audioSource.Play();
     }
 
 
