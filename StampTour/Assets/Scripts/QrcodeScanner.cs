@@ -45,12 +45,12 @@ public class QRcodeScanner : MonoBehaviour
     {
         if (!_isCamAvaible)
         {
-            Debug.Log("ī�޶� ����");
+            Debug.Log("Camera not available");
             return;
         }
 
         _isCamPlaying = _cameraTexture.isPlaying;
-        Debug.Log(_isCamPlaying);
+        Debug.Log("Camera is playing: " + _isCamPlaying);
 
         if (!_isCamPlaying)
         {
@@ -83,7 +83,7 @@ public class QRcodeScanner : MonoBehaviour
             yield return new WaitUntil(() => Permission.HasUserAuthorizedPermission(Permission.Camera));
         }
 
-        WebCamDevice[] devices;
+        WebCamDevice[] devices = null;
 
         do
         {
@@ -115,13 +115,13 @@ public class QRcodeScanner : MonoBehaviour
 
         if (selectedCameraIndex >= 0)
         {
-            Debug.Log("ī�޶� �غ� �Ϸ�");
+            Debug.Log("Camera Catch");
             _cameraTexture = new WebCamTexture(devices[selectedCameraIndex].name, (int)_scanZone.rect.width, (int)_scanZone.rect.height);
-            _isCamAvaible = true;
+            _isCamAvaible = _cameraTexture ? true : false;
         }
         else
         {
-            Debug.Log("ī�޶� �� �޾ƿ�");
+            Debug.Log("Camera Miss");
             _isCamAvaible = false;
             yield break;
         }
@@ -173,7 +173,7 @@ public class QRcodeScanner : MonoBehaviour
     public void Reset()
     {
         _rawImageBackground.texture = null;
-        _textOut.text = " ";
+        _textOut.text = string.Empty;
     }
 }
 

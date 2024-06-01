@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class StampImageChange : MonoBehaviour
 {
     [SerializeField]
     Sprite changedImage;
+
+    [SerializeField]
+    string flagName;
     Sprite orgineImage;
 
     private void Awake()
@@ -18,7 +21,7 @@ public class StampImageChange : MonoBehaviour
     {
         try
         {
-            if (GameManager.Instance.GetIsSceneFinished(gameObject.name))
+            if (GameManager.Instance.GetIsSceneFinished(flagName))
             {
                 GetComponent<Image>().sprite = changedImage;
             }
@@ -28,9 +31,9 @@ public class StampImageChange : MonoBehaviour
             }
         }
 
-        catch
+        catch(Exception e)
         {
-            Debug.Log("not Flag");
+            Debug.LogWarning(e);
         }
     }
 }

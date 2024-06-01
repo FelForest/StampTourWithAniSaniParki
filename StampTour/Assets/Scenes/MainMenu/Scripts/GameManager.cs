@@ -120,6 +120,10 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public static void LoadScene(Scene scene)
+    {
+        LoadScene(scene.SceneName, LoadSceneMode.Single);
+    }
     public static void LoadScene(string sceneName)
     {
         LoadScene(sceneName, LoadSceneMode.Single);
@@ -147,7 +151,18 @@ public class GameManager : MonoBehaviour
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         Instance.SetIsSceneLoaded(currentSceneName, false);
-        
+        Instance.SetIsSceneFinished(currentSceneName, true);
+        LoadScene("MainScene");
+    }
+
+    public static void RollbackMainScene(bool sceneFinished)
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        Instance.SetIsSceneLoaded(currentSceneName, false);
+        if(sceneFinished)
+        {
+            Instance.SetIsSceneFinished(currentSceneName, true);
+        }
         LoadScene("MainScene");
     }
 }
