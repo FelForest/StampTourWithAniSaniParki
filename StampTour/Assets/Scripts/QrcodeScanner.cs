@@ -145,7 +145,6 @@ public class QRcodeScanner : MonoBehaviour
 
     private void Scan()
     {
-        int sceneNum = -1;
         try
         {
             IBarcodeReader barcodeReader = new BarcodeReader();
@@ -153,7 +152,7 @@ public class QRcodeScanner : MonoBehaviour
             if(result != null)
             {
                 _textOut.text=result.Text;
-                sceneNum = int.Parse(result.Text);
+                GameManager.LoadScene(result.Text);
             }
             else
             {
@@ -165,9 +164,6 @@ public class QRcodeScanner : MonoBehaviour
             _textOut.text = "FAILED IN TRY";
             Debug.LogWarning(e);
         }
-
-        if ( 0 <= sceneNum && sceneNum < GameManager.Instance.SceneCount)
-            GameManager.LoadScene(sceneNum);
     }
 
     public void Reset()

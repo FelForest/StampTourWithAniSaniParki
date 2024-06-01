@@ -33,21 +33,25 @@ public class DialogueSystem : MonoBehaviour
         }
         if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
         {
-            if(isTypingEffect)
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Began)
             {
-                isTypingEffect = false;
+                if(isTypingEffect)
+                {
+                    isTypingEffect = false;
 
-                StopCoroutine(nameof(OnTypingText));
-                dialogueText.text = dialogues[currentDialogueIndex].sentence;
-            }
-            else if(dialogues.Length > currentDialogueIndex + 1)
-            {
-                SetNextDialogue();
-            }
-            else
-            {
-                EndDialogue();
-                return true;
+                    StopCoroutine(nameof(OnTypingText));
+                    dialogueText.text = dialogues[currentDialogueIndex].sentence;
+                }
+                else if(dialogues.Length > currentDialogueIndex + 1)
+                {
+                    SetNextDialogue();
+                }
+                else
+                {
+                    EndDialogue();
+                    return true;
+                }
             }
         }
 
