@@ -7564,7 +7564,8 @@ MonoBehaviour:
     width: 0
     height: 0
   photo: {fileID: 0}
-  audioSource: {fileID: 0}
+  captureAudio: {fileID: 0}
+  showAudio: {fileID: 0}
 --- !u!114 &1346035850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8020,7 +8021,7 @@ GameObject:
   - component: {fileID: 1450495208}
   - component: {fileID: 1450495210}
   m_Layer: 5
-  m_Name: Bani left decoration
+  m_Name: Bani left body decoration
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8458,7 +8459,7 @@ GameObject:
   - component: {fileID: 1556602469}
   - component: {fileID: 1556602471}
   m_Layer: 5
-  m_Name: Bani right decoration
+  m_Name: Bani right body decoration
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
