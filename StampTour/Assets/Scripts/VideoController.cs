@@ -11,7 +11,6 @@ public class VideoController : MonoBehaviour
     public Button upButton;
     public Button downButton;
     public Button completeButton; // 완료 버튼 추가
-    public Button backButton; // 뒤로 가기 버튼 추가
     public TextMeshProUGUI channelChangeText; // 채널 변경 안내 텍스트 추가
     public VideoClip[] videoClips;
     private int currentChannel = 0;
@@ -29,8 +28,7 @@ public class VideoController : MonoBehaviour
         // 완료 버튼 클릭 이벤트를 연결합니다.
         completeButton.onClick.AddListener(OnCompleteButtonClick);
 
-        // 뒤로 가기 버튼 클릭 이벤트를 연결합니다.
-        backButton.onClick.AddListener(OnBackButtonClick);
+    
 
         // 초기 비디오 재생
         if (videoClips.Length > 0)
@@ -87,10 +85,5 @@ public class VideoController : MonoBehaviour
         completeButton.gameObject.SetActive(false);
     }
 
-    void OnBackButtonClick()
-    {
-        // 이전 씬으로 돌아갑니다. 또는 다른 동작을 수행하도록 설정할 수 있습니다.
-        // 예: 현재 씬의 이름을 "MainScene"이라고 가정하고, 이전 씬으로 돌아가는 로직을 작성합니다.
-        SceneManager.LoadScene("MainScene");
-    }
+
 }
