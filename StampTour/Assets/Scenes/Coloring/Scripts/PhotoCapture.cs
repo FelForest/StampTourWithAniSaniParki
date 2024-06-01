@@ -14,8 +14,17 @@ public class PhotoCapture : MonoBehaviour
     public Camera camera;
     public Rect captureArea;
     public Image photo;
+    public AudioClip captureAudio;
+    public AudioClip showAudio;
 
+    AudioSource audioSource;
     Texture2D screenImage;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void CharacterTakeScreenShot()
     {
         //captureCanvas의 자식 오브젝트를 지움
@@ -92,6 +101,8 @@ public class PhotoCapture : MonoBehaviour
         NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
         Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
         photo.sprite = sprite;
+        audioSource.clip = captureAudio;
+        audioSource.Play();
         photo.enabled = true;
         Debug.Log("사진찍기 끝");
     }
