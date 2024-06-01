@@ -19,7 +19,13 @@ public class ColoringManager : MonoBehaviour
     {
         selectedColor = Color.white;
         currentColor.color = Color.white;
+
+        Material[] materials = Resources.LoadAll<Material>("");
+        foreach (Material material in materials)
+            material.color = Color.white;
+
         audioSource = GetComponent<AudioSource>();
+
 
     }
     public void SelectColor()
@@ -40,6 +46,4 @@ public class ColoringManager : MonoBehaviour
         audioSource.clip = coloringAudio;
         audioSource.Play();
     }
-
-
 }

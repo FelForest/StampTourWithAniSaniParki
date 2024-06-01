@@ -3,27 +3,22 @@ using UnityEngine.EventSystems;
 
 public class TouchHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
-    private RectTransform rectTransform;
-    private Vector2 initialTouchPosition;
-    private Vector2 initialSizeDelta;
-    private Vector2 initialAnchoredPosition;
+    private Vector3 initialPosition;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        initialPosition = transform.position;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        initialTouchPosition = eventData.position;
-        initialSizeDelta = rectTransform.sizeDelta;
-        initialAnchoredPosition = rectTransform.anchoredPosition;
+        // 이동 시작 시 초기 위치를 저장합니다.
+        initialPosition = transform.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 touchDelta = eventData.position - initialTouchPosition;
-
-        rectTransform.anchoredPosition = initialAnchoredPosition + touchDelta;
+        // 드래그하는 동안 오브젝트를 이동합니다.
+        transform.position = eventData.position;
     }
 }
