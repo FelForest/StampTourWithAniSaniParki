@@ -120,10 +120,6 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    public static void LoadScene(Scene scene)
-    {
-        LoadScene(scene.SceneName, LoadSceneMode.Single);
-    }
     public static void LoadScene(string sceneName)
     {
         LoadScene(sceneName, LoadSceneMode.Single);
