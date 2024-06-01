@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
-
+    public AudioSource Source_BGM;
+    public AudioSource Source_SFX;
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
     public int SceneCount
     {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SetFlags();
+        AudioSourceSetting();
         Debug.Log($"Total scenes in build settings: {SceneCount}");
     }
 
@@ -164,5 +166,34 @@ public class GameManager : MonoBehaviour
             Instance.SetIsSceneFinished(currentSceneName, true);
         }
         LoadScene("MainScene");
+    }
+
+    private void AudioSourceSetting()
+    {
+        AudioSource[] audioSources = transform.GetComponentsInChildren<AudioSource>();
+        if(Source_BGM == null)
+        {
+        }
+    }
+    public void PlayBGM(AudioClip clip = null)
+        {
+            if (clip)
+            {
+                Source_BGM.clip = clip;
+            }
+
+            Source_BGM.Play();
+        }
+
+    /// <summary>
+    /// Change and Play OneShot SFX AudioSource using clip.
+    /// </summary>
+    /// <param name="clip">Target AudioClip</param>
+    public void PlaySFXOneShot(AudioClip clip)
+    {
+        if (clip)
+        {
+            Source_SFX.PlayOneShot(clip);
+        }
     }
 }
