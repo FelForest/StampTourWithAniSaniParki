@@ -31,30 +31,39 @@ public class DialogueSystem : MonoBehaviour
             SetNextDialogue();
             isFirst = false;
         }
-        if(Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+        if(Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Began)
             {
-                if(isTypingEffect)
-                {
-                    isTypingEffect = false;
-
-                    StopCoroutine(nameof(OnTypingText));
-                    dialogueText.text = dialogues[currentDialogueIndex].sentence;
-                }
-                else if(dialogues.Length > currentDialogueIndex + 1)
-                {
-                    SetNextDialogue();
-                }
-                else
-                {
-                    EndDialogue();
-                    return true;
-                }
+                return HandelInput();
             }
         }
+        else if(Input.GetMouseButtonDown(0))
+        {
+            return HandelInput();
+        }
+        return false;
+    }
 
+    private bool HandelInput()
+    {
+        if(isTypingEffect)
+        {
+            isTypingEffect = false;
+
+            StopCoroutine(nameof(OnTypingText));
+            dialogueText.text = dialogues[currentDialogueIndex].sentence;
+        }
+        else if(dialogues.Length > currentDialogueIndex + 1)
+        {
+            SetNextDialogue();
+        }
+        else
+        {
+            EndDialogue();
+            return true;
+        }
         return false;
     }
 
