@@ -18,6 +18,7 @@ public class PhotoCapture : MonoBehaviour
     public AudioClip captureAudio;
     public AudioClip showAudio;
     public GameObject CameraImage;
+    public GameObject ResultUI;
 
     AudioSource audioSource;
     Texture2D screenImage;
@@ -100,7 +101,6 @@ public class PhotoCapture : MonoBehaviour
                 NativeGallery.OpenSettings();
             }
         }
-        NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
         Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
         photo.sprite = sprite;
         audioSource.clip = captureAudio;
@@ -118,6 +118,12 @@ public class PhotoCapture : MonoBehaviour
         photoFrame.SetActive(false);
         audioSource.clip = showAudio;
         audioSource.Play();
+    }
+    public void EndGame()
+    {
+        NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
+        photoFrame.SetActive(false);
+        ResultUI.SetActive(true);
     }
 
 
