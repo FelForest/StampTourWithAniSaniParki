@@ -40,6 +40,4 @@ public class ColoringManager : MonoBehaviour
         audioSource.clip = coloringAudio;
         audioSource.Play();
     }
-
-
 }
