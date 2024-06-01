@@ -22,9 +22,6 @@ public class VideoController : MonoBehaviour
         upButton.onClick.AddListener(NextChannel);
         downButton.onClick.AddListener(PreviousChannel);
 
-        // 완료 버튼을 처음에 비활성화합니다.
-        completeButton.gameObject.SetActive(false);
-
         // 완료 버튼 클릭 이벤트를 연결합니다.
         completeButton.onClick.AddListener(OnCompleteButtonClick);
 
@@ -70,20 +67,13 @@ public class VideoController : MonoBehaviour
 
         videoPlayer.clip = videoClips[channelIndex];
         videoPlayer.Play();
-
-        // 채널 변경 완료 후 완료 버튼 활성화
-        completeButton.gameObject.SetActive(true);
     }
 
     void OnCompleteButtonClick()
     {
-        // 특정 값을 변경합니다.
-        isChannelChangeComplete = true;
-        Debug.Log("Channel change completed: " + isChannelChangeComplete);
-
-        // 완료 버튼을 비활성화합니다.
-        completeButton.gameObject.SetActive(false);
+        if(GameManager.Instance.GetIsSceneFinished("TV"))
+        {
+            GameManager.RollbackMainScene();
+        }
     }
-
-
 }
