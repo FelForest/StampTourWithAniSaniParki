@@ -18,8 +18,6 @@ namespace JicsawPuzzle
                     {
                         GameObject obj = new GameObject("AudioController");
                         _instance = obj.AddComponent<AudioController>();
-
-                        DontDestroyOnLoad(obj);
                     }
                 }
 
@@ -32,7 +30,6 @@ namespace JicsawPuzzle
             if (_instance == null)
             {
                 _instance = this;
-                DontDestroyOnLoad(gameObject);
             }
             else
             {

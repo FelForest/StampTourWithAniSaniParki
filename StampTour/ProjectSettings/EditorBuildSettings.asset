@@ -5,31 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu/Scene/TItleScene.unity
     guid: 507bdf70eb9794747aa31f0af9176cf8
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu/Scene/LoadingScene.unity
     guid: 85db418525860194d976418a805093c0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu/Scene/Tutorial.unity
     guid: ccc8df15a5b226c4ab03c6d1d6cc30ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu/Scene/MainScene.unity
     guid: 07f3a9020fbd5ca4583a301445a3ae9c
   - enabled: 1
     path: Assets/Scenes/Coloring.unity
     guid: 7a615b5358b032a42bc12eb8cf395c6f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/JicsawPuzzle/Scene/JicsawPuzzle.unity
     guid: f454fe2c5ecad614388b98d0d009f317
-  - enabled: 0
+  - enabled: 1
     path: Assets/3D_Reconstruction/Scenes/ContentScene/3D_Reconstruction.unity
     guid: 454ce129f45b3ed488c4a2d6bf641e78
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BlackTv.unity
     guid: 8989132d0433e564088af4c1c64a571b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ColorTV.unity
     guid: 935d56b2a3ac79e4396ba6eef5c8945c
   - enabled: 1
