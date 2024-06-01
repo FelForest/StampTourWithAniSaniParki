@@ -161,6 +161,8 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
     public IEnumerator Sequence5()
     {
         MarkerUIController.SetActive(false);
+        GuideUIController.SetActive(true);
+        GuideUIController.SwingAnimation(true);
         yield return GuideUIController.TalkIE("좋아 지도를 발견했어~");
         yield return new WaitForSeconds(1.0f);
         yield return GuideUIController.TalkIE("지도를 눌러서 미션을 완료하자구");
@@ -173,6 +175,8 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
     /// <returns></returns>
     public IEnumerator Sequence6()
     {
+        GuideUIController.SwingAnimation(false);
+        GuideUIController.OAnimation();
         yield return GuideUIController.TalkIE("이런!\n지도가 산산조각 나버렸어");
         yield return new WaitForSeconds(2.0f);
         yield return GuideUIController.TalkIE("망가진 지도를 다시 맞춰줘");
@@ -184,6 +188,7 @@ public class JicsawPuzzleUIManager : BaseInitializeObject
     /// <returns></returns>
     public IEnumerator Sequence7()
     {
+        GuideUIController.SwingAnimation(true);
         yield return GuideUIController.TalkIE("좋아!\n완벽해");
         yield return new WaitForSeconds(2.0f);
         JicsawPuzzleManager.Instance.SetActiveARCamera(false);

@@ -18,6 +18,10 @@ namespace JicsawPuzzle
         private string m_boardName;
         private bool isPlay = false;
 
+        [Header("SFX")]
+        [SerializeField] AudioClip missionOpenSFX;
+        [SerializeField] AudioClip missionClearSFX;
+
         protected override void Start() {
             gameObject.SetActive(false);
             Board.GetComponent<Image>().sprite = puzzleSprite;
@@ -36,6 +40,7 @@ namespace JicsawPuzzle
         {
             isPlay = true;
             gameObject.SetActive(true);
+            AudioController.Instance.PlaySFXOneShot(missionOpenSFX);
             yield return null;
         }
 
@@ -52,6 +57,7 @@ namespace JicsawPuzzle
             PuzzleSuccedUI.GetComponent<Button>().enabled=false;
             PuzzleSuccedUI.SetActive(true);
             JicsawPuzzleManager.Instance.PuzzleClear();
+            AudioController.Instance.PlaySFXOneShot(missionClearSFX);
             isPlay = false;
         }
 
