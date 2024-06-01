@@ -13,12 +13,18 @@ public class ColoringScenario : MonoBehaviour
     public Image CharacterSelectUI;
     public GameObject coloring;
     public GameObject[] character = new GameObject[3];
-    public TextMeshProUGUI talk_Bubble;
+    public GuideUIController talk_Bubble;
     public Canvas CaptureCanvas;
 
     public ResultUIController ResultUIController;
 
     bool[] isCheck = {false, false, false, false};
+
+    private void Start() 
+    {
+        talk_Bubble.SwingAnimation(true);
+        talk_Bubble.Talk("»öÄ¥³îÀÌ¸¦ ÇÏ°í ½ÍÀº Ä³¸¯ÅÍ¸¦ °ñ¶óÁà!");    
+    }
 
     public void OnPalette()
     {
@@ -49,7 +55,8 @@ public class ColoringScenario : MonoBehaviour
             photoCapture.copyCharacter = character[2];
         }
         coloring.SetActive(true);
-        talk_Bubble.text = "¿øÇÏ´Â »ö»óÀ¸·Î\nÄ¥ÇØº¸ÀÚ!";
+        talk_Bubble.SwingAnimation(false);
+        talk_Bubble.Talk("¿øÇÏ´Â »ö»óÀ¸·Î\nÄ¥ÇØº¸ÀÚ!");
 
         photoCapture.characterName = click.name;
 
@@ -60,7 +67,8 @@ public class ColoringScenario : MonoBehaviour
         character[0].SetActive(false);
         character[1].SetActive(false);
         character[2].SetActive(false);
-        talk_Bubble.text = "»öÄ¥³îÀÌ¸¦ ÇÏ°í ½ÍÀº Ä³¸¯ÅÍ¸¦ °ñ¶óÁà!";
+        talk_Bubble.SwingAnimation(true);
+        talk_Bubble.Talk("»öÄ¥³îÀÌ¸¦ ÇÏ°í ½ÍÀº Ä³¸¯ÅÍ¸¦ °ñ¶óÁà!");
         CharacterSelectUI.gameObject.SetActive(true);
     }
 
@@ -70,8 +78,8 @@ public class ColoringScenario : MonoBehaviour
         if(isCheck.All(t=>t))
         {
             Debug.Log("GameClear!");
-             SceneManager.LoadScene("Photography");
-            //StartCoroutine(ResultUIController.Play());
+            //  SceneManager.LoadScene("Photography");
+            StartCoroutine(ResultUIController.Play());
         }
     }
 }
