@@ -4,10 +4,12 @@ using UnityEngine.EventSystems;
 public class TouchHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     private Vector3 initialPosition;
+    private Camera mainCamera; // 카메라 변수 추가
 
     private void Awake()
     {
         initialPosition = transform.position;
+        mainCamera = Camera.main; // 메인 카메라 할당
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -18,7 +20,9 @@ public class TouchHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        // 드래그하는 동안 오브젝트를 이동합니다.
-        transform.position = eventData.position;
+        // 터치 좌표를 월드 좌표로 변환하여 오브젝트를 이동합니다.
+        Vector3 newPosition = mainCamera.ScreenToWorldPoint(eventData.position);
+        newPosition.z = initialPosition.z; // z 축 값 유지
+        transform.position = newPosition;
     }
 }
