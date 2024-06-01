@@ -70,8 +70,8 @@ public class ColoringScenario : MonoBehaviour
         if(isCheck.All(t=>t))
         {
             Debug.Log("GameClear!");
-            // SceneManager.LoadScene("MainScene");
-            StartCoroutine(ResultUIController.Play());
+             SceneManager.LoadScene("Photography");
+            //StartCoroutine(ResultUIController.Play());
         }
     }
 }
