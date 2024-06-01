@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 26345127}
   - component: {fileID: 26345129}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Sani hair
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1503,7 +1503,7 @@ GameObject:
   - component: {fileID: 277309825}
   - component: {fileID: 277309827}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Sani body
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2127,7 +2127,7 @@ GameObject:
   - component: {fileID: 351794587}
   - component: {fileID: 351794589}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Ani right foot
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,7 +2352,7 @@ MonoBehaviour:
   - {fileID: 115903407}
   talk_Bubble: {fileID: 1938515864}
   CaptureCanvas: {fileID: 1346035852}
-  ResultUIController: {fileID: 0}
+  ResultUIController: {fileID: 2034334616}
 --- !u!114 &390387174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,7 +2884,7 @@ GameObject:
   - component: {fileID: 525350578}
   - component: {fileID: 525350580}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Bani body
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3092,7 +3092,7 @@ GameObject:
   - component: {fileID: 577054532}
   - component: {fileID: 577054534}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Ani hair
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3769,7 +3769,6 @@ RectTransform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 26345126}
   - {fileID: 799639338}
   - {fileID: 2035517330}
   - {fileID: 2146773810}
@@ -3777,6 +3776,7 @@ RectTransform:
   - {fileID: 1980458089}
   - {fileID: 277309824}
   - {fileID: 1023570580}
+  - {fileID: 26345126}
   m_Father: {fileID: 1455358093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3797,7 +3797,7 @@ GameObject:
   - component: {fileID: 739217586}
   - component: {fileID: 739217588}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Ani body
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4342,7 +4342,7 @@ GameObject:
   - component: {fileID: 799639339}
   - component: {fileID: 799639341}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Sani left hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4642,7 +4642,7 @@ GameObject:
   - component: {fileID: 825836932}
   - component: {fileID: 825836934}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Bani right foot
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5613,7 +5613,7 @@ GameObject:
   - component: {fileID: 1023570581}
   - component: {fileID: 1023570583}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Sani  face
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5745,7 +5745,7 @@ GameObject:
   - component: {fileID: 1033352462}
   - component: {fileID: 1033352464}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Ani left hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6092,7 +6092,7 @@ GameObject:
   - component: {fileID: 1078015367}
   - component: {fileID: 1078015369}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Bani right hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6224,7 +6224,7 @@ GameObject:
   - component: {fileID: 1130749658}
   - component: {fileID: 1130749660}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: Bani left foot
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6356,7 +6356,7 @@ GameObject:
   - component: {fileID: 1143831977}
   - component: {fileID: 1143831979}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Ani left hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6699,7 +6699,7 @@ GameObject:
   - component: {fileID: 1224235055}
   - component: {fileID: 1224235057}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: Bani hair
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7227,7 +7227,7 @@ GameObject:
   - component: {fileID: 1333333337}
   - component: {fileID: 1333333339}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Ani right hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7401,7 +7401,7 @@ GameObject:
   - component: {fileID: 1341965995}
   - component: {fileID: 1341965997}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: Ani face
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8018,7 +8018,7 @@ GameObject:
   - component: {fileID: 1450495208}
   - component: {fileID: 1450495210}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Bani left decoration
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8456,7 +8456,7 @@ GameObject:
   - component: {fileID: 1556602469}
   - component: {fileID: 1556602471}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Bani right decoration
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8762,7 +8762,7 @@ GameObject:
   - component: {fileID: 1635914096}
   - component: {fileID: 1635914098}
   m_Layer: 5
-  m_Name: Image (8)
+  m_Name: Bani left hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9293,7 +9293,7 @@ GameObject:
   - component: {fileID: 1681810831}
   - component: {fileID: 1681810833}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bani face
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9759,7 +9759,7 @@ GameObject:
   - component: {fileID: 1760569777}
   - component: {fileID: 1760569779}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: Sani left foot
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10900,7 +10900,7 @@ GameObject:
   - component: {fileID: 1980458090}
   - component: {fileID: 1980458092}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: Sani headdress
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11099,6 +11099,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5698585774323785136, guid: 8314af589a5b0a9478dd6ee71fce091e, type: 3}
   m_PrefabInstance: {fileID: 1954753673}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2034334616 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8333619446352014128, guid: 8314af589a5b0a9478dd6ee71fce091e, type: 3}
+  m_PrefabInstance: {fileID: 1954753673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658224292429375429a99e4520957450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035517329
 GameObject:
   m_ObjectHideFlags: 0
@@ -11112,7 +11123,7 @@ GameObject:
   - component: {fileID: 2035517331}
   - component: {fileID: 2035517333}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Sani right hand
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11704,7 +11715,7 @@ GameObject:
   - component: {fileID: 2146773811}
   - component: {fileID: 2146773813}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Sani right foot
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
