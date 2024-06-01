@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+using DG.Tweening;
 
 namespace JicsawPuzzle
 {
@@ -12,8 +10,16 @@ namespace JicsawPuzzle
 
         public override IEnumerator Play()
         {
+            if (ResultInfoComponent == null)
+            {
+                ResultInfoComponent = GetComponentInChildren<ResultInfoComponent>();
+            }
+            if (NextMissionButton == null)
+            {
+                NextMissionButton = GetComponentInChildren<NextMissionButton>();
+            }
             gameObject.SetActive(true);
-            Debug.Log(gameObject.activeSelf);
+            // Debug.Log(gameObject.activeSelf);
             yield return ResultInfoComponent.Play();
             yield return NextMissionButton.Play();
         }
@@ -29,6 +35,10 @@ namespace JicsawPuzzle
             }
 
             IsInitialized = true;
+        }
+
+        private void OnEnable() {
+            transform.DOScale(1.0f, 2.0f);
         }
 
         public override void SetActive(bool isActive)
