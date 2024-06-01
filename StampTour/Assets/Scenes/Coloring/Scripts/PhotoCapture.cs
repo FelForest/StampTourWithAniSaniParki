@@ -13,6 +13,7 @@ public class PhotoCapture : MonoBehaviour
     public string characterName;
     public Camera camera;
     public Rect captureArea;
+    public Image photo;
 
     Texture2D screenImage;
     public void CharacterTakeScreenShot()
@@ -89,6 +90,9 @@ public class PhotoCapture : MonoBehaviour
             }
         }
         NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
+        Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
+        photo.sprite = sprite;
+        photo.enabled = true;
         Debug.Log("사진찍기 끝");
     }
 

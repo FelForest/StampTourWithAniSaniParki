@@ -7563,6 +7563,7 @@ MonoBehaviour:
     y: 0
     width: 0
     height: 0
+  photo: {fileID: 0}
 --- !u!114 &1346035850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11589,8 +11590,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedColor: {r: 0, g: 0, b: 0, a: 0}
   currentColor: {fileID: 1902154381}
-  coloringAudio: {fileID: 8300000, guid: 932bd0e61c623d746ba29b79b41d2025, type: 3}
-  pickAudio: {fileID: 8300000, guid: 932bd0e61c623d746ba29b79b41d2025, type: 3}
+  coloringAudio: {fileID: 8300000, guid: fb5c285c2df3e3c499d85185274beae0, type: 3}
+  pickAudio: {fileID: 8300000, guid: 7d6795fc14a7aee4295ea6b9abe8c3af, type: 3}
 --- !u!4 &2110549049
 Transform:
   m_ObjectHideFlags: 0
