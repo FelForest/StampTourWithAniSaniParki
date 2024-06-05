@@ -730,7 +730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0008544922, y: 1.7720032}
+  m_AnchoredPosition: {x: 0.0009765625, y: 1.7720032}
   m_SizeDelta: {x: 759.8966, y: 918.2123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474408939
@@ -1064,6 +1064,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1019337715}
   button: {fileID: 2028174309}
+--- !u!1 &685571946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685571947}
+  - component: {fileID: 685571948}
+  m_Layer: 5
+  m_Name: 08.TutoriaComplete
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &685571947
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685571946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1078504240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &685571948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685571946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ddd2b8ca422c344af54937ec29d181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  completeScene:
+    sceneAsset: {fileID: 102900000, guid: ccc8df15a5b226c4ab03c6d1d6cc30ca, type: 3}
+    sceneName: Tutorial
+    scenePath: Assets/Scenes/MainMenu/Scene/Tutorial.unity
+  nextScene:
+    sceneAsset: {fileID: 102900000, guid: 07f3a9020fbd5ca4583a301445a3ae9c, type: 3}
+    sceneName: MainScene
+    scenePath: Assets/Scenes/MainMenu/Scene/MainScene.unity
 --- !u!1 &750791992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1686,7 @@ MonoBehaviour:
   - sentence: "\uB3C4\uC7A5\uC744 \uCC0D\uC744 \uC218 \uC788\uC744 \uAC70\uC57C!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &924220801
 GameObject:
@@ -2310,6 +2368,7 @@ RectTransform:
   - {fileID: 633209918}
   - {fileID: 1648381391}
   - {fileID: 670129067}
+  - {fileID: 685571947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2337,6 +2396,7 @@ MonoBehaviour:
   - {fileID: 633209919}
   - {fileID: 1648381392}
   - {fileID: 670129068}
+  - {fileID: 685571948}
 --- !u!223 &1078504242
 Canvas:
   m_ObjectHideFlags: 0
@@ -3271,6 +3331,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uD574\uBCF4\uC790!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1497911481
 GameObject:
@@ -3763,6 +3824,7 @@ MonoBehaviour:
   - sentence: "\uC990\uAC70\uC6B4 \uC2DC\uAC04 \uBCF4\uB0B4"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1674752274
 GameObject:
@@ -4322,6 +4384,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1975371048
 GameObject:
@@ -4512,19 +4575,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2028174310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1005381197949631352, guid: eed341d59daaa564a95849e2bfa2ac46, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainScene
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2028174310
 MonoBehaviour:
   m_ObjectHideFlags: 0
