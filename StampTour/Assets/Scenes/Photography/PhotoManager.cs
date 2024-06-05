@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using JicsawPuzzle;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,17 @@ public class PhotoManager : MonoBehaviour
     public RenderTexture characterTexture;
     public string characterName;
     public Image Image;
+    [Space(10)]
+    [Header("GuideUI")]
+    public GuideUIController GuideUI;
+
     private void Start()
     {
+        if (GuideUI == null)
+        {
+            GuideUI = GameObject.FindObjectOfType<GuideUIController>();
+        }
+        StartCoroutine(GuideUIHelloWorld());
         LoadPNG();
     }
     public void LoadPNG()
@@ -24,6 +34,14 @@ public class PhotoManager : MonoBehaviour
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
         //Image.sprite = sprite;
         this.GetComponent<Image>().sprite = sprite; 
+    }
+
+    IEnumerator GuideUIHelloWorld()
+    {
+        GuideUI.SwingAnimation(true);
+        yield return new WaitForSeconds(1.0f);
+        GuideUI.SwingAnimation(false);
+        GuideUI.Talk(GuideUI.guideText.text);
     }
     
 }
