@@ -1686,6 +1686,7 @@ MonoBehaviour:
   - sentence: "\uB3C4\uC7A5\uC744 \uCC0D\uC744 \uC218 \uC788\uC744 \uAC70\uC57C!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &924220801
 GameObject:
@@ -3330,6 +3331,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uD574\uBCF4\uC790!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1497911481
 GameObject:
@@ -3822,6 +3824,7 @@ MonoBehaviour:
   - sentence: "\uC990\uAC70\uC6B4 \uC2DC\uAC04 \uBCF4\uB0B4"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1674752274
 GameObject:
@@ -4381,6 +4384,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1975371048
 GameObject:

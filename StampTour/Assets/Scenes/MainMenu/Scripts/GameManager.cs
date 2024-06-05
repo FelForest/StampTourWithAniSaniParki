@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayBGM(AudioClip clip = null)
         {
-            if (clip)
+            if (clip != null)
             {
                 Source_BGM.clip = clip;
             }
@@ -189,9 +189,9 @@ public class GameManager : MonoBehaviour
     /// Change and Play OneShot SFX AudioSource using clip.
     /// </summary>
     /// <param name="clip">Target AudioClip</param>
-    public void PlaySFXOneShot(AudioClip clip)
+    public void PlaySFXOneShot(AudioClip clip = null)
     {
-        if (clip)
+        if (clip != null)
         {
             Source_SFX.PlayOneShot(clip);
         }
