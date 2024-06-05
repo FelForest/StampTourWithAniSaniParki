@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
+using System.Xml.Schema;
 using JicsawPuzzle;
 using UnityEngine;
+using UnityEngine.Android;
 
 public class JicsawPuzzleManager : BaseInitializeObject
 {
@@ -45,6 +48,10 @@ public class JicsawPuzzleManager : BaseInitializeObject
 
     public JicsawPuzzleBoardManager BoardManager;
     public JicsawPuzzleUIManager UIManager;
+    public ARTrackingManager TrackingManager;
+    public GameObject TrackingObject;
+
+    private Coroutine curCoroutine;
 
     private void Awake() 
     {
@@ -53,6 +60,11 @@ public class JicsawPuzzleManager : BaseInitializeObject
 
     protected override void Start()
     {
+        if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
+        {
+            Permission.RequestUserPermission(Permission.Camera);
+        }
+
         if (BoardManager == null)
         {
             BoardManager = GetComponentInChildren<JicsawPuzzleBoardManager>();
@@ -75,6 +87,7 @@ public class JicsawPuzzleManager : BaseInitializeObject
 
     protected IEnumerator InitInternal()
     {
+        TrackingManager.enabled = false;
         yield return ActiveObject(UIManager);
 
         IsInitialized = true;
@@ -83,7 +96,8 @@ public class JicsawPuzzleManager : BaseInitializeObject
     public IEnumerator StartInternal()
     {
         yield return new WaitUntil(()=>IsInitialized);
-        yield return UIManager.Play();
+        // yield return UIManager.Play();
+        yield return PassMarkerIntenal();
     }
 
     public void SetActiveARCamera(bool isActive)
@@ -93,17 +107,20 @@ public class JicsawPuzzleManager : BaseInitializeObject
 
     public void CheckMarker()
     {
-        StartCoroutine(CheckMarkerIntenal());
+        TrackingManager.enabled = true;
     }
 
-    protected IEnumerator CheckMarkerIntenal()
+    protected IEnumerator FailedMarkerIntenal()
     {
-        // 마커 실패 시, while 반복
-            yield return UIManager.Sequence4();
-        // 마커 성공 시,
-            //마커 끄기
-            yield return BoardManager.Play();
-            yield return UIManager.Sequence5();
+        yield return UIManager.Sequence4();
+    }
+
+    protected IEnumerator PassMarkerIntenal()
+    {
+        yield return BoardManager.Play();
+        BoardManager.PausePuzzlePlay(true);
+        yield return UIManager.Sequence5();
+        BoardManager.PausePuzzlePlay(false);
     }
 
     public void PuzzleStart()
@@ -117,6 +134,7 @@ public class JicsawPuzzleManager : BaseInitializeObject
 
     public void PuzzleClear()
     {
+        TrackingManager.enabled = false;
         StartCoroutine(PuzzleClearInternal());
     }
 
@@ -124,4 +142,62 @@ public class JicsawPuzzleManager : BaseInitializeObject
     {
         yield return UIManager.Sequence7();
     }
+
+#region Tracking Event Trasmitter
+    public void OnTrackingAddedEvent(string trackedId, Transform trakedTrasform)
+    {
+        if (trackedId == String.Empty) return;
+        
+        // If Target Find, Pass Marker Sequence
+        if (BoardManager.CheckBoardName(trackedId))
+        {
+            if (curCoroutine != null) StopCoroutine(curCoroutine);
+             
+            curCoroutine = StartCoroutine(PassMarkerIntenal());
+            TrackingObject.transform.position = trakedTrasform.position;
+            // Debug.LogWarning("Find Traking Image");
+        }
+        else
+        {
+            if (curCoroutine != null) StopCoroutine(curCoroutine);
+
+            curCoroutine = StartCoroutine(FailedMarkerIntenal());
+            // Debug.LogWarning("Failed Traking Image");
+        }
+    }
+    public void OnTrackingUpdateEvent(string trackedId, Transform trakedTrasform)
+    {
+        if (BoardManager.CheckBoardName(trackedId))
+        {
+            if (BoardManager.IsPlaying())
+            {
+                BoardManager.PausePuzzlePlay(false);
+                var pos = trakedTrasform.position;
+                // TrackingObject.transform.position = pos;
+                var rot = trakedTrasform.rotation;
+
+                // rot.x += 90;
+                // TrackingObject.transform.rotation = rot;
+                // Debug.LogWarning(" Traking Image");
+            }
+            else
+            {
+                OnTrackingAddedEvent(trackedId, trakedTrasform);
+            }
+
+        }
+    }
+
+    public void OnTrackingRemovedEvent(string trackedId)
+    {
+        // if (BoardManager.CheckBoardName(trackedId))
+        // {
+        //     BoardManager.PausePuzzlePlay(true);
+        //     TrackingObject.transform.position = Vector3.zero;
+        //     TrackingObject.transform.rotation = Quaternion.identity;
+        //     Debug.LogWarning("Missing Traking Image");
+        // }
+        // Debug.LogWarning("Missing Traking Image");
+    }
+#endregion
 }

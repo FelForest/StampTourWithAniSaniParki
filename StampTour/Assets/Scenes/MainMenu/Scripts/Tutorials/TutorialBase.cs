@@ -16,6 +16,9 @@ public abstract class TutorialBase : MonoBehaviour
 
     protected void SafePanelActive(bool active)
     {
-        panel?.SetActive(active);
+        if(panel != null)
+        {
+            panel.SetActive(active);
+        }
     }
 }

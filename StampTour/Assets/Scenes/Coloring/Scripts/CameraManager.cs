@@ -55,7 +55,7 @@ public class CameraManager : MonoBehaviour
             camTexture.Stop();
             WebCamTexture.Destroy(camTexture);
             camTexture = null;
-          
+        
         }
     }
 }

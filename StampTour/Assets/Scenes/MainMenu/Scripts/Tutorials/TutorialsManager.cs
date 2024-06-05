@@ -50,7 +50,7 @@ public class TutorialsManager : MonoBehaviour
     public void CompletedAllTutorials()
     {
         currentTutorial = null;
-        GameManager.gameManager.SetIsSceneFinished("Tutorial", true);
+        GameManager.Instance.SetIsSceneFinished("Tutorial", true);
         Debug.Log("TutorialComplted");
         GameManager.LoadScene("MainScene");
     }

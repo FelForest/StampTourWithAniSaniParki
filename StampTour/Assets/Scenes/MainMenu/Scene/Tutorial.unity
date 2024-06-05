@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 1985b2956dbd495469b5dbd82e4d7412, type: 3}
+  flagName: 
 --- !u!114 &875957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: e734c6b57edf48b4da52976881ff4535, type: 3}
+  flagName: 
 --- !u!114 &209664005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0008544922, y: 1.7720032}
+  m_AnchoredPosition: {x: 0.0009765625, y: 1.7720032}
   m_SizeDelta: {x: 759.8966, y: 918.2123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474408939
@@ -1062,6 +1064,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1019337715}
   button: {fileID: 2028174309}
+--- !u!1 &685571946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 685571947}
+  - component: {fileID: 685571948}
+  m_Layer: 5
+  m_Name: 08.TutoriaComplete
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &685571947
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685571946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1078504240}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &685571948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685571946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ddd2b8ca422c344af54937ec29d181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
+  completeScene:
+    sceneAsset: {fileID: 102900000, guid: ccc8df15a5b226c4ab03c6d1d6cc30ca, type: 3}
+    sceneName: Tutorial
+    scenePath: Assets/Scenes/MainMenu/Scene/Tutorial.unity
+  nextScene:
+    sceneAsset: {fileID: 102900000, guid: 07f3a9020fbd5ca4583a301445a3ae9c, type: 3}
+    sceneName: MainScene
+    scenePath: Assets/Scenes/MainMenu/Scene/MainScene.unity
 --- !u!1 &750791992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 9e18f97850294b64fa107e08ec00d7ed, type: 3}
+  flagName: 
 --- !u!114 &859990961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,6 +1686,7 @@ MonoBehaviour:
   - sentence: "\uB3C4\uC7A5\uC744 \uCC0D\uC744 \uC218 \uC788\uC744 \uAC70\uC57C!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &924220801
 GameObject:
@@ -1687,7 +1748,7 @@ GameObject:
   - component: {fileID: 939516508}
   - component: {fileID: 939516507}
   m_Layer: 5
-  m_Name: TestScene1
+  m_Name: JicsawPuzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1725,6 +1786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: e734c6b57edf48b4da52976881ff4535, type: 3}
+  flagName: 
 --- !u!114 &939516508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,6 +2368,7 @@ RectTransform:
   - {fileID: 633209918}
   - {fileID: 1648381391}
   - {fileID: 670129067}
+  - {fileID: 685571947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2333,6 +2396,7 @@ MonoBehaviour:
   - {fileID: 633209919}
   - {fileID: 1648381392}
   - {fileID: 670129068}
+  - {fileID: 685571948}
 --- !u!223 &1078504242
 Canvas:
   m_ObjectHideFlags: 0
@@ -2406,7 +2470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb871bf412f6eaf45bceeca4529fd6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changedImage: {fileID: 21300000, guid: 30371407310d53c4ea725e2a71ec992e, type: 3}
+  changedImage: {fileID: 21300000, guid: 2ffd9b5a108768047a7dba1fef1a0971, type: 3}
+  flagName: 
 --- !u!114 &1145032003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2492,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9e642595624ac584db42d1fe253421f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 315b921fec3dbd24eae8434a0f0e5de7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2999,7 +3064,7 @@ GameObject:
   - component: {fileID: 1411426144}
   - component: {fileID: 1411426143}
   m_Layer: 5
-  m_Name: TestScene1 (1)
+  m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3037,6 +3102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 1985b2956dbd495469b5dbd82e4d7412, type: 3}
+  flagName: 
 --- !u!114 &1411426144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3265,6 +3331,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uD574\uBCF4\uC790!"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1497911481
 GameObject:
@@ -3359,7 +3426,7 @@ GameObject:
   - component: {fileID: 1511994471}
   - component: {fileID: 1511994470}
   m_Layer: 5
-  m_Name: TestScene1 (2)
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3397,6 +3464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 103ff0f3d02c64241a5535d1cd8aa248, type: 3}
+  flagName: 
 --- !u!114 &1511994471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3756,6 +3824,7 @@ MonoBehaviour:
   - sentence: "\uC990\uAC70\uC6B4 \uC2DC\uAC04 \uBCF4\uB0B4"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1674752274
 GameObject:
@@ -3925,7 +3994,7 @@ GameObject:
   - component: {fileID: 1841082953}
   - component: {fileID: 1841082952}
   m_Layer: 5
-  m_Name: TestScene1 (3)
+  m_Name: Coloring
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3963,6 +4032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 9e18f97850294b64fa107e08ec00d7ed, type: 3}
+  flagName: 
 --- !u!114 &1841082953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4314,6 +4384,7 @@ MonoBehaviour:
   - sentence: "\uD55C\uBC88 \uC606\uC73C\uB85C \uBC00\uC5B4\uBCFC\uAE4C?"
   dialogueText: {fileID: 242636989}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 8300000, guid: 036837e4298bfe24ea0a5dcbc2e2d70b, type: 3}
   typingSpeed: 0.1
 --- !u!1 &1975371048
 GameObject:
@@ -4594,6 +4665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 103ff0f3d02c64241a5535d1cd8aa248, type: 3}
+  flagName: 
 --- !u!114 &2066960715
 MonoBehaviour:
   m_ObjectHideFlags: 0

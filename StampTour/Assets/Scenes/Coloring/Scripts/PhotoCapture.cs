@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.XR.ARSubsystems;
 
 public class PhotoCapture : MonoBehaviour
 {
@@ -12,6 +13,21 @@ public class PhotoCapture : MonoBehaviour
     public string characterName;
     public Camera camera;
     public Rect captureArea;
+    public GameObject photoFrame;
+    public Image photo;
+    public AudioClip captureAudio;
+    public AudioClip showAudio;
+    public GameObject CameraImage;
+    public GameObject ResultUI;
+
+    AudioSource audioSource;
+    Texture2D screenImage;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void CharacterTakeScreenShot()
     {
         //captureCanvas의 자식 오브젝트를 지움
@@ -51,11 +67,11 @@ public class PhotoCapture : MonoBehaviour
         RenderTexture.active = renderTexture;
 
         // Texture2D에 RenderTexture 내용을 복사
-        Texture2D screenImage = new Texture2D(width, height, TextureFormat.RGB24, false);
+        screenImage = new Texture2D(width, height, TextureFormat.RGB24, false);
         // captureArea 영역 캡쳐
         screenImage.ReadPixels(new Rect(0, 0, width, height), (int)captureArea.x, (int)captureArea.y);
         screenImage.Apply();
-
+        
         // RenderTexture 비활성화 및 카메라 타겟 초기화
         camera.targetTexture = null;
         RenderTexture.active = previous;
@@ -63,7 +79,9 @@ public class PhotoCapture : MonoBehaviour
 
         // PNG로 인코딩 및 저장
         byte[] imageBytes = screenImage.EncodeToPNG();
-        SavePNG(imageBytes);
+        screenImage.LoadImage(imageBytes);
+        // SavePNG(imageBytes);
+        SaveToGallery();
     }
     void SavePNG(byte[] pngArray)
     {
@@ -72,7 +90,41 @@ public class PhotoCapture : MonoBehaviour
         File.WriteAllBytes(path, pngArray);
         Debug.Log(path);
     }
-    
+    public void SaveToGallery()
+    {
+        // do something with texture
+        NativeGallery.Permission permission = NativeGallery.CheckPermission(NativeGallery.PermissionType.Write, NativeGallery.MediaType.Image);
+        if (permission == NativeGallery.Permission.Denied)
+        {
+            if (NativeGallery.CanOpenSettings())
+            {
+                NativeGallery.OpenSettings();
+            }
+        }
+        Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
+        photo.sprite = sprite;
+        audioSource.clip = captureAudio;
+        audioSource.Play();
+        Invoke("TakePhoto", 1f);
+    }
+    void TakePhoto()
+    {
+        CameraImage.SetActive(false);
+        photoFrame.SetActive(true);
+    }
+    public void RetakePhoto()
+    {
+        CameraImage.SetActive(true);
+        photoFrame.SetActive(false);
+        audioSource.clip = showAudio;
+        audioSource.Play();
+    }
+    public void EndGame()
+    {
+        NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
+        photoFrame.SetActive(false);
+        ResultUI.SetActive(true);
+    }
 
 
 }

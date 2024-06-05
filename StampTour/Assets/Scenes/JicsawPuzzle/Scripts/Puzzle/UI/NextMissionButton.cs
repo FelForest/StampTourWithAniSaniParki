@@ -10,6 +10,12 @@ namespace JicsawPuzzle
         public AnimationCurve WidthAnimationCurve;
         public float WidthAnimationTime = 1.0f;
 
+        [Header("SFX")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioClip clickSFX;
+
+        private Coroutine coroutine;
+
         private void Start() {
             if (NextButton == null)
             {
@@ -49,7 +55,15 @@ namespace JicsawPuzzle
 
         public void NextMission()
         {
-            Debug.Log("Next Mission");
+            if (coroutine == null)
+                coroutine = StartCoroutine(NextMissionInternal());
+        }
+
+        public IEnumerator NextMissionInternal()
+        {
+            audioSource.PlayOneShot(clickSFX);
+            yield return new WaitForSeconds(0.5f);
+            GameManager.RollbackMainScene();
         }
     }
 }

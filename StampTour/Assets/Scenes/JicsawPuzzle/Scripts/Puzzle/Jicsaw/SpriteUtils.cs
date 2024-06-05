@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class SpriteUtils
@@ -39,6 +40,8 @@ public class SpriteUtils
   /// <returns>new Texture2D </returns>
   public static Texture2D LoadTexture(string resourcePath)
   {
+    Debug.Log(resourcePath);
+
     Texture2D tex = Resources.Load<Texture2D>(resourcePath);
     return tex;
   }
@@ -82,13 +85,17 @@ public class SpriteUtils
   /// <returns></returns>
   public static Texture2D ResizeTexture(Texture2D source, int width, int height)
   {
-    RenderTexture renderTexture = new RenderTexture(width, height, 0);
+    source.filterMode = FilterMode.Bilinear;
+    RenderTexture renderTexture = RenderTexture.GetTemporary(width, height, 0);
+    renderTexture.filterMode = FilterMode.Bilinear;
+    RenderTexture.active = renderTexture;
     Graphics.Blit(source, renderTexture);
     Texture2D newTexture = new Texture2D(width, height);
     newTexture.ReadPixels(new Rect(0, 0, width, height), 0, 0);
     newTexture.Apply();
     RenderTexture.active = null;
-    renderTexture.Release();
+    RenderTexture.ReleaseTemporary(renderTexture);
     return newTexture;
   }
+
 }

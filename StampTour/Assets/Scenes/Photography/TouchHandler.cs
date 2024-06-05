@@ -3,27 +3,31 @@ using UnityEngine.EventSystems;
 
 public class TouchHandler : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
-    private RectTransform rectTransform;
-    private Vector2 initialTouchPosition;
-    private Vector2 initialSizeDelta;
-    private Vector2 initialAnchoredPosition;
+    public Canvas canvas;
+    private Vector3 initialPosition;
+    private Camera mainCamera; // 카메라 변수 추가
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        initialPosition = transform.position;
+        mainCamera = Camera.main; // 메인 카메라 할당
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        initialTouchPosition = eventData.position;
-        initialSizeDelta = rectTransform.sizeDelta;
-        initialAnchoredPosition = rectTransform.anchoredPosition;
+        // 이동 시작 시 초기 위치를 저장합니다.
+        initialPosition = transform.position;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 touchDelta = eventData.position - initialTouchPosition;
+        // 터치 좌표를 월드 좌표로 변환하여 오브젝트를 이동합니다.
+        Debug.Log("OnDrag");
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, Camera.main, out Vector2 pos);
+        transform.position = canvas.transform.TransformPoint(pos);
 
-        rectTransform.anchoredPosition = initialAnchoredPosition + touchDelta;
+
+        // newPosition.z = initialPosition.z; // z 축 값 유지
+        // transform.position = newPosition;
     }
 }
