@@ -82,7 +82,7 @@ namespace JicsawPuzzle
         public void SwingAnimation(bool isActive)
         {
             guideAnimator.SetBool("handswing", isActive);
-            Debug.Log(guideAnimator.GetBool("handswing"));
+            // Debug.Log(guideAnimator.GetBool("handswing"));
         }
 
         public void OAnimation()

@@ -19,6 +19,7 @@ public class PhotoCapture : MonoBehaviour
     public AudioClip showAudio;
     public GameObject CameraImage;
     public GameObject ResultUI;
+    public RectTransform CamRect;
 
     AudioSource audioSource;
     Texture2D screenImage;
@@ -26,6 +27,8 @@ public class PhotoCapture : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        captureArea.width = Screen.width;
+        captureArea.height = Screen.height;
     }
 
     public void CharacterTakeScreenShot()
@@ -56,6 +59,9 @@ public class PhotoCapture : MonoBehaviour
        
         int width = (int)captureArea.width;
         int height = (int)captureArea.height;
+        // int width2 = (int)CamRect.rect.height;
+        // int height2 = (int)CamRect.rect.width;
+        Debug.Log(width);
 
         // 지정한 영역에 맞는 RenderTexture 생성
         RenderTexture renderTexture = new RenderTexture(width, height, 24);
@@ -71,6 +77,7 @@ public class PhotoCapture : MonoBehaviour
         // captureArea 영역 캡쳐
         screenImage.ReadPixels(new Rect(0, 0, width, height), (int)captureArea.x, (int)captureArea.y);
         screenImage.Apply();
+        
         
         // RenderTexture 비활성화 및 카메라 타겟 초기화
         camera.targetTexture = null;
@@ -101,7 +108,10 @@ public class PhotoCapture : MonoBehaviour
                 NativeGallery.OpenSettings();
             }
         }
-        Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
+        float x = (captureArea.width - CamRect.rect.height)/2;
+        Debug.Log(x);
+        Debug.Log(CamRect.rect.height);
+        Sprite sprite = Sprite.Create(screenImage, new Rect((captureArea.width - CamRect.rect.height)/2, (captureArea.height - CamRect.rect.width)/2, CamRect.rect.height, CamRect.rect.width), Vector2.zero);
         photo.sprite = sprite;
         audioSource.clip = captureAudio;
         audioSource.Play();

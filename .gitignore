@@ -72,3 +72,6 @@
 # Temporary auto-generated Android Assets
 /StampTour/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /StampTour/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Fluctuate matarial in coloring.
+/StampTour/Assets/Resources/*.mat
