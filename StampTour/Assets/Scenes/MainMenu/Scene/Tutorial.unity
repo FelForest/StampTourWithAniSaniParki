@@ -565,16 +565,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 477171719}
   - {fileID: 924220802}
   - {fileID: 402429136}
   - {fileID: 1604879893}
   - {fileID: 1891866800}
+  - {fileID: 477171719}
   m_Father: {fileID: 585111537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0005699048, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &403676286
@@ -730,7 +730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0009765625, y: 1.7720032}
+  m_AnchoredPosition: {x: 0.0007324219, y: 1.7720032}
   m_SizeDelta: {x: 759.8966, y: 918.2123}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474408939
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 477171719}
   - component: {fileID: 477171720}
   m_Layer: 5
-  m_Name: Tutorial
+  m_Name: Photography
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1441,7 +1441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD29C\uD1A0\uB9AC\uC5BC"
+  m_Text: "\uC0AC\uC9C4\uCC0D\uAE30"
 --- !u!222 &838161136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2251,10 +2251,10 @@ RectTransform:
   - {fileID: 1019337716}
   m_Father: {fileID: 1975371049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1071204450
 GameObject:
@@ -2433,7 +2433,7 @@ GameObject:
   - component: {fileID: 1145032003}
   - component: {fileID: 1145032002}
   m_Layer: 5
-  m_Name: Tutorial
+  m_Name: Photography
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2471,7 +2471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 2ffd9b5a108768047a7dba1fef1a0971, type: 3}
-  flagName: 
+  flagName: Photography
 --- !u!114 &1145032003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4461,11 +4461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 1000
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 2340}
   m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
