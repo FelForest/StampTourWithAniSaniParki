@@ -1638,6 +1638,7 @@ MonoBehaviour:
   showAudio: {fileID: 8300000, guid: c6600c5491e54a044b5fa6d406a6e20b, type: 3}
   CameraImage: {fileID: 594620541}
   ResultUI: {fileID: 986341379094197242}
+  CamRect: {fileID: 594620542}
 --- !u!82 &915041608
 AudioSource:
   m_ObjectHideFlags: 0

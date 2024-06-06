@@ -22,7 +22,7 @@ public class PhotoManager : MonoBehaviour
             GuideUI = GameObject.FindObjectOfType<GuideUIController>();
         }
         StartCoroutine(GuideUIHelloWorld());
-        LoadPNG();
+        // LoadPNG();
     }
     public void LoadPNG()
     {
