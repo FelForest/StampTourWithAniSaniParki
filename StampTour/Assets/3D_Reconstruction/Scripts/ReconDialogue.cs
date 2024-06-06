@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DialogueSystem))]
+[RequireComponent(typeof(DialogueSystemEvent))]
 public class ReconDialogue : ReconBase
 {
-    private DialogueSystem dialogueSystem;
+    private DialogueSystemEvent dialogueSystem;
     public override void Enter()
     {
         isCompleted = false;
         SafePanelActive(true);
 
-        dialogueSystem = GetComponent<DialogueSystem>();
+        dialogueSystem = GetComponent<DialogueSystemEvent>();
         dialogueSystem.Setup();
     }
 
