@@ -1586,7 +1586,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 281675766}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &281675766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1711,6 +1723,18 @@ MonoBehaviour:
       - m_Target: {fileID: 390387173}
         m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
         m_MethodName: GameClear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2609,6 +2633,18 @@ MonoBehaviour:
       - m_Target: {fileID: 390387173}
         m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
         m_MethodName: ReturnButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4248,6 +4284,18 @@ MonoBehaviour:
       - m_Target: {fileID: 390387173}
         m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
         m_MethodName: OnPalette
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7917,6 +7965,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1527472791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8752,13 +8812,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7220251609856023442, guid: eed341d59daaa564a95849e2bfa2ac46, type: 3}
-        m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -46,4 +46,9 @@ public class ColoringManager : MonoBehaviour
         audioSource.clip = coloringAudio;
         audioSource.Play();
     }
+    public void PickAudio()
+    {
+        audioSource.clip = pickAudio;
+        audioSource.Play();
+    }
 }
