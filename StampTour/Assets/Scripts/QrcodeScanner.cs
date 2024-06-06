@@ -151,7 +151,7 @@ public class QRcodeScanner : MonoBehaviour
             result = barcodeReader.Decode(_cameraTexture.GetPixels32(),_cameraTexture.width,_cameraTexture.height);
             if(result != null)
             {
-                _textOut.text=result.Text;
+                _textOut.text= ChangeToKorean(result.Text);
                 GameManager.LoadScene(result.Text);
             }
             else
@@ -170,6 +170,36 @@ public class QRcodeScanner : MonoBehaviour
     {
         _rawImageBackground.texture = null;
         _textOut.text = string.Empty;
+    }
+
+    private string ChangeToKorean(string text)
+    {
+        string result = string.Empty;
+        if(text == "Coloring")
+        {
+            result = "색칠놀이";
+        }
+        else if(text == "Photography")
+        {
+            result = "사진찍기";
+        }
+        else if(text == "BlackTV")
+        {
+            result = "흑백티비";
+        }
+        else if (text == "ColorTV")
+        {
+            result = "컬러티비";
+        }
+        else if (text == "JicsawPuzzle")
+        {
+            result = "직소퍼즐";
+        }
+        else if(text == "3D_Reconstruction")
+        {
+            result = "자동차";
+        }
+        return result;
     }
 }
 
