@@ -231,6 +231,7 @@ namespace RapidFramework
                         ARF_GestureObject.transform.rotation = trackedImage.transform.rotation;
                         ARF_GestureObject.transform.localScale = trackedImage.transform.localScale;
                         ARF_GestureObject.SetActive(true);
+                        GameManager.Instance.SetIsSceneFinished("3D_Reconstruction", true);
                     }
 
                 }
