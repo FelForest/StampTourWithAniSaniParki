@@ -14,6 +14,8 @@ namespace JicsawPuzzle
         [SerializeField] AudioSource audioSource;
         [SerializeField] AudioClip talkSFX;
 
+        private Coroutine coroutine;
+
         protected override void Start() {
             IsInitialized = true;
         }
@@ -40,7 +42,7 @@ namespace JicsawPuzzle
             SetActive(true);
             guideText.text = inputText;
             guideText.maxVisibleCharacters = 0;
-            StartCoroutine(TypeAnimation(guideText));
+            coroutine = StartCoroutine(TypeAnimation(guideText));
         }
 
         public IEnumerator TalkIE(string inputText)
@@ -74,6 +76,14 @@ namespace JicsawPuzzle
             audioSource.Stop();
         }
 
+        public void StopType()
+        {
+            if (coroutine != null)
+                StopCoroutine(coroutine);
+            audioSource.Stop();
+            guideText.maxVisibleCharacters = guideText.text.Length;
+        }
+
         public bool CheckCurrentStringSame(string inputString)
         {
             return inputString.Equals(guideText.text);
@@ -88,6 +98,10 @@ namespace JicsawPuzzle
         public void OAnimation()
         {
             guideAnimator.SetTrigger("O");
+        }
+        public void SetTypeTime(float time)
+        {
+            TypeTime = time;
         }
     }
 }

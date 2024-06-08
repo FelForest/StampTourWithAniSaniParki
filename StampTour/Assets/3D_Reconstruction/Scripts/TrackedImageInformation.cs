@@ -54,6 +54,7 @@ namespace RapidFramework
             
         }
     }
+
     public partial class TrackedImageInformation : MonoBehaviour // 메인
     {
         private void Start()
@@ -96,6 +97,13 @@ namespace RapidFramework
                 }
             }
         }
+        void OnCompleteButtonClick()
+        {
+            if (GameManager.Instance.GetIsSceneFinished("3D_Reconstruction"))
+            {
+                GameManager.RollbackMainScene();
+            }
+        }
         private void Progress_LimitTimer(ARTrackedImageTimerData arTrackedImageTimerData)
         {
 
@@ -112,6 +120,10 @@ namespace RapidFramework
                     }
 
                     removeARTrackedImageTimerList.Add(arTrackedImageTimerData.ARTrackedImage);
+                    GameManager.Instance.SetIsSceneFinished("3D_Reconstruction", true);
+                    //OnCompleteButtonClick();
+
+
                 }
                 else //리밋 시간이 안되었으면 시간 증가
                 {
@@ -137,6 +149,8 @@ namespace RapidFramework
 
                         //제거 목록 추가
                         removeARTrackedImageTimerList.Add(arTrackedImageTimerData.ARTrackedImage);
+                        GameManager.Instance.SetIsSceneFinished("3D_Reconstruction",true);
+                        //OnCompleteButtonClick();
                     }
                 }
             }
@@ -217,6 +231,7 @@ namespace RapidFramework
                         ARF_GestureObject.transform.rotation = trackedImage.transform.rotation;
                         ARF_GestureObject.transform.localScale = trackedImage.transform.localScale;
                         ARF_GestureObject.SetActive(true);
+                        GameManager.Instance.SetIsSceneFinished("3D_Reconstruction", true);
                     }
 
                 }

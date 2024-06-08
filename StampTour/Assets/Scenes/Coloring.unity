@@ -1587,9 +1587,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346035849}
-        m_TargetAssemblyTypeName: PhotoCapture, Assembly-CSharp
-        m_MethodName: CharacterTakeScreenShot
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1723,6 +1723,18 @@ MonoBehaviour:
       - m_Target: {fileID: 390387173}
         m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
         m_MethodName: GameClear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2618,9 +2630,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346035849}
-        m_TargetAssemblyTypeName: PhotoCapture, Assembly-CSharp
-        m_MethodName: CharacterTakeScreenShot
+      - m_Target: {fileID: 390387173}
+        m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
+        m_MethodName: ReturnButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2630,9 +2642,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 390387173}
-        m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
-        m_MethodName: ReturnButton
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4281,6 +4293,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &817501122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,51 +5005,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921633024}
   m_CullTransparentMesh: 1
---- !u!1 &928256434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 928256436}
-  - component: {fileID: 928256435}
-  m_Layer: 0
-  m_Name: CameraManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &928256435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928256434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14711833f681f294ea49fab05a5f9ec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraViewImage: {fileID: 0}
---- !u!4 &928256436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 928256434}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 720, y: 1544, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946703893
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,6 +7253,8 @@ MonoBehaviour:
   showAudio: {fileID: 0}
   CameraImage: {fileID: 0}
   ResultUI: {fileID: 0}
+  CaptureRect: {fileID: 0}
+  RootCanvasRect: {fileID: 0}
 --- !u!114 &1346035850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7975,6 +7956,18 @@ MonoBehaviour:
       - m_Target: {fileID: 390387173}
         m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
         m_MethodName: OnPalette
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8819,13 +8812,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7220251609856023442, guid: eed341d59daaa564a95849e2bfa2ac46, type: 3}
-        m_TargetAssemblyTypeName: ColoringScenario, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 2110549048}
+        m_TargetAssemblyTypeName: ColoringManager, Assembly-CSharp
+        m_MethodName: PickAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -11819,4 +11812,3 @@ SceneRoots:
   - {fileID: 746713951}
   - {fileID: 1346035853}
   - {fileID: 1042658321}
-  - {fileID: 928256436}

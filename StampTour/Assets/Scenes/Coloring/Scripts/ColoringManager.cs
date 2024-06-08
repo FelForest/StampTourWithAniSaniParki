@@ -20,13 +20,13 @@ public class ColoringManager : MonoBehaviour
         selectedColor = Color.white;
         currentColor.color = Color.white;
 
-        Material[] materials = Resources.LoadAll<Material>("");
-        foreach (Material material in materials)
-            material.color = Color.white;
+        // Material[] materials = Resources.LoadAll<Material>("");
+        // foreach (Material material in materials)
+        //     material.color = Color.white;
 
         audioSource = GetComponent<AudioSource>();
 
-
+        ColoringDB.Instance.MaterialColorDic.Clear();
     }
     public void SelectColor()
     {
@@ -40,10 +40,16 @@ public class ColoringManager : MonoBehaviour
     public void ChangeColor()
     {
         GameObject thisBtn = EventSystem.current.currentSelectedGameObject;
-        Material material = Resources.Load<Material>(thisBtn.name);
-        material.color = selectedColor;
+        // Material material = Resources.Load<Material>(thisBtn.name);
+        // material.color = selectedColor;
+        ColoringDB.Instance.MaterialColorDic[thisBtn.name] = selectedColor;
         thisBtn.GetComponent<Image>().color = selectedColor;
         audioSource.clip = coloringAudio;
+        audioSource.Play();
+    }
+    public void PickAudio()
+    {
+        audioSource.clip = pickAudio;
         audioSource.Play();
     }
 }

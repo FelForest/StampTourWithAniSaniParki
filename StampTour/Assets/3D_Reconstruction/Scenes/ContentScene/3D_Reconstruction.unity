@@ -123,6 +123,210 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &1723003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 959952972}
+    m_Modifications:
+    - target: {fileID: 18534312423330463, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.199219
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264561382546530618, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318958206749599418, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: MinDistance
+      value: 2.133545
+      objectReference: {fileID: 0}
+    - target: {fileID: 2379679058625160488, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_Name
+      value: GuideUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488736678543220171, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488736678543220171, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_fontSize
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2496927353931549345, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3080843460021950329, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388251951810571352, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114498169610599941, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610524655216838534, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610524655216838534, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5610524655216838534, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116754508043254258, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116754508043254258, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.15625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305212698783769826, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461730182442775525, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: guideAnimator
+      value: 
+      objectReference: {fileID: 1723005}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.972
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.718
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786781814143428250, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8165101857694878845, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333340948193565243, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915105109323906532, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964975311579018295, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 7905542218309830915, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+    - {fileID: 714566066364988839, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+--- !u!224 &1723004 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6857672071144704212, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+  m_PrefabInstance: {fileID: 1723003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1723005 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 111557949531229408, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+  m_PrefabInstance: {fileID: 1723003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1723006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6461730182442775525, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+  m_PrefabInstance: {fileID: 1723003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972900483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee34a1b089454543829bd801107ca3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100843345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -504,6 +708,7 @@ GameObject:
   - component: {fileID: 590534421}
   - component: {fileID: 590534420}
   - component: {fileID: 590534423}
+  - component: {fileID: 590534424}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -518,16 +723,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590534418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 959952972}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 0}
+  m_AnchoredPosition: {x: 540, y: 470}
   m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &590534420
@@ -556,7 +761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -565,18 +770,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 65
+    m_FontSize: 45
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 6
+    m_MinSize: 4
     m_MaxSize: 65
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 45624455
+  m_Text: 
 --- !u!222 &590534422
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -600,7 +805,27 @@ MonoBehaviour:
   dialogues: []
   dialogueText: {fileID: 0}
   dialogueWindow: {fileID: 0}
+  clip: {fileID: 0}
   typingSpeed: 0.1
+--- !u!114 &590534424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590534418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3bfbab419665145a0c2958d5f2cf71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ForceEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  dialogues: []
+  dialogueWindow: {fileID: 0}
+  clip: {fileID: 0}
+  currentDialogueIndex: 0
 --- !u!1001 &798946351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -910,7 +1135,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -928,6 +1153,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1134743869}
+  - {fileID: 1723004}
   - {fileID: 590534419}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1351,7 +1577,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Recons:
-  - {fileID: 2046755356}
+  - {fileID: 2046755359}
+--- !u!1 &1972900483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2379679058625160488, guid: 207e09ed6426d1c419d0f91bd8297cc2, type: 3}
+  m_PrefabInstance: {fileID: 1723003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2046755352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,9 +1592,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2046755353}
-  - component: {fileID: 2046755355}
-  - component: {fileID: 2046755357}
-  - component: {fileID: 2046755356}
+  - component: {fileID: 2046755358}
+  - component: {fileID: 2046755359}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1386,7 +1616,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1776366123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2046755355
+--- !u!114 &2046755358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1395,10 +1625,191 @@ MonoBehaviour:
   m_GameObject: {fileID: 2046755352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50c3f7cc15caa1488876fb47468ea47, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d3bfbab419665145a0c2958d5f2cf71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2046755356
+  ForceEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1723006}
+        m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+        m_MethodName: StopType
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dialogues:
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: SwingAnimation
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uC774\uACF3\uC5D0\uC120 \uC804\uC2DC\uBB3C\uC744
+              3D\uB85C \uB744\uC6CC\uBCF4\uB294 \uD65C\uB3D9\uC744 \uD574\uBCFC \uAC70\uC57C!"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uCE74\uBA54\uB77C\uB97C 3D\uB85C \uB744\uC6B8 \uBB3C\uCCB4\uC758
+              \uC0AC\uC9C4\uC5D0 \uBE44\uCDB0\uBCF4\uC790!."
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "3D \uBB3C\uCCB4\uAC00 \uB744\uC6CC\uC84C\uB2E4\uBA74, 
+              \uB2E4\uC74C\uACFC \uAC19\uC774 \uBB3C\uCCB4\uB97C \uC6C0\uC9C1\uC5EC\uBD10"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uC190\uAC00\uB77D \uD558\uB098\uB85C \uC67C\uCABD,
+              \uC624\uB978\uCABD\uC73C\uB85C \uBC00\uC5B4\uBCF4\uBA74, \uBB3C\uCCB4\uAC00
+              \uD68C\uC804\uD560 \uAC70\uC57C!"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uC774\uBC88\uC5D4 \uC190\uAC00\uB77D \uB450 \uAC1C\uB85C
+              \uC11C\uB85C \uBC18\uB300 \uBC29\uD5A5\uC73C\uB85C \uBC00\uC5B4\uBCF4\uBA74,
+              \uBB3C\uCCB4\uC758 \uD06C\uAE30\uAC00 \uB2EC\uB77C\uC9C8 \uAC70\uC57C!"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "\uB9C8\uC9C0\uB9C9\uC73C\uB85C \uC190\uAC00\uB77D
+              \uB450 \uAC1C\uB85C \uAC19\uC740 \uBC29\uD5A5\uC73C\uB85C \uBC00\uC5B4\uBCF4\uBA74, 
+              \uBB3C\uCCB4\uAC00 \uC774\uB3D9\uD560 \uAC70\uC57C!"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "3D \uBB3C\uCCB4 \uC99D\uAC15\uC744 \uADF8\uB9CC\uD558\uACE0
+              \uC2F6\uB2E4\uBA74, \uD648 \uBC84\uD2BC\uC744 \uB204\uB974\uBA74 \uB3FC"
+            m_BoolArgument: 0
+          m_CallState: 2
+  - PlayEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: Talk
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "3D\uB85C \uB744\uC6B8 \uC218 \uC788\uB294 \uBB3C\uCCB4\uB85C\uB294
+              \uD3EC\uB2C8\uC790\uB3D9\uCC28, \uAE30\uC544\uC0BC\uB95C\uCC28, \uBAA9\uC7AC\uC19C\uD2C0\uAE30,
+              \uC0BC\uBCF4\uCEF4\uD4E8\uD130\uB85C \uCD1D 4 \uAC1C\uC57C. \uB610
+              \uCCB4\uD5D8\uD558\uACE0 \uC2F6\uB2E4\uBA74 \uC5B8\uC81C\uB4E0 \uB2E4\uC2DC
+              \uCC3E\uC544\uC918!"
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1723006}
+          m_TargetAssemblyTypeName: JicsawPuzzle.GuideUIController, Assembly-CSharp
+          m_MethodName: SwingAnimation
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: "3D\uB85C \uB744\uC6B8 \uC218 \uC788\uB294 \uBB3C\uCCB4\uB85C\uB294
+              \uD3EC\uB2C8\uC790\uB3D9\uCC28, \uAE30\uC544\uC0BC\uB95C\uCC28, \uBAA9\uC7AC\uC19C\uD2C0\uAE30,
+              \uC0BC\uBCF4\uCEF4\uD4E8\uD130\uB85C \uCD1D 4 \uAC1C\uC57C. \uB610
+              \uCCB4\uD5D8\uD558\uACE0 \uC2F6\uB2E4\uBA74 \uC5B8\uC81C\uB4E0 \uB2E4\uC2DC
+              \uCC3E\uC544\uC918!"
+            m_BoolArgument: 0
+          m_CallState: 2
+  dialogueWindow: {fileID: 1972900483}
+  clip: {fileID: 0}
+  currentDialogueIndex: 0
+--- !u!114 &2046755359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1411,25 +1822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
---- !u!114 &2046755357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046755352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fb1e8d8c13b2f2409e5a5abff4518e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogues:
-  - sentence: "\uC548\uB1551"
-  - sentence: "\uC548\uB1552"
-  - sentence: "\uC548\uB1553"
-  dialogueText: {fileID: 590534421}
-  dialogueWindow: {fileID: 0}
-  typingSpeed: 0.1
 --- !u!1001 &9180316296903547458
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using UnityEngine.XR.ARSubsystems;
+using JicsawPuzzle;
 
 public class PhotoCapture : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class PhotoCapture : MonoBehaviour
     public AudioClip captureAudio;
     public AudioClip showAudio;
     public GameObject CameraImage;
-    public GameObject ResultUI;
-    public RectTransform CamRect;
+    public ResultUIController ResultUI;
+
+    [Space(5), Header("Capture")]
+    public RectTransform CaptureRect;
+    public RectTransform RootCanvasRect;
 
     AudioSource audioSource;
     Texture2D screenImage;
@@ -56,15 +60,17 @@ public class PhotoCapture : MonoBehaviour
     }
     public void TakeScreenShot()
     {
-       
-        int width = (int)captureArea.width;
-        int height = (int)captureArea.height;
-        // int width2 = (int)CamRect.rect.height;
-        // int height2 = (int)CamRect.rect.width;
-        Debug.Log(width);
+        Rect captureArea = CaptureRect.rect;
+        float xClop = (RootCanvasRect.rect.width - captureArea.height) / 2;
+        float yClop = (RootCanvasRect.rect.height - captureArea.width) / 2;
 
+        int width = (int)(RootCanvasRect.rect.width - xClop * 2);
+        int height = (int)(RootCanvasRect.rect.height - yClop * 2);
+
+        int capWidth = (int)RootCanvasRect.rect.width;
+        int capHeight = (int)RootCanvasRect.rect.height;
         // 지정한 영역에 맞는 RenderTexture 생성
-        RenderTexture renderTexture = new RenderTexture(width, height, 24);
+        RenderTexture renderTexture = new RenderTexture(capWidth, capHeight, 24);
         camera.targetTexture = renderTexture;
         camera.Render();
 
@@ -74,14 +80,13 @@ public class PhotoCapture : MonoBehaviour
 
         // Texture2D에 RenderTexture 내용을 복사
         screenImage = new Texture2D(width, height, TextureFormat.RGB24, false);
-        // captureArea 영역 캡쳐
-        screenImage.ReadPixels(new Rect(0, 0, width, height), (int)captureArea.x, (int)captureArea.y);
+        screenImage.ReadPixels(new Rect(xClop, yClop, width, height), 0, 0, true);
         screenImage.Apply();
         
         
         // RenderTexture 비활성화 및 카메라 타겟 초기화
         camera.targetTexture = null;
-        RenderTexture.active = previous;
+       // RenderTexture.active = previous;
         Destroy(renderTexture);
 
         // PNG로 인코딩 및 저장
@@ -108,10 +113,7 @@ public class PhotoCapture : MonoBehaviour
                 NativeGallery.OpenSettings();
             }
         }
-        float x = (captureArea.width - CamRect.rect.height)/2;
-        Debug.Log(x);
-        Debug.Log(CamRect.rect.height);
-        Sprite sprite = Sprite.Create(screenImage, new Rect((captureArea.width - CamRect.rect.height)/2, (captureArea.height - CamRect.rect.width)/2, CamRect.rect.height, CamRect.rect.width), Vector2.zero);
+        Sprite sprite = Sprite.Create(screenImage, new Rect(0, 0, screenImage.width, screenImage.height), Vector2.zero);
         photo.sprite = sprite;
         audioSource.clip = captureAudio;
         audioSource.Play();
@@ -133,7 +135,7 @@ public class PhotoCapture : MonoBehaviour
     {
         NativeGallery.SaveImageToGallery(screenImage, "AnsanIndustrialHistoryMuseum", "아니사니바기와 함께 사진찍기");
         photoFrame.SetActive(false);
-        ResultUI.SetActive(true);
+        StartCoroutine(ResultUI.Play());
     }
 
 
