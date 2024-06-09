@@ -9,7 +9,7 @@ public class StampImageChange : MonoBehaviour
     Sprite changedImage;
 
     [SerializeField]
-    string flagName;
+    string[] flagNames;
     Sprite orgineImage;
 
     private void Awake()
@@ -19,21 +19,26 @@ public class StampImageChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        try
+        foreach(string flagName in flagNames)
         {
-            if (GameManager.Instance.GetIsSceneFinished(flagName))
+            try
             {
-                GetComponent<Image>().sprite = changedImage;
+                if (GameManager.Instance.GetIsSceneFinished(flagName))
+                {
+                    GetComponent<Image>().sprite = changedImage;
+                    break;
+                }
+                else
+                {
+                    GetComponent<Image>().sprite = orgineImage;
+                }
             }
-            else
-            {
-                GetComponent<Image>().sprite = orgineImage;
-            }
-        }
 
-        catch(Exception e)
-        {
-            Debug.LogWarning(e);
+            catch (Exception e)
+            {
+                Debug.LogWarning(e);
+            }
         }
+        
     }
 }
