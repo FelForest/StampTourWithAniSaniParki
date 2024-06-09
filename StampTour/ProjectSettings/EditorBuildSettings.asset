@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/3D_Reconstruction/Scenes/ContentScene/3D_Reconstruction.unity
     guid: 454ce129f45b3ed488c4a2d6bf641e78
   - enabled: 1
-    path: Assets/Scenes/BlackTv.unity
+    path: Assets/Scenes/BlackTV.unity
     guid: 8989132d0433e564088af4c1c64a571b
   - enabled: 1
     path: Assets/Scenes/ColorTV.unity

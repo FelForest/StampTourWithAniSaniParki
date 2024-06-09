@@ -1041,7 +1041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: e734c6b57edf48b4da52976881ff4535, type: 3}
-  flagName: JicsawPuzzle
+  flagNames:
+  - JicsawPuzzle
 --- !u!114 &457868997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,7 +1170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 9e18f97850294b64fa107e08ec00d7ed, type: 3}
-  flagName: Coloring
+  flagNames:
+  - Coloring
 --- !u!1 &542711072
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1597,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 9e18f97850294b64fa107e08ec00d7ed, type: 3}
-  flagName: Coloring
+  flagNames:
+  - Coloring
 --- !u!1 &675567617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,7 +1930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 1985b2956dbd495469b5dbd82e4d7412, type: 3}
-  flagName: 3D_Reconstruction
+  flagNames:
+  - 3D_Reconstruction
+  - Car
 --- !u!1 &763247980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,7 +2450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 103ff0f3d02c64241a5535d1cd8aa248, type: 3}
-  flagName: TV
+  flagNames:
+  - TV
+  - BlackTV
+  - ColorTV
 --- !u!1 &960914640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,7 +2701,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 1985b2956dbd495469b5dbd82e4d7412, type: 3}
-  flagName: Car
+  flagNames:
+  - Car
+  - 3D_Reconstruction
 --- !u!1 &1019466920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2783,7 +2793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: e734c6b57edf48b4da52976881ff4535, type: 3}
-  flagName: JicsawPuzzle
+  flagNames:
+  - JicsawPuzzle
 --- !u!1 &1040242334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2959,7 +2970,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 103ff0f3d02c64241a5535d1cd8aa248, type: 3}
-  flagName: TV
+  flagNames:
+  - TV
+  - BlackTV
+  - ColorTV
 --- !u!1 &1077217455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4218,7 +4232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changedImage: {fileID: 21300000, guid: 2ffd9b5a108768047a7dba1fef1a0971, type: 3}
-  flagName: Photography
+  flagNames:
+  - Photography
 --- !u!114 &1992578752
 MonoBehaviour:
   m_ObjectHideFlags: 0
