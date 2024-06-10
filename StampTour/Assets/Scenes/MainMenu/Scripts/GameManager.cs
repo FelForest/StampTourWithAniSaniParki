@@ -23,8 +23,10 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
     public AudioSource Source_BGM;
     public AudioSource Source_SFX;
+
     private Dictionary<string, Flag> flags = new Dictionary<string, Flag>();
     public int SceneCount
     {
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private bool IsContainKey(string key)
+    public bool IsContainKey(string key)
     {
         if (flags.ContainsKey(key))
         {
