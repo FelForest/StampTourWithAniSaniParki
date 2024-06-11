@@ -30,6 +30,8 @@ namespace RapidFramework
         [Header("Property")]
         [SerializeField] private float limitTimer = 1f; //제한시간
         [SerializeField] private float limitDistance = 100; //카메라 거리 제한
+
+        public ReconStamp ReconStamp;
     }
     public partial class TrackedImageInformation : MonoBehaviour //초기 설정
     {
@@ -231,7 +233,7 @@ namespace RapidFramework
                         ARF_GestureObject.transform.rotation = trackedImage.transform.rotation;
                         ARF_GestureObject.transform.localScale = trackedImage.transform.localScale;
                         ARF_GestureObject.SetActive(true);
-                        GameManager.Instance.SetIsSceneFinished("3D_Reconstruction", true);
+                        StartCoroutine(ReconStamp.Play());
                     }
 
                 }

@@ -7,6 +7,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public GameObject ExitCanvas;
 
     public static GameManager Instance
     {
@@ -197,5 +198,23 @@ public class GameManager : MonoBehaviour
         {
             Source_SFX.PlayOneShot(clip);
         }
+    }
+
+    private void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitCanvas.SetActive(true);
+        }
+    }
+
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
+
+    public void Return()
+    {
+        ExitCanvas.SetActive(false);
     }
 }
